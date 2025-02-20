@@ -6,6 +6,7 @@ import { createOgImage } from '@/utils/create-og-image'
 import { SEO } from '@/config/seo'
 import { fontMono, fontSans } from '@/lib/font'
 import { MediaQueriesIndicator } from '@/components/debug/media-queries'
+import { ReactScan } from '@/components/debug/react-scan'
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 import { NoiseBg } from '@/components/layout/noise-bg'
@@ -53,6 +54,7 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
         <Footer />
 
         <MediaQueriesIndicator />
+        <ReactScan />
 
         <UmamiTracking />
       </body>
