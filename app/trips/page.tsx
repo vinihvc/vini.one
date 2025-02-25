@@ -1,5 +1,5 @@
-import { LeafletMap } from '@/components/ui/leaflet-map'
 import { PLACES } from '@/content/places'
+import { TripMap } from './_components/map'
 
 const getData = async () => {
   return { places: PLACES }
@@ -10,7 +10,7 @@ const TripsPage = async () => {
 
   return (
     <>
-      <LeafletMap places={places} />
+      <TripMap places={places} />
     </>
   )
 }

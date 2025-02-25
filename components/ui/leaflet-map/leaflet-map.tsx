@@ -15,7 +15,7 @@ interface LeafletMapProps extends React.ComponentProps<typeof MapContainer> {
   places?: PlaceType[]
 }
 
-export const LeafletMap = (props: LeafletMapProps) => {
+const LeafletMap = (props: LeafletMapProps) => {
   const { places, className, ...rest } = props
 
   return (
@@ -52,6 +52,8 @@ export const LeafletMap = (props: LeafletMapProps) => {
       <MapContainer
         className={cn('flex-1', className)}
         center={[0, 0]}
+        zoomControl={false}
+        attributionControl={false}
         zoom={INITIAL_MAP_ZOOM}
         minZoom={INITIAL_MAP_ZOOM}
         scrollWheelZoom={true}
@@ -70,3 +72,5 @@ export const LeafletMap = (props: LeafletMapProps) => {
     </div>
   )
 }
+
+export default LeafletMap
