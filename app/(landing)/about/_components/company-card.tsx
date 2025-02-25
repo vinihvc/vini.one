@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import { cn } from '@/lib/cn'
+import Image from 'next/image'
 
-import type { CompanyType } from '@/config/companies'
+import type { CompanyType } from '@/content/companies'
 
 interface CompanyCardProps extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -21,7 +21,7 @@ export const CompanyCard = (props: CompanyCardProps) => {
       <div className="flex items-center gap-5 whitespace-nowrap">
         <div className="shrink-0">
           <Image
-            className="pointer-events-none rounded-full border border-white/20"
+            className="pointer-events-none rounded-full border"
             src={`/images/companies/${data.image}.webp`}
             width={48}
             height={48}
@@ -37,13 +37,13 @@ export const CompanyCard = (props: CompanyCardProps) => {
         </div>
       </div>
 
-      <div className='flex items-center justify-end gap-1 text-muted-foreground sm:mt-1'>
+      <div className="flex items-center justify-end gap-1 font-medium text-muted-foreground sm:mt-1">
         <span>{`${data.startDate} - `}</span>
 
         {data.endDate ? (
           <time> {data.endDate}</time>
         ) : (
-          <span className="text-white">Now</span>
+          <span className="text-foreground">Now</span>
         )}
       </div>
     </article>

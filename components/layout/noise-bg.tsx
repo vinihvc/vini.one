@@ -1,4 +1,3 @@
-
 import Image from 'next/image'
 
 export const NoiseBg = () => {
@@ -7,7 +6,7 @@ export const NoiseBg = () => {
       <Image
         src="/images/gradient-bg.png"
         alt="Custom Background"
-        className='-z-[1] absolute inset-x-0 top-10 mx-auto opacity-30 sm:top-0'
+        className="-z-[1] absolute inset-x-0 top-10 mx-auto opacity-30 sm:top-0"
         width={1000}
         height={670}
         priority
@@ -15,7 +14,7 @@ export const NoiseBg = () => {
       />
 
       {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
-      <svg className='-z-[1] pointer-events-none fixed inset-0 isolate size-full min-h-screen opacity-15'>
+      <svg className="-z-[1] pointer-events-none fixed inset-0 isolate h-full min-h-screen w-full opacity-15">
         <filter id="noise">
           <feTurbulence
             type="fractalNoise"

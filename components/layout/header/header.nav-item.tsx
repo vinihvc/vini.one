@@ -20,7 +20,7 @@ export const HeaderNavItem = (props: HeaderNavItemProps) => {
       <NavLink
         href={data.href}
         className={cn(
-          'block border-none bg-transparent px-4 py-2 hover:bg-transparent hover:text-white [&.active]:text-white sm:[&.active]:bg-white/5',
+          'block border-none bg-transparent px-4 py-2 hover:bg-transparent hover:text-foreground [&.active]:text-foreground sm:[&.active]:bg-foreground/5',
           className,
         )}
         {...rest}

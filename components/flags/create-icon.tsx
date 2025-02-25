@@ -1,11 +1,11 @@
-import React from 'react'
 import { cn } from '@/lib/cn'
+import React from 'react'
 
 export interface IconProps extends Omit<React.SVGProps<SVGSVGElement>, 'path'> {
   /**
    * The icon title
    */
-  title: string
+  title?: string
   /**
    * The icon `svg` viewBox
    * @default "0 0 24 24"

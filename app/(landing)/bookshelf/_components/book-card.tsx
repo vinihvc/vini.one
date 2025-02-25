@@ -3,7 +3,7 @@ import type React from 'react'
 
 import { PlaceholderImage } from '@/components/ui/placeholder-image'
 import { Rating } from '@/components/ui/rating'
-import type { BookType } from '@/config/books'
+import type { BookType } from '@/content/books'
 
 interface BookCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -28,7 +28,7 @@ export const BookCard = async (props: BookCardProps) => {
         type="color"
         src={`/images/books/${book.thumbnail}.jpg`}
         alt={`Cover of ${book.title}`}
-        className="pointer-events-none scale-105 rounded object-cover"
+        className="pointer-events-none scale-105 rounded-md object-cover"
         quality={20}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         fill

@@ -1,6 +1,5 @@
 import { SEO } from '@/config/seo'
 import { SOCIAL_LINKS } from '@/config/social'
-import React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
@@ -24,14 +23,11 @@ const HomePage = async () => {
         {links.map((link) => (
           <Button
             key={link.link}
-            className="size-auto p-4 ring-blue-500"
+            className="h-auto w-auto p-4 ring-blue-500 [&_svg]:h-5 [&_svg]:w-5"
             asChild
           >
             <NavLink href={link.link} isExternal>
-              {React.createElement(link.icon, {
-                className: 'size-6',
-                'aria-hidden': true,
-              })}
+              <link.icon aria-hidden />
 
               <span className="sr-only">{`Visit my ${link.title}`}</span>
             </NavLink>

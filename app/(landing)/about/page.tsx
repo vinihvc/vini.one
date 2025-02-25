@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
 import { PlaceholderImage } from '@/components/ui/placeholder-image'
-import { COMPANIES } from '@/config/companies'
+import { COMPANIES } from '@/content/companies'
 import { CompaniesSection } from './_components/companies'
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ const AboutPage = async () => {
 
       <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-14">
         <PlaceholderImage
-          className="aspect-square shrink-0 rounded max-xs:w-full"
+          className="aspect-square shrink-0 rounded-md max-xs:w-full"
           src="/images/me.webp"
           width={300}
           height={300}
@@ -44,15 +44,15 @@ const AboutPage = async () => {
 
         <div className="space-y-5 text-justify text-muted-foreground">
           <p>
-            <span className="font-medium text-white">{`Hi, I'm Vini`}</span>, my
-            first foray into programming came from editing Mods for
+            <span className="font-medium text-foreground">{`Hi, I'm Vini`}</span>
+            , my first foray into programming came from editing Mods for
             Counter-Strike 1.6. Then I had some websites and blogs and
             eventually decided to turn it into a career.
           </p>
 
           <p>
             I enjoy working where design meets code.
-            <span className="font-medium text-white">
+            <span className="font-medium text-foreground">
               {' '}
               CSS, Design Systems, and Animation
             </span>{' '}
@@ -63,13 +63,13 @@ const AboutPage = async () => {
           <p>
             In my free time, I enjoy{' '}
             <NavLink
-              className="text-white underline outline-none ring-orange-500 transition hover:text-orange-500"
+              className="text-foreground underline outline-none ring-orange-500 transition hover:text-orange-500"
               href="/bookshelf"
             >
               reading books
             </NavLink>
             , cooking, and
-            <span className="font-medium text-white">
+            <span className="font-medium text-foreground">
               {' '}
               spending time with my dogs.
             </span>

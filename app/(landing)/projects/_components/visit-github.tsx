@@ -18,7 +18,7 @@ export const VisitGithub = (props: VisitGithubProps) => {
           isExternal
         >
           Visit my GitHub
-          <ExternalLink className="size-4" />
+          <ExternalLink />
         </NavLink>
       </Button>
     </div>

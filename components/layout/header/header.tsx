@@ -6,7 +6,7 @@ import { HEADER_ROUTES } from './header.routes'
 const HeaderDesktop = dynamic(() => import('./header.desktop'))
 const HeaderMobile = dynamic(() => import('./header.mobile'))
 
-interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
+interface HeaderProps extends React.ComponentProps<'header'> {}
 
 const getData = async () => {
   return {
@@ -21,10 +21,22 @@ export const Header = async (props: HeaderProps) => {
 
   return (
     <header
-      className={cn('sticky inset-x-0 top-2 z-50 mx-2 sm:top-5', className)}
+      className={cn(
+        'container fixed inset-x-0 top-2 z-9999 mx-2 selection:bg-yellow-500 sm:top-5',
+      )}
       {...rest}
     >
-      <div className="container flex h-16 items-center justify-between rounded-xl bg-black/30 shadow-[0px_1px_1px_rgba(0,0,0,.95),0px_0px_1px_inset_#fffbed3c] backdrop-blur">
+      <div
+        className={cn(
+          'h-16',
+          'px-3',
+          'flex items-center justify-between',
+          'bg-black/30 backdrop-blur',
+          'rounded-xl',
+          'shadow-[0px_1px_1px_rgba(0,0,0,.95),0px_0px_1px_inset_#fffbed3c]',
+          className,
+        )}
+      >
         <HeaderLogo />
 
         <HeaderDesktop className="max-sm:hidden" routes={routes} />

@@ -1,8 +1,8 @@
 'use client'
 
-import { useId } from 'react'
 import { cn } from '@/lib/cn'
 import { Star } from 'lucide-react'
+import { useId } from 'react'
 
 const MAX_RATING = 5
 
@@ -49,7 +49,7 @@ export const Rating = (props: RatingProps) => {
             tabIndex={-1}
           >
             <Star
-              className="size-5 sm:size-6"
+              className="h-5 w-5 sm:h-6 sm:w-6"
               fill="currentColor"
               stroke="black"
             />

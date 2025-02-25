@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
-import { USE_STACK } from '@/config/uses'
+import { USE_STACK } from '@/content/uses'
 
 export const metadata: Metadata = {
   title: 'Personal Uses',

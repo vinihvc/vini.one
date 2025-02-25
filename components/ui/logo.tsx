@@ -1,5 +1,5 @@
-import React from 'react'
 import { cn } from '@/lib/cn'
+import React from 'react'
 
 interface LogoProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -12,7 +12,7 @@ export const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
         ref={ref}
         role="img"
         className={cn(
-          'flex size-10 items-center justify-center font-bold text-2xl',
+          'flex h-10 w-10 items-center justify-center font-bold text-2xl',
           className,
         )}
         {...rest}

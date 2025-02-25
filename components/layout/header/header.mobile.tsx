@@ -35,7 +35,7 @@ const HeaderMobile = (props: HeaderMobileProps) => {
           size="icon"
           {...rest}
         >
-          <Menu className="size-8" />
+          <Menu />
           <div className="sr-only">Open menu</div>
         </Button>
       </SheetTrigger>
@@ -48,7 +48,7 @@ const HeaderMobile = (props: HeaderMobileProps) => {
         </SheetDescription>
 
         <SheetClose asChild>
-          <HeaderLogo className="zoom-in-50 mb-20 inline-block origin-top-left scale-150 transform-gpu animate-in rounded bg-white/10" />
+          <HeaderLogo className="zoom-in-50 mb-20 inline-block origin-top-left scale-150 transform-gpu animate-in rounded-md bg-foreground/10" />
         </SheetClose>
 
         <nav className="space-y-14">

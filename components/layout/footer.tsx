@@ -1,8 +1,8 @@
 import { cn } from '@/lib/cn'
-import React from 'react'
+import type React from 'react'
 
 import { SEO } from '@/config/seo'
-import { TRAVElING_COUNTRIES } from '@/config/traveling'
+import { TRAVElING_COUNTRIES } from '@/content/traveling'
 
 interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -21,16 +21,16 @@ export const Footer = async (props: FooterProps) => {
     <footer className={cn('py-10 selection:bg-green-500', className)} {...rest}>
       <div className="container flex items-center justify-between text-muted-foreground">
         <div className="flex items-center space-x-2">
-          <span className="relative top-[1px] flex size-2">
-            <span className="absolute size-full animate-ping rounded-full bg-green-500 opacity-75" />
-            <span className="relative size-2 rounded-full bg-green-500" />
+          <span className="relative top-[1px] flex h-2 w-2">
+            <span className="absolute h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+            <span className="relative h-2 w-2 rounded-full bg-green-500" />
           </span>
 
           {livingCountry && (
-            <div className="flex gap-2">
-              <span className="text-xs">Traveling in</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs">Chilling in</span>
 
-              {React.createElement(livingCountry.flag)}
+              <livingCountry.flag />
             </div>
           )}
         </div>

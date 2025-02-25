@@ -1,5 +1,5 @@
-import { READ_BOOKS } from '@/config/books'
 import { Heading } from '@/components/ui/heading'
+import { READ_BOOKS } from '@/content/books'
 
 import { BookCard } from './_components/book-card'
 
@@ -17,7 +17,7 @@ const BookshelfPage = async () => {
       <div className="space-y-1">
         <Heading className="from-amber-500 to-red-500">Bookshelf</Heading>
 
-        <h2 className='text-lg text-muted-foreground'>
+        <h2 className="text-lg text-muted-foreground">
           {`That's what I've been reading lately. Enjoy!`}
         </h2>
       </div>

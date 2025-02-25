@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
 import { cn } from '@/lib/cn'
+import React from 'react'
 
-import type { CompanyType } from '@/config/companies'
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
+import type { CompanyType } from '@/content/companies'
 
 import { CompanyCard } from './company-card'
 
@@ -37,7 +37,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
               key={company.company}
             >
               <NavLink
-                className="block rounded px-2 ring-orange-500"
+                className="block rounded-md px-2 ring-orange-500"
                 key={company.company}
                 href={company.url}
                 isExternal
