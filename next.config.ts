@@ -1,8 +1,10 @@
 import withPlaiceholder from '@plaiceholder/next'
-import { withContentlayer } from 'next-contentlayer2'
+import type { NextConfig } from 'next'
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
+  experimental: {
+    reactCompiler: true,
+  },
   async redirects() {
     return [
       {
@@ -29,4 +31,4 @@ const nextConfig = {
   },
 }
 
-export default withContentlayer(withPlaiceholder(nextConfig))
+export default withPlaiceholder(nextConfig)

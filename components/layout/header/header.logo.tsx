@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 
 import { Button } from '@/components/ui/button'
 import { Logo } from '@/components/ui/logo'

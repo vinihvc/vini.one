@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 
 import { HeaderNavItem } from './header.nav-item'
 import type { RouteType } from './header.routes'
@@ -10,7 +10,7 @@ interface HeaderDesktopProps extends React.HTMLAttributes<HTMLElement> {
   routes: RouteType[]
 }
 
-export const HeaderDesktop = (props: HeaderDesktopProps) => {
+const HeaderDesktop = (props: HeaderDesktopProps) => {
   const { routes, className, ...rest } = props
 
   return (
@@ -21,3 +21,5 @@ export const HeaderDesktop = (props: HeaderDesktopProps) => {
     </nav>
   )
 }
+
+export default HeaderDesktop

@@ -4,7 +4,7 @@ import type { Metadata, Viewport } from 'next'
 import { createOgImage } from '@/utils/create-og-image'
 
 import { SEO } from '@/config/seo'
-import { fontMono, fontSans } from '@/lib/font'
+import { fontSans } from '@/lib/font'
 import { MediaQueriesIndicator } from '@/components/debug/media-queries'
 import { ReactScan } from '@/components/debug/react-scan'
 import { Footer } from '@/components/layout/footer'
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${fontSans.variable} ${fontMono.variable}`}>
+      <body className={fontSans.variable}>
         <Header />
 
         <NoiseBg />

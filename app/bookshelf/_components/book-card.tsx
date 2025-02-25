@@ -1,9 +1,9 @@
-import React from 'react'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
+import type React from 'react'
 
-import type { BookType } from '@/config/books'
 import { PlaceholderImage } from '@/components/ui/placeholder-image'
 import { Rating } from '@/components/ui/rating'
+import type { BookType } from '@/config/books'
 
 interface BookCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -35,12 +35,12 @@ export const BookCard = async (props: BookCardProps) => {
       />
 
       <div className="absolute inset-x-0 bottom-0">
-        <div className="relative flex items-center justify-center transition-all group-hover:opacity-100 md:top-2 md:opacity-0 md:group-hover:-top-1">
+        <div className="md:group-hover:-top-1 relative flex items-center justify-center transition-all group-hover:opacity-100 md:top-2 md:opacity-0">
           <Rating value={book.rate} />
         </div>
 
         <div className="flex h-10 items-center bg-black/70 px-1">
-          <h1 className="line-clamp-2 font-mono text-xs font-semibold">
+          <h1 className="line-clamp-2 font-mono font-semibold text-xs">
             {book.title}
           </h1>
         </div>

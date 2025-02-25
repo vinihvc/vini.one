@@ -1,6 +1,6 @@
-import React from 'react'
 import { SEO } from '@/config/seo'
 import { SOCIAL_LINKS } from '@/config/social'
+import React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
@@ -15,9 +15,9 @@ const HomePage = async () => {
   return (
     <div className="container flex flex-1 flex-col justify-center selection:bg-blue-500">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold">{about.title}</h1>
+        <h1 className="font-bold text-4xl">{about.title}</h1>
 
-        <h2 className="text-muted-foreground text-lg">{about.description}</h2>
+        <h2 className="text-lg text-muted-foreground">{about.description}</h2>
       </div>
 
       <div className="mt-5 flex gap-2 sm:gap-5">

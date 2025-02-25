@@ -13,8 +13,4 @@ export const HEADER_ROUTES = [
     href: '/uses',
     label: 'Uses',
   },
-  {
-    href: '/dev',
-    label: 'Dev',
-  },
 ]

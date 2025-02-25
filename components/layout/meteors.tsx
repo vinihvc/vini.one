@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 
 interface MeteorsProps {
   number?: number
@@ -32,11 +32,11 @@ export const Meteors = (props: MeteorsProps) => {
         <span
           key={index}
           className={cn(
-            'pointer-events-none absolute left-1/2 top-1/2 size-0.5 rotate-[215deg] animate-meteor rounded-[9999px] bg-muted shadow-[0_0_0_1px_#ffffff10]',
+            'pointer-events-none absolute top-1/2 left-1/2 size-0.5 rotate-[215deg] animate-meteor rounded-[9999px] bg-muted shadow-[0_0_0_1px_#ffffff10]',
           )}
           style={style}
         >
-          <div className="pointer-events-none absolute top-1/2 -z-10 h-[1px] w-[50px] -translate-y-1/2 bg-gradient-to-r from-muted to-transparent" />
+          <div className='-z-10 -translate-y-1/2 pointer-events-none absolute top-1/2 h-[1px] w-[50px] bg-gradient-to-r from-muted to-transparent' />
         </span>
       ))}
     </>

@@ -1,5 +1,5 @@
 import type React from 'react'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 import { Slot } from '@radix-ui/react-slot'
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -19,7 +19,7 @@ export const Heading = (props: HeadingProps) => {
   return (
     <Comp
       className={cn(
-        'inline-block bg-gradient-to-r bg-clip-text text-5xl font-bold leading-tight text-transparent',
+        'inline-block bg-gradient-to-r bg-clip-text font-bold text-5xl text-transparent leading-tight',
         className,
       )}
       {...rest}

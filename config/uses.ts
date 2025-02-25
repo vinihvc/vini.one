@@ -6,49 +6,40 @@ export const USE_STACK = [
         title: 'MacBook M2 Pro 14"',
         description:
           '16 GB RAM and 256GB storage, the perfect balance for my needs.',
-        link: 'https://www.apple.com/macbook-pro',
       },
       {
         title: 'AirPods 2 Pro',
         description: 'Great sound quality and noise cancellation.',
-        link: 'https://www.apple.com/airpods-pro',
       },
       {
         title: 'NuPhy Air75',
         description:
           "Compact, wireless, and with a great battery life. I'm in love.",
-        link: 'https://nuphy.com/collections/keyboards/products/halo75-v2-qmk-via-wireless-custom-mechanical-keyboard',
       },
       {
         title: 'MX Master 3S',
         description: 'Ergonomic, customizable, and with a long battery life.',
-        link: 'https://www.logitech.com/products/mice/mx-master-3s.html',
       },
       {
         title: 'Dell UltraSharp 27" 4K Monitor',
         description: 'USB-C hub monitor with great color accuracy.',
-        link: 'https://www.dell.com/en-us/shop/dell-ultrasharp-27-4k-usb-c-hub-monitor-u2723qe/apd/210-bdpf',
       },
       {
         title: 'SlikDesk',
         description: 'Standing desk to keep me moving during the day.',
-        link: 'https://loja.slik.com.br/produtos/slikdesk-high-mesa-com-regulagem-de-altura-eletrica',
       },
       {
         title: 'DX Racer Wide W0-N',
         description: 'I sit all day, so I might as well get a good chair.',
-        link: 'https://www.dxracer.com',
       },
       {
         title: 'Alexa Echo 4rd Gen',
         description:
           'I use it to turn on/off lights and set timers. Basically a glorified alarm clock.',
-        link: 'https://amzn.com/dp/B07XJ8C8F5',
       },
       {
         title: 'UGREEN Vertical Laptop Stand',
         description: 'To use my MacBook in clamshell mode. It saves space.',
-        link: 'https://amzn.com/dp/B09XZTM9QD',
       },
     ],
   },

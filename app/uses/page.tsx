@@ -1,8 +1,8 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
-import { USE_STACK } from '@/config/uses'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
+import { USE_STACK } from '@/config/uses'
 
 export const metadata: Metadata = {
   title: 'Personal Uses',
@@ -22,7 +22,7 @@ const UsesPage = async () => {
           Personal Uses
         </Heading>
 
-        <h2 className="text-muted-foreground text-lg">
+        <h2 className="text-lg text-muted-foreground">
           Some of the tools, apps, and gear that I use on a daily basis.
         </h2>
       </div>
@@ -30,18 +30,22 @@ const UsesPage = async () => {
       <div className="mt-10 space-y-10">
         {uses.map((use) => (
           <div key={use.title} className="space-y-4">
-            <h2 className="text-2xl font-black">{use.title}</h2>
+            <h2 className="font-black text-2xl">{use.title}</h2>
 
-            <ul className="marker:text-muted-foreground list-inside list-disc space-y-2 pl-6">
+            <ul className="list-inside list-disc space-y-2 pl-6 marker:text-muted-foreground">
               {use.items.map((item) => (
                 <li key={item.title}>
-                  <NavLink
-                    href={item.link}
-                    className="underline underline-offset-4 ring-purple-500 transition hover:text-purple-500"
-                    isExternal
-                  >
-                    {item.title}
-                  </NavLink>
+                  {item.link && (
+                    <NavLink
+                      href={item.link}
+                      className="underline underline-offset-4 ring-purple-500 transition hover:text-purple-500"
+                      isExternal
+                    >
+                      {item.title}
+                    </NavLink>
+                  )}
+
+                  {!item.link && <span>{item.title}</span>}
 
                   <span className="text-muted-foreground">
                     {' '}

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 
 import type { CompanyType } from '@/config/companies'
 import { Button } from '@/components/ui/button'
@@ -31,7 +31,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
           return (
             <li
               className={cn(
-                'w-full transition animate-in hover:!opacity-100 group-hover:opacity-50',
+                'hover:!opacity-100 w-full animate-in transition group-hover:opacity-50',
                 { 'fade-in slide-in-from-bottom-10': showAll },
               )}
               key={company.company}

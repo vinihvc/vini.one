@@ -1,6 +1,6 @@
-import React from 'react'
 import { Slot } from '@radix-ui/react-slot'
-import { tv, type VariantProps } from 'tailwind-variants'
+import React from 'react'
+import { type VariantProps, tv } from 'tailwind-variants'
 
 export const buttonStyle = tv({
   base: [
@@ -10,6 +10,7 @@ export const buttonStyle = tv({
     'rounded-lg drop-shadow',
     'transition-colors',
     'outline-none ring-white/30 ring-offset-2 ring-offset-black focus-visible:text-white focus-visible:ring-2',
+    '[&_svg]:w-5 [&_svg]:h-5 [&_svg]:pointer-events-none gap-2',
     'disabled:pointer-events-none disabled:opacity-50',
   ],
   variants: {
@@ -25,6 +26,7 @@ export const buttonStyle = tv({
       sm: 'h-9 px-3',
       md: 'h-10 px-4 py-2',
       lg: 'h-12 px-8',
+      icon: 'h-10 w-10',
     },
   },
   defaultVariants: {

@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 import { ExternalLink } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'

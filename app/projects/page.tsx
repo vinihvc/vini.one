@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 import { REPO_LINKS } from '@/config/repo'
 import { Heading } from '@/components/ui/heading'
@@ -25,7 +25,7 @@ const ProjectsPage = async () => {
       <div className="space-y-1">
         <Heading className="from-green-500 to-teal-500">Projects</Heading>
 
-        <h2 className="text-muted-foreground text-lg">
+        <h2 className='text-lg text-muted-foreground'>
           My open-source projects and contributions.
         </h2>
       </div>

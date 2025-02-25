@@ -1,5 +1,5 @@
+import { cn } from '@/lib/cn'
 import React from 'react'
-import { cn } from '@/utils/cn'
 
 import { SEO } from '@/config/seo'
 import { TRAVElING_COUNTRIES } from '@/config/traveling'
@@ -19,7 +19,7 @@ export const Footer = async (props: FooterProps) => {
 
   return (
     <footer className={cn('py-10 selection:bg-green-500', className)} {...rest}>
-      <div className="text-muted-foreground container flex items-center justify-between">
+      <div className="container flex items-center justify-between text-muted-foreground">
         <div className="flex items-center space-x-2">
           <span className="relative top-[1px] flex size-2">
             <span className="absolute size-full animate-ping rounded-full bg-green-500 opacity-75" />
@@ -35,7 +35,9 @@ export const Footer = async (props: FooterProps) => {
           )}
         </div>
 
-        <span>&copy;{` ${new Date().getFullYear()} ${about.title}`}</span>
+        <span className="text-sm">
+          &copy;{` ${new Date().getFullYear()} ${about.title}`}
+        </span>
       </div>
     </footer>
   )

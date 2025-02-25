@@ -1,9 +1,9 @@
 'use client'
 
-import React from 'react'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 import * as RDialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
+import React from 'react'
 
 import { Button } from './button'
 
@@ -26,8 +26,8 @@ export const SheetOverlay = React.forwardRef<
   <RDialog.Overlay
     className={cn(
       'fixed inset-0 z-50 bg-black/80',
-      'data-[state=open]:animate-in data-[state=open]:fade-in-0',
-      'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
+      'data-[state=open]:fade-in-0 data-[state=open]:animate-in',
+      'data-[state=closed]:fade-out-0 data-[state=closed]:animate-out',
       className,
     )}
     {...props}
@@ -51,16 +51,20 @@ export const SheetContent = React.forwardRef<
       className={cn(
         'fixed inset-y-0 left-0 z-50 size-full gap-4 bg-background/50 p-4 backdrop-blur sm:w-3/4 sm:max-w-sm',
         'transition ease-in-out',
-        'data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=open]:fade-in',
-        'data-[state=closed]:duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out',
+        'data-[state=open]:fade-in data-[state=open]:animate-in data-[state=open]:duration-500',
+        'data-[state=closed]:fade-out data-[state=closed]:animate-out data-[state=closed]:duration-300',
         className,
       )}
       {...props}
     >
       {children}
-      <RDialog.Close className="absolute right-3 top-4" asChild>
-        <Button className="sm:hidden" variant="ghost" size="xs">
-          <X className="size-8" />
+      <RDialog.Close className="absolute top-4 right-3" asChild>
+        <Button
+          className="sm:hidden max-sm:[&_svg]:h-6 max-sm:[&_svg]:w-6"
+          variant="ghost"
+          size="icon"
+        >
+          <X />
           <span className="sr-only">Close</span>
         </Button>
       </RDialog.Close>

@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 import { Menu } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
@@ -29,7 +29,12 @@ const HeaderMobile = (props: HeaderMobileProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button className={cn(className)} variant="ghost" size="xs" {...rest}>
+        <Button
+          className={cn('[&_svg]:h-6 [&_svg]:w-6', className)}
+          variant="ghost"
+          size="icon"
+          {...rest}
+        >
           <Menu className="size-8" />
           <div className="sr-only">Open menu</div>
         </Button>
@@ -43,14 +48,14 @@ const HeaderMobile = (props: HeaderMobileProps) => {
         </SheetDescription>
 
         <SheetClose asChild>
-          <HeaderLogo className="mb-20 inline-block origin-top-left scale-150 transform-gpu rounded bg-white/10 animate-in zoom-in-50" />
+          <HeaderLogo className="zoom-in-50 mb-20 inline-block origin-top-left scale-150 transform-gpu animate-in rounded bg-white/10" />
         </SheetClose>
 
         <nav className="space-y-14">
           {routes.map((route) => (
             <SheetClose key={route.href} asChild>
               <HeaderNavItem
-                className="transform-gpu text-5xl font-bold duration-500 animate-in fade-in slide-in-from-left-4"
+                className="fade-in slide-in-from-left-4 transform-gpu animate-in font-bold text-5xl duration-500"
                 data={route}
               />
             </SheetClose>

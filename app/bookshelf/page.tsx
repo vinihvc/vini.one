@@ -17,7 +17,7 @@ const BookshelfPage = async () => {
       <div className="space-y-1">
         <Heading className="from-amber-500 to-red-500">Bookshelf</Heading>
 
-        <h2 className="text-muted-foreground text-lg">
+        <h2 className='text-lg text-muted-foreground'>
           {`That's what I've been reading lately. Enjoy!`}
         </h2>
       </div>

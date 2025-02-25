@@ -1,7 +1,7 @@
 'use client'
 
 import { useId } from 'react'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 import { Star } from 'lucide-react'
 
 const MAX_RATING = 5

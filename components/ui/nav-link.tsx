@@ -1,15 +1,15 @@
 'use client'
 
-import React from 'react'
+import { cn } from '@/lib/cn'
 import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
-import { cn } from '@/utils/cn'
-import { tv, type VariantProps } from 'tailwind-variants'
+import React from 'react'
+import { type VariantProps, tv } from 'tailwind-variants'
 
 export const linkVariants = tv({
   base: [
     'transition',
-    'outline-none ring-white/30 ring-offset-2 ring-offset-black focus-visible:ring-2',
+    'outline-none ring-offset-2 ring-offset-background focus-visible:ring-2',
   ],
 })
 

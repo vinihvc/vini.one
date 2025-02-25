@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { cn } from '@/utils/cn'
+import { cn } from '@/lib/cn'
 
 import type { CompanyType } from '@/config/companies'
 
@@ -37,7 +37,7 @@ export const CompanyCard = (props: CompanyCardProps) => {
         </div>
       </div>
 
-      <div className="text-muted-foreground flex items-center justify-end gap-1 sm:mt-1">
+      <div className='flex items-center justify-end gap-1 text-muted-foreground sm:mt-1'>
         <span>{`${data.startDate} - `}</span>
 
         {data.endDate ? (

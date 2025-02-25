@@ -1,10 +1,9 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
+import type { Metadata } from 'next'
 
-import { COMPANIES } from '@/config/companies'
 import { Heading } from '@/components/ui/heading'
+import { NavLink } from '@/components/ui/nav-link'
 import { PlaceholderImage } from '@/components/ui/placeholder-image'
-
+import { COMPANIES } from '@/config/companies'
 import { CompaniesSection } from './_components/companies'
 
 export const metadata: Metadata = {
@@ -28,7 +27,7 @@ const AboutPage = async () => {
       <div className="space-y-1">
         <Heading className="from-orange-500 to-yellow-500">About</Heading>
 
-        <h2 className="text-muted-foreground text-lg">
+        <h2 className="text-lg text-muted-foreground">
           {`Here's a little bit about me, my career, and what I do.`}
         </h2>
       </div>
@@ -43,17 +42,17 @@ const AboutPage = async () => {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
 
-        <div className="text-muted-foreground space-y-5 text-justify">
+        <div className="space-y-5 text-justify text-muted-foreground">
           <p>
-            <span className="font-semibold text-white">{`Hi, I'm Vini`}</span>,
-            my first foray into programming came from editing Mods for
+            <span className="font-medium text-white">{`Hi, I'm Vini`}</span>, my
+            first foray into programming came from editing Mods for
             Counter-Strike 1.6. Then I had some websites and blogs and
             eventually decided to turn it into a career.
           </p>
 
           <p>
             I enjoy working where design meets code.
-            <span className="font-semibold text-white">
+            <span className="font-medium text-white">
               {' '}
               CSS, Design Systems, and Animation
             </span>{' '}
@@ -63,14 +62,14 @@ const AboutPage = async () => {
 
           <p>
             In my free time, I enjoy{' '}
-            <Link
-              className="text-white underline transition hover:text-orange-500"
+            <NavLink
+              className="text-white underline outline-none ring-orange-500 transition hover:text-orange-500"
               href="/bookshelf"
             >
               reading books
-            </Link>
+            </NavLink>
             , cooking, and
-            <span className="font-semibold text-white">
+            <span className="font-medium text-white">
               {' '}
               spending time with my dogs.
             </span>
@@ -80,7 +79,7 @@ const AboutPage = async () => {
       <div className="mt-20">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-black">Career</h2>
+            <h2 className="font-black text-2xl">Career</h2>
 
             <h3 className="text-muted-foreground">
               {`${
