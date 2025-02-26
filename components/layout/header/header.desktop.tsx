@@ -3,19 +3,19 @@ import { cn } from '@/lib/cn'
 import { HeaderNavItem } from './header.nav-item'
 import type { RouteType } from './header.routes'
 
-interface HeaderDesktopProps extends React.HTMLAttributes<HTMLElement> {
+interface HeaderDesktopProps extends React.ComponentProps<'nav'> {
   /**
-   * Routes to be displayed in the mobile menu
+   * The data of the routes
    */
-  routes: RouteType[]
+  data: RouteType[]
 }
 
 const HeaderDesktop = (props: HeaderDesktopProps) => {
-  const { routes, className, ...rest } = props
+  const { data, className, ...rest } = props
 
   return (
     <nav className={cn('flex gap-2 max-sm:flex-col', className)} {...rest}>
-      {routes.map((route) => (
+      {data.map((route) => (
         <HeaderNavItem key={route.href} data={route} />
       ))}
     </nav>

@@ -18,16 +18,16 @@ import type { RouteType } from './header.routes'
 interface HeaderMobileProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * Routes to be displayed in the mobile menu
+   * The data of the routes
    */
-  routes: RouteType[]
+  data: RouteType[]
 }
 
 const HeaderMobile = (props: HeaderMobileProps) => {
-  const { routes, className, ...rest } = props
+  const { data, className, ...rest } = props
 
   return (
-    <Sheet>
+    <Sheet modal={false}>
       <SheetTrigger asChild>
         <Button
           className={cn('[&_svg]:h-6 [&_svg]:w-6', className)}
@@ -35,12 +35,12 @@ const HeaderMobile = (props: HeaderMobileProps) => {
           size="icon"
           {...rest}
         >
-          <Menu className="size-8" />
+          <Menu />
           <div className="sr-only">Open menu</div>
         </Button>
       </SheetTrigger>
 
-      <SheetContent>
+      <SheetContent animation="fade">
         <SheetTitle className="sr-only">Menu</SheetTitle>
 
         <SheetDescription className="sr-only">
@@ -48,11 +48,11 @@ const HeaderMobile = (props: HeaderMobileProps) => {
         </SheetDescription>
 
         <SheetClose asChild>
-          <HeaderLogo className="zoom-in-50 mb-20 inline-block origin-top-left scale-150 transform-gpu animate-in rounded bg-white/10" />
+          <HeaderLogo className="zoom-in-50 mb-20 inline-block origin-top-left scale-150 transform-gpu animate-in rounded-md bg-foreground/10" />
         </SheetClose>
 
         <nav className="space-y-14">
-          {routes.map((route) => (
+          {data.map((route) => (
             <SheetClose key={route.href} asChild>
               <HeaderNavItem
                 className="fade-in slide-in-from-left-4 transform-gpu animate-in font-bold text-5xl duration-500"

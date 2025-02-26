@@ -1,16 +1,13 @@
 import '@/styles/globals.css'
 
-import type { Metadata, Viewport } from 'next'
 import { createOgImage } from '@/utils/create-og-image'
+import type { Metadata, Viewport } from 'next'
 
+import { MediaQueriesIndicator } from '@/components/debug/media-queries'
+import { Header } from '@/components/layout/header'
+import { UmamiTracking } from '@/components/tracking/umami'
 import { SEO } from '@/config/seo'
 import { fontSans } from '@/lib/font'
-import { MediaQueriesIndicator } from '@/components/debug/media-queries'
-import { ReactScan } from '@/components/debug/react-scan'
-import { Footer } from '@/components/layout/footer'
-import { Header } from '@/components/layout/header'
-import { NoiseBg } from '@/components/layout/noise-bg'
-import { UmamiTracking } from '@/components/tracking/umami'
 
 export const viewport: Viewport = {
   themeColor: '#0E0F0F',
@@ -47,14 +44,9 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
       <body className={fontSans.variable}>
         <Header />
 
-        <NoiseBg />
-
-        <main className="flex flex-1 flex-col pt-16 md:my-10">{children}</main>
-
-        <Footer />
+        {children}
 
         <MediaQueriesIndicator />
-        <ReactScan />
 
         <UmamiTracking />
       </body>

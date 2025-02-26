@@ -1,42 +1,39 @@
 import { cn } from '@/lib/cn'
-import React from 'react'
+import { getTravel } from '@/services/requests'
+import type React from 'react'
+import { FlagIcon } from '../ui/flag-icon'
 
 import { SEO } from '@/config/seo'
-import { TRAVElING_COUNTRIES } from '@/config/traveling'
 
-interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-const getData = async () => {
-  return { about: SEO }
-}
+interface FooterProps extends React.ComponentProps<'footer'> {}
 
 export const Footer = async (props: FooterProps) => {
   const { className, ...rest } = props
 
-  const { about } = await getData()
+  const travel = await getTravel()
 
-  const livingCountry = TRAVElING_COUNTRIES.at(0)
+  const livingCountry = travel.at(0)
 
   return (
     <footer className={cn('py-10 selection:bg-green-500', className)} {...rest}>
       <div className="container flex items-center justify-between text-muted-foreground">
         <div className="flex items-center space-x-2">
-          <span className="relative top-[1px] flex size-2">
-            <span className="absolute size-full animate-ping rounded-full bg-green-500 opacity-75" />
-            <span className="relative size-2 rounded-full bg-green-500" />
+          <span className="relative top-[1px] flex h-2 w-2">
+            <span className="absolute h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
+            <span className="relative h-2 w-2 rounded-full bg-green-500" />
           </span>
 
           {livingCountry && (
-            <div className="flex gap-2">
-              <span className="text-xs">Traveling in</span>
+            <div className="flex items-center gap-2">
+              <span className="text-xs">Chilling in</span>
 
-              {React.createElement(livingCountry.flag)}
+              <FlagIcon country={livingCountry.countryCode} />
             </div>
           )}
         </div>
 
         <span className="text-sm">
-          &copy;{` ${new Date().getFullYear()} ${about.title}`}
+          &copy;{` ${new Date().getFullYear()} ${SEO.title}`}
         </span>
       </div>
     </footer>

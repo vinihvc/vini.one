@@ -10,7 +10,15 @@ export const HEADER_ROUTES = [
     label: 'Projects',
   },
   {
+    href: '/trips',
+    label: 'Trips',
+  },
+  {
     href: '/uses',
     label: 'Uses',
+  },
+  {
+    href: '/blog',
+    label: 'Blog',
   },
 ]

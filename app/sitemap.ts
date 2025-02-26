@@ -1,27 +1,36 @@
+import { SEO } from '@/config/seo'
+import { POSTS } from '@/content/posts'
+import { TRIPS } from '@/content/trips'
 import type { MetadataRoute } from 'next'
 
 const sitemap = (): MetadataRoute.Sitemap => {
+  const pages = [
+    '',
+    '/about',
+    '/projects',
+    '/uses',
+    '/bookshelf',
+    '/blog',
+    '/trips',
+  ]
+
+  const trips = TRIPS.map((trip) => ({
+    url: `${SEO.url}/trips/${trip.slug}`,
+    lastModified: new Date(trip.updatedAt ?? trip.createdAt),
+  }))
+
+  const posts = POSTS.map((post) => ({
+    url: `${SEO.url}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt ?? post.createdAt),
+  }))
+
   return [
-    {
-      url: 'https://viniciusvicentini.com',
+    ...pages.map((page) => ({
+      url: `${SEO.url}${page}`,
       lastModified: new Date(),
-    },
-    {
-      url: 'https://viniciusvicentini.com/about',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://viniciusvicentini.com/projects',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://viniciusvicentini.com/uses',
-      lastModified: new Date(),
-    },
-    {
-      url: 'https://viniciusvicentini.com/bookshelf',
-      lastModified: new Date(),
-    },
+    })),
+    ...trips,
+    ...posts,
   ]
 }
 
