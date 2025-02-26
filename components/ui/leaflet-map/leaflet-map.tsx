@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/cn'
-import type { PlaceType } from '@/types/places'
+import type { TripType } from '@/types/trip'
 import { MapContainer } from 'react-leaflet'
 import { LeafletMapLayer } from './leaflet-map.layer'
 import { LeafletMapMarker } from './leaflet-map.marker'
@@ -12,7 +12,7 @@ interface LeafletMapProps extends React.ComponentProps<typeof MapContainer> {
   /**
    * The places to display on the map
    */
-  places?: PlaceType[]
+  places?: TripType[]
 }
 
 const LeafletMap = (props: LeafletMapProps) => {
@@ -23,7 +23,11 @@ const LeafletMap = (props: LeafletMapProps) => {
       <style>{`
         .leaflet-container {
           font-family: var(--font-sans);
-          background: var(--color-background);
+          background: #1B1B1A;
+        }
+
+        .leaflet-pane {
+          z-index: 40;
         }
 
         .leaflet-popup-content-wrapper {
@@ -52,15 +56,12 @@ const LeafletMap = (props: LeafletMapProps) => {
       <MapContainer
         className={cn('flex-1', className)}
         center={[0, 0]}
-        zoomControl={false}
-        attributionControl={false}
         zoom={INITIAL_MAP_ZOOM}
         minZoom={INITIAL_MAP_ZOOM}
-        scrollWheelZoom={true}
-        maxBounds={[
-          [-180, 180],
-          [180, -180],
-        ]}
+        zoomControl={false}
+        attributionControl={false}
+        scrollWheelZoom
+        worldCopyJump
         {...rest}
       >
         <LeafletMapLayer />

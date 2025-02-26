@@ -1,4 +1,6 @@
-export const USE_STACK = [
+import type { UseType } from '@/types/use'
+
+export const USES: UseType[] = [
   {
     title: 'Desk',
     items: [

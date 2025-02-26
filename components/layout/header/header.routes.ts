@@ -18,7 +18,7 @@ export const HEADER_ROUTES = [
     label: 'Uses',
   },
   {
-    href: '/bookshelf',
-    label: 'Bookshelf',
+    href: '/blog',
+    label: 'Blog',
   },
 ]

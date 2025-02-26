@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 
+import { NoiseBg } from '@/components/layout/noise-bg'
 import { Button } from '@/components/ui/button'
 
 interface ErrorProps {
@@ -16,19 +17,25 @@ const DevErrorPage = (props: ErrorProps) => {
   console.error(error)
 
   return (
-    <div className="z-[2] flex flex-col items-center space-y-6">
-      <div className="flex flex-col items-center space-y-4 md:text-xl">
-        <p className="font-thin text-7xl">😔</p>
+    <>
+      <NoiseBg />
 
-        <span className="bg-red-500 p-1">Don&apos;t panic</span>
+      <main className="items-center justify-center selection:bg-red-500">
+        <div className="z-[2] flex flex-col items-center space-y-10">
+          <div className="flex flex-col items-center space-y-4 md:text-xl">
+            <p className="font-thin text-7xl">😔</p>
 
-        <p>Something went wrong, please try again later.</p>
-      </div>
+            <span className="bg-red-500 p-1">Don&apos;t panic</span>
 
-      <Button size="xs" asChild>
-        <Link href="/">Back to Beginning</Link>
-      </Button>
-    </div>
+            <p>Something went wrong, please try again later.</p>
+          </div>
+
+          <Button size="lg" asChild>
+            <Link href="/">Back to Beginning</Link>
+          </Button>
+        </div>
+      </main>
+    </>
   )
 }
 

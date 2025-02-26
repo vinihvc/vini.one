@@ -5,11 +5,15 @@ import React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
-import type { CompanyType } from '@/content/companies'
+import type { CompanyType } from '@/types/company'
 
+import { ChevronDown } from 'lucide-react'
 import { CompanyCard } from './company-card'
 
-interface CompaniesSectionProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CompaniesSectionProps extends React.ComponentProps<'div'> {
+  /**
+   * The data of the companies
+   */
   data: CompanyType[]
 }
 
@@ -22,7 +26,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
 
   return (
     <div {...rest}>
-      <ul className="group space-y-2 sm:pl-6">
+      <ul className="group space-y-2">
         {data.map((company, index) => {
           if (!showAll && index >= MAX_COMPANIES) {
             return null
@@ -51,10 +55,13 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
 
       <div className="mt-5 flex justify-end">
         <Button
-          className="ring-orange-500"
+          data-state={showAll ? 'open' : 'closed'}
+          className="group ring-orange-500"
           onClick={() => setShowAll((prev) => !prev)}
         >
           {`Show ${showAll ? 'less' : 'all'}`}
+
+          <ChevronDown className="size-4 transition group-data-[state=open]:rotate-180" />
         </Button>
       </div>
     </div>

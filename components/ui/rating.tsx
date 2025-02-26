@@ -6,7 +6,7 @@ import { useId } from 'react'
 
 const MAX_RATING = 5
 
-interface RatingProps extends React.HTMLAttributes<HTMLDivElement> {
+interface RatingProps extends React.ComponentProps<'div'> {
   /**
    * The rating value
    */
@@ -40,7 +40,6 @@ export const Rating = (props: RatingProps) => {
               'text-gray-200 drop-shadow aria-checked:text-yellow-500',
               className,
             )}
-            role="radio"
             aria-roledescription="rating"
             aria-label={`${position} stars`}
             aria-checked={value > index}

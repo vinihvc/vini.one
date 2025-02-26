@@ -1,21 +1,18 @@
 import { cn } from '@/lib/cn'
+import { getTravel } from '@/services/requests'
 import type React from 'react'
+import { FlagIcon } from '../ui/flag-icon'
 
 import { SEO } from '@/config/seo'
-import { TRAVElING_COUNTRIES } from '@/content/traveling'
 
-interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-const getData = async () => {
-  return { about: SEO }
-}
+interface FooterProps extends React.ComponentProps<'footer'> {}
 
 export const Footer = async (props: FooterProps) => {
   const { className, ...rest } = props
 
-  const { about } = await getData()
+  const travel = await getTravel()
 
-  const livingCountry = TRAVElING_COUNTRIES.at(0)
+  const livingCountry = travel.at(0)
 
   return (
     <footer className={cn('py-10 selection:bg-green-500', className)} {...rest}>
@@ -30,13 +27,13 @@ export const Footer = async (props: FooterProps) => {
             <div className="flex items-center gap-2">
               <span className="text-xs">Chilling in</span>
 
-              <livingCountry.flag />
+              <FlagIcon country={livingCountry.countryCode} />
             </div>
           )}
         </div>
 
         <span className="text-sm">
-          &copy;{` ${new Date().getFullYear()} ${about.title}`}
+          &copy;{` ${new Date().getFullYear()} ${SEO.title}`}
         </span>
       </div>
     </footer>

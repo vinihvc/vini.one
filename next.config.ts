@@ -1,10 +1,11 @@
-import withPlaiceholder from '@plaiceholder/next'
+import createMDX from '@next/mdx'
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
   },
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   images: {
     remotePatterns: [
       {
@@ -14,6 +15,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/rss',
+        destination: '/rss.xml',
+        permanent: true,
+      },
       {
         source: '/github',
         destination: 'https://github.com/vinihvc',
@@ -38,4 +44,6 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withPlaiceholder(nextConfig)
+const withMDX = createMDX({})
+
+export default withMDX(nextConfig)

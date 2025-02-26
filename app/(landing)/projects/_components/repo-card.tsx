@@ -1,10 +1,12 @@
 import { cn } from '@/lib/cn'
+import type { ProjectType } from '@/types/project'
 import { ExternalLink } from 'lucide-react'
 
-import type { REPO_LINKS } from '@/content/repo'
-
-interface RepoCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: (typeof REPO_LINKS)[number]
+interface RepoCardProps extends React.ComponentProps<'article'> {
+  /**
+   * The data of the repo
+   */
+  data: ProjectType
 }
 
 export const RepoCard = (props: RepoCardProps) => {
@@ -18,8 +20,6 @@ export const RepoCard = (props: RepoCardProps) => {
       )}
       {...rest}
     >
-      <data.icon className="h-6 w-6" aria-hidden />
-
       <div>
         <h1 className="mb-1 font-medium">{data.title}</h1>
 

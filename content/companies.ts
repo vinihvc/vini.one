@@ -1,8 +1,7 @@
+import type { CompanyType } from '@/types/company'
 import { formatDate } from '@/utils/formatter'
 
-export type CompanyType = (typeof COMPANIES)[number]
-
-export const COMPANIES = [
+export const COMPANIES: CompanyType[] = [
   {
     title: 'Design Engineer',
     company: 'CyberBrokers',
@@ -11,7 +10,6 @@ export const COMPANIES = [
     city: 'Chicago',
     state: 'Illinois',
     startDate: formatDate('2023-05-15T03:00:00.000Z'),
-    endDate: null,
   },
   {
     title: 'Software Engineer',

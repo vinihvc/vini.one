@@ -5,9 +5,11 @@
  * formatDate('2021-01-01') // 2021
  * ```
  */
-export const formatDate = (date: string) => {
-  return new Intl.DateTimeFormat('en-US', {
+export const formatDate = (date: string, locale = 'en-US') => {
+  return new Intl.DateTimeFormat(locale, {
     year: 'numeric',
+    month: 'short',
+    day: '2-digit',
   }).format(new Date(date))
 }
 

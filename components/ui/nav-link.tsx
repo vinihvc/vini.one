@@ -3,11 +3,12 @@
 import { cn } from '@/lib/cn'
 import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
+import type React from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 export const linkVariants = tv({
   base: [
+    'group',
     'transition',
     'outline-none ring-offset-2 ring-offset-background focus-visible:ring-2',
   ],
@@ -16,40 +17,49 @@ export const linkVariants = tv({
 interface NavLinkProps
   extends VariantProps<typeof linkVariants>,
     NextLinkProps,
-    React.HTMLAttributes<HTMLAnchorElement> {
+    Omit<React.ComponentProps<'a'>, 'href'> {
   /**
    *  If `true`, the link will open in new tab
    */
   isExternal?: boolean
+  /**
+   * If `true`, only exact path matches will be considered active
+   * @default false
+   */
+  exact?: boolean
 }
 
-export const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>(
-  (props, ref) => {
-    const { href, isExternal, className, children, ...rest } = props
+export const NavLink = (props: NavLinkProps) => {
+  const {
+    href,
+    isExternal,
+    className,
+    children,
+    exact = false,
+    ...rest
+  } = props
 
-    const pathname = usePathname()
+  const pathname = usePathname()
 
-    const isCurrent = href === pathname
+  const isCurrent = exact
+    ? href === pathname
+    : pathname.startsWith(href.toString())
 
-    return (
-      <NextLink
-        ref={ref}
-        className={cn(linkVariants({ className }), {
-          active: isCurrent,
-        })}
-        href={href}
-        aria-current={isCurrent ? 'page' : undefined}
-        {...rest}
-        {...(isExternal && {
-          target: '_blank',
-          rel: 'noopener noreferrer',
-          prefetch: false,
-        })}
-      >
-        {children}
-      </NextLink>
-    )
-  },
-)
-
-NavLink.displayName = 'NavLink'
+  return (
+    <NextLink
+      className={cn(linkVariants({ className }), {
+        active: isCurrent,
+      })}
+      href={href}
+      aria-current={isCurrent ? 'page' : undefined}
+      {...rest}
+      {...(isExternal && {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        prefetch: false,
+      })}
+    >
+      {children}
+    </NextLink>
+  )
+}

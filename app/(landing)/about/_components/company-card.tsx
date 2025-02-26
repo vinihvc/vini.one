@@ -1,9 +1,9 @@
 import { cn } from '@/lib/cn'
 import Image from 'next/image'
 
-import type { CompanyType } from '@/content/companies'
+import type { CompanyType } from '@/types/company'
 
-interface CompanyCardProps extends React.HTMLAttributes<HTMLElement> {
+interface CompanyCardProps extends React.ComponentProps<'article'> {
   /**
    * Company data
    */

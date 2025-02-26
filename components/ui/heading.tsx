@@ -1,8 +1,8 @@
-import type React from 'react'
 import { cn } from '@/lib/cn'
 import { Slot } from '@radix-ui/react-slot'
+import type React from 'react'
 
-interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+interface HeadingProps extends React.ComponentProps<'h1'> {
   /**
    * If true, the Heading will be rendered as a child of another component
    *

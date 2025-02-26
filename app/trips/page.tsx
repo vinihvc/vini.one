@@ -1,16 +1,17 @@
-import { PLACES } from '@/content/places'
+import { getTrips } from '@/services/requests'
+import dynamic from 'next/dynamic'
 import { TripMap } from './_components/map'
 
-const getData = async () => {
-  return { places: PLACES }
-}
+const TripSidebar = dynamic(() => import('./_components/sidebar'))
 
 const TripsPage = async () => {
-  const { places } = await getData()
+  const trips = await getTrips()
 
   return (
     <>
-      <TripMap places={places} />
+      <TripMap data={trips} />
+
+      <TripSidebar data={trips} />
     </>
   )
 }

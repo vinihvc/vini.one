@@ -1,25 +1,24 @@
 import type { Metadata } from 'next'
 
+import { BlurImage } from '@/components/ui/blur-image'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
-import { PlaceholderImage } from '@/components/ui/placeholder-image'
-import { COMPANIES } from '@/content/companies'
+import { getCompanies } from '@/services/requests'
 import { CompaniesSection } from './_components/companies'
 
 export const metadata: Metadata = {
   title: 'About',
 }
 
-const getData = async () => {
-  return {
-    companies: COMPANIES,
-  }
-}
-
 const AboutPage = async () => {
-  const { companies } = await getData()
+  const data = await getCompanies()
 
-  const firstJob = companies[companies.length - 1]
+  const firstJob = data[data.length - 1]
+
+  if (!firstJob) {
+    throw new Error('First job not found')
+  }
+
   const startYear = new Date(firstJob.startDate).getFullYear()
 
   return (
@@ -33,8 +32,8 @@ const AboutPage = async () => {
       </div>
 
       <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-14">
-        <PlaceholderImage
-          className="aspect-square shrink-0 rounded-md max-xs:w-full"
+        <BlurImage
+          className="aspect-square rounded-md max-xs:w-full"
           src="/images/me.webp"
           width={300}
           height={300}
@@ -89,7 +88,7 @@ const AboutPage = async () => {
           </div>
         </div>
 
-        <CompaniesSection className="mt-4" data={companies} />
+        <CompaniesSection className="mt-4" data={data} />
       </div>
     </section>
   )

@@ -1,6 +1,6 @@
-export type BookType = (typeof READ_BOOKS)[number]
+import type { BookType } from '@/types/book'
 
-export const READ_BOOKS = [
+export const BOOKS: BookType[] = [
   {
     title: 'Robinson Crusoe',
     rate: 4,

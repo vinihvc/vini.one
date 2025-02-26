@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button'
 import { Logo } from '@/components/ui/logo'
 import { NavLink } from '@/components/ui/nav-link'
 
-interface HeaderLogoProps extends React.HTMLAttributes<HTMLElement> {}
+interface HeaderLogoProps
+  extends Omit<React.ComponentProps<typeof NavLink>, 'href'> {}
 
 export const HeaderLogo = (props: HeaderLogoProps) => {
   const { className, ...rest } = props

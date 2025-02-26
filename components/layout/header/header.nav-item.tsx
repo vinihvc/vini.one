@@ -5,7 +5,8 @@ import { NavLink } from '@/components/ui/nav-link'
 
 import type { RouteType } from './header.routes'
 
-interface HeaderNavItemProps extends React.HTMLAttributes<HTMLElement> {
+interface HeaderNavItemProps
+  extends Omit<React.ComponentProps<typeof NavLink>, 'href'> {
   /**
    * Route data
    */

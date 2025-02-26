@@ -1,4 +1,4 @@
-import type { PlaceType } from '@/types/places'
+import type { TripType } from '@/types/trip'
 import L from 'leaflet'
 import Image from 'next/image'
 import { Marker, Popup } from 'react-leaflet'
@@ -20,7 +20,7 @@ interface LeafletMapMarkerProps
   /**
    * The data of the place
    */
-  data: PlaceType
+  data: TripType
 }
 
 export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
@@ -32,15 +32,15 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
       position={[data.location.latitude, data.location.longitude]}
       icon={markerIcon}
     >
-      <Popup minWidth={350} closeOnEscapeKey>
+      <Popup minWidth={300} closeOnEscapeKey>
         <article className="flex h-auto flex-col gap-4 px-4 py-2">
           <h1 className="font-medium text-base">{data.name}</h1>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {data.thumbnails.map((thumbnail) => (
               <div
                 key={thumbnail}
-                className="relative aspect-square overflow-hidden rounded-md"
+                className="relative aspect-video overflow-hidden rounded-md"
               >
                 <Image
                   src={thumbnail}
@@ -53,10 +53,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
           </div>
 
           <Button className="bg-blue-500 hover:bg-blue-600" size="sm" asChild>
-            <NavLink
-              href="#"
-              // href={`/places/${place.slug}`}
-            >
+            <NavLink href={`/trips/${data.slug}`}>
               Check all details about this trip
             </NavLink>
           </Button>

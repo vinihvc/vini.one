@@ -4,7 +4,7 @@ import { ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
 
-interface VisitGithubProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface VisitGithubProps extends React.ComponentProps<'div'> {}
 
 export const VisitGithub = (props: VisitGithubProps) => {
   const { className, ...rest } = props
