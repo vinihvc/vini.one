@@ -6,7 +6,7 @@ const LandingLayout = ({ children }: React.PropsWithChildren) => {
     <>
       <NoiseBg />
 
-      <main className="flex flex-1 flex-col pt-32 md:my-10">{children}</main>
+      <main className="pt-32 md:my-10">{children}</main>
 
       <Footer />
     </>
