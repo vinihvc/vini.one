@@ -24,11 +24,9 @@ export const BlurImage = (props: ImageProps) => {
     >
       <NextImage
         {...rest}
-        className={cn(
-          'h-full w-full object-cover transition',
-          { 'scale-[1.02] blur-xl grayscale': isLoading },
-          { 'scale-100 blur-0 grayscale-0': !isLoading },
-        )}
+        className={cn('h-full w-full object-cover transition', {
+          'scale-[1.02] blur-xl': isLoading,
+        })}
         placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 300))}`}
         sizes={sizes}
