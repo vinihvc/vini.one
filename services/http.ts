@@ -37,7 +37,7 @@ const fetchWithTypes = async <T>(
   const timeoutId = setTimeout(() => controller.abort(), timeout)
 
   try {
-    const response = await fetch(`${env.NEXT_PUBLIC_API_URL}${url}`, {
+    const response = await fetch(`${env.NEXT_PUBLIC_API_URL}/api${url}`, {
       ...fetchOptions,
       headers,
       signal: controller.signal,
