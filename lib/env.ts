@@ -8,7 +8,7 @@ export const env = createEnv({
     NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN: z.string().min(1),
     NEXT_PUBLIC_MAPBOX_USER_ID: z.string().min(1),
     NEXT_PUBLIC_MAPBOX_STYLE_ID: z.string().min(1),
-    NEXT_PUBLIC_API_URL: z.string().url(),
+    NEXT_PUBLIC_API_URL: z.string().min(1),
   },
   runtimeEnv: {
     NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN:
