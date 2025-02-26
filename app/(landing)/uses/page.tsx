@@ -34,7 +34,7 @@ const UsesPage = async () => {
                   {item.link && (
                     <NavLink
                       href={item.link}
-                      className="underline underline-offset-4 ring-purple-500 transition hover:text-purple-500"
+                      className="rounded-xs underline underline-offset-4 ring-purple-500 transition hover:text-purple-500"
                       isExternal
                     >
                       {item.title}
@@ -45,7 +45,7 @@ const UsesPage = async () => {
                     <span
                       // biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
                       tabIndex={0}
-                      className="font-medium text-foreground outline-0 transition focus-visible:ring-2 focus-visible:ring-purple-500"
+                      className="rounded-xs font-medium text-foreground outline-0 ring-offset-2 ring-offset-background transition focus-visible:ring-2 focus-visible:ring-purple-500"
                     >
                       {item.title}
                     </span>

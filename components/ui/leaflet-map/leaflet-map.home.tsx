@@ -25,6 +25,10 @@ interface LeafletMapHomeMarkerProps
 export const LeafletMapHomeMarker = (props: LeafletMapHomeMarkerProps) => {
   const { data, ...rest } = props
 
+  if (!data.location.latitude || !data.location.longitude) {
+    return null
+  }
+
   return (
     <Marker
       title={`Current location: ${data.city}, ${data.country}`}
