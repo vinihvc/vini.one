@@ -1,7 +1,8 @@
 import { cn } from '@/lib/cn'
-import Image from 'next/image'
 
+import { BlurImage } from '@/components/ui/blur-image'
 import type { CompanyType } from '@/types/company'
+import { formatDate } from '@/utils/formatter'
 
 interface CompanyCardProps extends React.ComponentProps<'article'> {
   /**
@@ -15,18 +16,20 @@ export const CompanyCard = (props: CompanyCardProps) => {
 
   return (
     <article
-      className={cn('grid grid-cols-2 items-center rounded-lg py-3', className)}
+      className={cn(
+        'grid grid-cols-2 items-center rounded-lg py-3 max-sm:text-sm',
+        className,
+      )}
       {...rest}
     >
-      <div className="flex items-center gap-5 whitespace-nowrap">
+      <div className="flex items-center gap-2 whitespace-nowrap sm:gap-5">
         <div className="shrink-0">
-          <Image
-            className="pointer-events-none rounded-full border"
+          <BlurImage
+            className="pointer-events-none h-12 w-12 rounded-full border"
             src={`/images/companies/${data.image}.webp`}
             width={48}
             height={48}
             alt={`${data.company} brand logo`}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
 
@@ -38,10 +41,18 @@ export const CompanyCard = (props: CompanyCardProps) => {
       </div>
 
       <div className="flex items-center justify-end gap-1 font-medium text-muted-foreground sm:mt-1">
-        <span>{`${data.startDate} - `}</span>
+        <span>{`${formatDate(data.startDate, {
+          month: 'short',
+          year: 'numeric',
+        })} - `}</span>
 
         {data.endDate ? (
-          <time> {data.endDate}</time>
+          <time dateTime={data.endDate}>
+            {formatDate(data.endDate, {
+              month: 'short',
+              year: 'numeric',
+            })}
+          </time>
         ) : (
           <span className="text-foreground">Now</span>
         )}

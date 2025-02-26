@@ -3,7 +3,8 @@ import type { TripType } from '@/types/trip'
 export const TRIPS: TripType[] = [
   {
     slug: 'rio-de-janeiro-brasil',
-    title: 'Rio de Janeiro',
+    city: 'Rio de Janeiro',
+    country: 'Brasil',
     description: 'Visitando a cidade maravilhosa',
     location: {
       latitude: -22.9068,

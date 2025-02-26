@@ -1,5 +1,6 @@
 'use client'
 
+import type { TravelType } from '@/types/travel'
 import type { TripType } from '@/types/trip'
 import dynamic from 'next/dynamic'
 
@@ -12,10 +13,14 @@ interface TripMapProps {
    * The places to display on the map
    */
   data: TripType[]
+  /**
+   * The travel to display on the map
+   */
+  currentLocation?: TravelType
 }
 
 export const TripMap = (props: TripMapProps) => {
-  const { data } = props
+  const { data, currentLocation } = props
 
-  return <LeafletMap places={data} />
+  return <LeafletMap places={data} currentLocation={currentLocation} />
 }

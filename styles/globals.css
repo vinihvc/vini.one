@@ -5,10 +5,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.lucide {
-	stroke-width: 1px;
-}
-
 :root {
 	--background: oklch(0% 0 46);
 	--foreground: oklch(0.985 0 0);
@@ -81,5 +77,5 @@
 }
 
 .container {
-	@apply mx-auto w-full max-w-screen-md px-3;
+	@apply mx-auto w-full max-w-screen-md px-4;
 }

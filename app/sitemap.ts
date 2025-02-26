@@ -4,15 +4,7 @@ import { TRIPS } from '@/content/trips'
 import type { MetadataRoute } from 'next'
 
 const sitemap = (): MetadataRoute.Sitemap => {
-  const pages = [
-    '',
-    '/about',
-    '/projects',
-    '/uses',
-    '/bookshelf',
-    '/blog',
-    '/trips',
-  ]
+  const pages = ['', '/projects', '/uses', '/bookshelf', '/blog', '/trips']
 
   const trips = TRIPS.map((trip) => ({
     url: `${SEO.url}/trips/${trip.slug}`,

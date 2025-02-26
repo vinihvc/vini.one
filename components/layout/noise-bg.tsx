@@ -6,7 +6,7 @@ export const NoiseBg = () => {
       <Image
         src="/images/gradient-bg.png"
         alt="Custom Background"
-        className="-z-[1] absolute inset-x-0 top-10 mx-auto opacity-30 sm:top-0"
+        className="-z-[1] absolute inset-x-0 top-0 mx-auto opacity-30"
         width={1000}
         height={670}
         priority

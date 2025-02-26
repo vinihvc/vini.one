@@ -1,5 +1,4 @@
 import type { CompanyType } from '@/types/company'
-import { formatDate } from '@/utils/formatter'
 
 export const COMPANIES: CompanyType[] = [
   {
@@ -9,7 +8,7 @@ export const COMPANIES: CompanyType[] = [
     url: 'https://www.cyberbrokers.com/',
     city: 'Chicago',
     state: 'Illinois',
-    startDate: formatDate('2023-05-15T03:00:00.000Z'),
+    startDate: '2023-05-15',
   },
   {
     title: 'Software Engineer',
@@ -18,8 +17,8 @@ export const COMPANIES: CompanyType[] = [
     url: 'https://blockade.games/',
     city: 'Indianapolis',
     state: 'Indiana',
-    startDate: formatDate('2021-12-01T03:00:00.000Z'),
-    endDate: formatDate('2023-04-28T03:00:00.000Z'),
+    startDate: '2021-12-01',
+    endDate: '2023-04-28',
   },
   {
     title: 'Front End Engineer',
@@ -28,8 +27,8 @@ export const COMPANIES: CompanyType[] = [
     url: 'https://invillia.com/',
     city: 'Araraquara',
     state: 'São Paulo',
-    startDate: formatDate('2022-05-10T03:00:00.000Z'),
-    endDate: formatDate('2023-03-10T03:00:00.000Z'),
+    startDate: '2022-05-10',
+    endDate: '2023-03-10',
   },
   {
     title: 'Front End Engineer',
@@ -38,8 +37,8 @@ export const COMPANIES: CompanyType[] = [
     url: 'https://foton.tech',
     city: 'Florianópolis',
     state: 'Santa Catarina',
-    startDate: formatDate('2021-07-21T03:00:00.000Z'),
-    endDate: formatDate('2021-12-01T03:00:00.000Z'),
+    startDate: '2021-07-21',
+    endDate: '2021-12-01',
   },
   {
     title: 'Front End Developer',
@@ -48,8 +47,8 @@ export const COMPANIES: CompanyType[] = [
     url: 'https://www.insignaconsultoria.com.br',
     city: 'Campinas',
     state: 'São Paulo',
-    startDate: formatDate('2021-03-21T03:00:00.000Z'),
-    endDate: formatDate('2021-07-21T03:00:00.000Z'),
+    startDate: '2021-03-21',
+    endDate: '2021-07-21',
   },
   {
     title: 'Front End Developer',
@@ -58,8 +57,8 @@ export const COMPANIES: CompanyType[] = [
     url: 'https://dryve.com.br',
     city: 'Ribeirão Preto',
     state: 'São Paulo',
-    startDate: formatDate('2019-07-21T03:00:00.000Z'),
-    endDate: formatDate('2021-01-21T03:00:00.000Z'),
+    startDate: '2019-07-21',
+    endDate: '2021-01-21',
   },
   {
     title: 'Full Stack Engineer',
@@ -68,7 +67,7 @@ export const COMPANIES: CompanyType[] = [
     url: 'http://datamob.com.br',
     city: 'Ribeirão Preto',
     state: 'São Paulo',
-    startDate: formatDate('2016-07-21T03:00:00.000Z'),
-    endDate: formatDate('2019-06-21T03:00:00.000Z'),
+    startDate: '2016-07-21',
+    endDate: '2019-06-21',
   },
 ]

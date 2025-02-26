@@ -10,7 +10,7 @@ export const linkVariants = tv({
   base: [
     'group',
     'transition',
-    'outline-none ring-offset-2 ring-offset-background focus-visible:ring-2',
+    'outline-0 ring-offset-2 ring-offset-background focus-visible:ring-2',
   ],
 })
 

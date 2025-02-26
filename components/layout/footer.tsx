@@ -12,7 +12,7 @@ export const Footer = async (props: FooterProps) => {
 
   const travel = await getTravel()
 
-  const livingCountry = travel.at(0)
+  const travelingCountry = travel.at(0)
 
   return (
     <footer className={cn('py-10 selection:bg-green-500', className)} {...rest}>
@@ -23,11 +23,11 @@ export const Footer = async (props: FooterProps) => {
             <span className="relative h-2 w-2 rounded-full bg-green-500" />
           </span>
 
-          {livingCountry && (
+          {travelingCountry && (
             <div className="flex items-center gap-2">
               <span className="text-xs">Chilling in</span>
 
-              <FlagIcon country={livingCountry.countryCode} />
+              <FlagIcon country={travelingCountry.countryCode} />
             </div>
           )}
         </div>

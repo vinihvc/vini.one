@@ -11,7 +11,7 @@ export const GET = async () => {
       date: post.createdAt,
     })),
     ...TRIPS.map((trip) => ({
-      title: trip.title,
+      title: `${trip.city}, ${trip.country}`,
       link: `${SEO.url}/trips/${trip.slug}`,
       description: trip.description,
       date: trip.createdAt,

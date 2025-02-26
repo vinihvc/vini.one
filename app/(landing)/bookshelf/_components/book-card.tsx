@@ -21,7 +21,7 @@ export const BookCard = async (props: BookCardProps) => {
       aria-label={data.title}
       className={cn(
         'group relative aspect-[9/13] overflow-hidden rounded-lg',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+        'focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
         className,
       )}
       {...rest}

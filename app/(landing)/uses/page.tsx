@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
 import { getUses } from '@/services/requests'
-import { ExternalLink } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Personal Uses',
@@ -24,31 +23,35 @@ const UsesPage = async () => {
         </h2>
       </div>
 
-      <div className="mt-10 space-y-10">
+      <div className="prose prose-invert mt-10 text-muted-foreground">
         {data.map((use) => (
-          <div key={use.title} className="space-y-4">
-            <h2 className="font-black text-2xl">{use.title}</h2>
+          <div key={use.title}>
+            <h2>{use.title}</h2>
 
-            <ul className="list-inside list-disc space-y-2 pl-6 marker:text-muted-foreground">
+            <ul>
               {use.items.map((item) => (
-                <li key={item.title} className="flex gap-1">
+                <li key={item.title}>
                   {item.link && (
                     <NavLink
                       href={item.link}
-                      className="flex items-center gap-1 underline underline-offset-4 ring-purple-500 transition hover:text-purple-500"
+                      className="underline underline-offset-4 ring-purple-500 transition hover:text-purple-500"
                       isExternal
                     >
                       {item.title}
-
-                      <ExternalLink className="h-3.5 w-3.5" />
                     </NavLink>
                   )}
 
-                  {!item.link && <span>{item.title}</span>}
+                  {!item.link && (
+                    <span
+                      // biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
+                      tabIndex={0}
+                      className="font-medium text-foreground outline-0 transition focus-visible:ring-2 focus-visible:ring-purple-500"
+                    >
+                      {item.title}
+                    </span>
+                  )}
 
-                  <span className="text-muted-foreground">
-                    - {item.description}
-                  </span>
+                  <span> - {item.description}</span>
                 </li>
               ))}
             </ul>

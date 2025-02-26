@@ -28,7 +28,9 @@ export const PostCard = (props: PostCardProps) => {
         <div className="flex items-center gap-1">
           <Calendar className="h-3 w-3" />
 
-          <time className="text-xs">{formatDate(data.createdAt, 'pt-BR')}</time>
+          <time dateTime={data.createdAt} className="text-xs">
+            {formatDate(data.createdAt)}
+          </time>
         </div>
       </div>
     </article>

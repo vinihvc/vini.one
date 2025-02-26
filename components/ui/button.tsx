@@ -7,17 +7,17 @@ export const buttonStyle = tv({
     'inline-flex items-center justify-center',
     'gap-2',
     'rounded-lg drop-shadow',
-    'transition-colors',
+    'transition-all',
     'cursor-pointer',
-    'outline-none ring-foreground/30 ring-offset-2 ring-offset-black focus-visible:text-foreground focus-visible:ring-2',
+    'outline-0 ring-offset-2 ring-offset-black focus-visible:ring-2',
     '[&_svg]:w-4 [&_svg]:h-4 [&_svg]:pointer-events-none [&_svg]:shrink-0 ',
     'disabled:pointer-events-none disabled:opacity-50',
   ],
   variants: {
     variant: {
       solid:
-        'text-muted-foreground font-medium hover:text-foreground bg-foreground/5 hover:bg-foreground/10',
-      primary: 'bg-blue-500 text-white hover:bg-blue-400 ring-blue-500/50',
+        'text-muted-foreground font-medium hover:text-foreground ring-foreground/30 bg-foreground/5 hover:bg-foreground/10 focus-visible:text-foreground',
+      primary: 'bg-blue-500 text-white hover:bg-blue-500/90 ring-blue-500/50',
       outline: 'border border-foreground/10 hover:bg-foreground/5',
       ghost: 'hover:bg-foreground/5',
     },

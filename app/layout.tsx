@@ -4,6 +4,7 @@ import { createOgImage } from '@/utils/create-og-image'
 import type { Metadata, Viewport } from 'next'
 
 import { MediaQueriesIndicator } from '@/components/debug/media-queries'
+import { BottomNavigation } from '@/components/layout/bottom-navigation'
 import { Header } from '@/components/layout/header'
 import { UmamiTracking } from '@/components/tracking/umami'
 import { SEO } from '@/config/seo'
@@ -47,6 +48,8 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
         <Header />
 
         {children}
+
+        <BottomNavigation />
 
         <MediaQueriesIndicator />
 

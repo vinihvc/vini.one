@@ -1,8 +1,10 @@
 'use client'
 
 import { cn } from '@/lib/cn'
+import type { TravelType } from '@/types/travel'
 import type { TripType } from '@/types/trip'
 import { MapContainer } from 'react-leaflet'
+import { LeafletMapHomeMarker } from './leaflet-map.home'
 import { LeafletMapLayer } from './leaflet-map.layer'
 import { LeafletMapMarker } from './leaflet-map.marker'
 
@@ -13,10 +15,14 @@ interface LeafletMapProps extends React.ComponentProps<typeof MapContainer> {
    * The places to display on the map
    */
   places?: TripType[]
+  /**
+   * The current location to display on the map
+   */
+  currentLocation?: TravelType
 }
 
 const LeafletMap = (props: LeafletMapProps) => {
-  const { places, className, ...rest } = props
+  const { places, currentLocation, className, ...rest } = props
 
   return (
     <div className="flex flex-1">
@@ -50,6 +56,7 @@ const LeafletMap = (props: LeafletMapProps) => {
         .leaflet-popup-close-button {
           top: 0.5rem !important;
           right: 0.5rem !important;
+          border-radius: 9999px;
         }
       `}</style>
 
@@ -69,6 +76,8 @@ const LeafletMap = (props: LeafletMapProps) => {
         {places?.map((place) => (
           <LeafletMapMarker key={place.slug} data={place} />
         ))}
+
+        {currentLocation && <LeafletMapHomeMarker data={currentLocation} />}
       </MapContainer>
     </div>
   )

@@ -6,7 +6,7 @@ const LandingLayout = ({ children }: React.PropsWithChildren) => {
     <>
       <NoiseBg />
 
-      <main className="pt-32 md:my-10">{children}</main>
+      <main className="pt-8 sm:pt-32 md:my-10">{children}</main>
 
       <Footer />
     </>

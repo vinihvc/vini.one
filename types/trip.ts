@@ -8,7 +8,11 @@ export type TripType = {
   /**
    * The name of the trip
    */
-  title: string
+  city: string
+  /**
+   * The country of the trip
+   */
+  country: string
   /**
    * The description of the trip
    */

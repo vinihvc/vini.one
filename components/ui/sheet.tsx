@@ -2,11 +2,8 @@
 
 import { cn } from '@/lib/cn'
 import * as RDialog from '@radix-ui/react-dialog'
-import { X } from 'lucide-react'
 import type React from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
-
-import { Button } from './button'
 
 export const Sheet = RDialog.Root
 
@@ -82,6 +79,9 @@ type Animation = keyof typeof sheetContent.variants.animation
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof RDialog.Content>,
     Omit<VariantProps<typeof sheetContent>, 'animation'> {
+  /**
+   * Select the animation to use for the sheet
+   */
   animation?: Array<Animation> | Animation
 }
 
@@ -96,21 +96,10 @@ export const SheetContent = (props: SheetContentProps) => {
     <SheetPortal>
       <SheetOverlay />
       <RDialog.Content
-        className={cn(sheetContent({ side, className }), customAnimation)}
+        className={cn(sheetContent({ side }), customAnimation, className)}
         {...rest}
       >
         {children}
-
-        <RDialog.Close className="absolute top-4 right-3" asChild>
-          <Button
-            className="sm:hidden max-sm:[&_svg]:h-6 max-sm:[&_svg]:w-6"
-            variant="ghost"
-            size="icon"
-          >
-            <X />
-            <span className="sr-only">Close</span>
-          </Button>
-        </RDialog.Close>
       </RDialog.Content>
     </SheetPortal>
   )

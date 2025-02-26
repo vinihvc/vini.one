@@ -1,23 +1,18 @@
 import { cn } from '@/lib/cn'
-import dynamic from 'next/dynamic'
 import { RemoveScroll } from 'react-remove-scroll'
 import { HeaderLogo } from './header.logo'
+import { HeaderNavItem } from './header.nav-item'
 import { HEADER_ROUTES } from './header.routes'
-
-const HeaderDesktop = dynamic(() => import('./header.desktop'))
-const HeaderMobile = dynamic(() => import('./header.mobile'))
 
 interface HeaderProps extends React.ComponentProps<'header'> {}
 
 export const Header = async (props: HeaderProps) => {
   const { className, ...rest } = props
 
-  const routes = HEADER_ROUTES
-
   return (
     <header
       className={cn(
-        'container fixed inset-x-0 top-2 z-50 mx-2 selection:bg-yellow-500 sm:top-5',
+        'container fixed inset-x-0 top-2 z-50 mx-2 selection:bg-yellow-500 max-sm:hidden sm:top-5',
         RemoveScroll.classNames.zeroRight,
       )}
       {...rest}
@@ -35,9 +30,13 @@ export const Header = async (props: HeaderProps) => {
       >
         <HeaderLogo />
 
-        <HeaderDesktop className="max-sm:hidden" data={routes} />
+        <nav className="flex gap-2 max-sm:hidden max-sm:flex-col">
+          {HEADER_ROUTES.map((route) => {
+            if (route.onlyMobile) return null
 
-        <HeaderMobile className="sm:hidden" data={routes} />
+            return <HeaderNavItem key={route.href} data={route} />
+          })}
+        </nav>
       </div>
     </header>
   )
