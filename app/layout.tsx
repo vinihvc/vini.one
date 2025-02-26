@@ -8,6 +8,8 @@ import { Header } from '@/components/layout/header'
 import { UmamiTracking } from '@/components/tracking/umami'
 import { SEO } from '@/config/seo'
 import { fontSans } from '@/lib/font'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const viewport: Viewport = {
   themeColor: '#0E0F0F',
@@ -49,6 +51,10 @@ const RootLayout = ({ children }: React.PropsWithChildren) => {
         <MediaQueriesIndicator />
 
         <UmamiTracking />
+
+        <SpeedInsights />
+
+        <Analytics />
       </body>
     </html>
   )
