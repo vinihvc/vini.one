@@ -1,7 +1,5 @@
 import { cn } from '@/lib/cn'
-import { getTravel } from '@/services/requests'
 import type React from 'react'
-import { FlagIcon } from '../ui/flag-icon'
 
 import { SEO } from '@/config/seo'
 
@@ -9,10 +7,6 @@ interface FooterProps extends React.ComponentProps<'footer'> {}
 
 export const Footer = async (props: FooterProps) => {
   const { className, ...rest } = props
-
-  const travel = await getTravel()
-
-  const livingCountry = travel.at(0)
 
   return (
     <footer className={cn('py-10 selection:bg-green-500', className)} {...rest}>
@@ -23,13 +17,13 @@ export const Footer = async (props: FooterProps) => {
             <span className="relative h-2 w-2 rounded-full bg-green-500" />
           </span>
 
-          {livingCountry && (
+          {/* {livingCountry && (
             <div className="flex items-center gap-2">
               <span className="text-xs">Chilling in</span>
 
               <FlagIcon country={livingCountry.countryCode} />
             </div>
-          )}
+          )} */}
         </div>
 
         <span className="text-sm">
