@@ -34,7 +34,7 @@ const TripSidebar = (props: TripSidebarProps) => {
     <Sheet modal={false} open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger
         className={cn(
-          'group fixed bottom-16 z-50 max-sm:right-4 sm:bottom-4 sm:left-4',
+          'group fixed bottom-20 z-50 max-sm:right-4 sm:bottom-4 sm:left-4',
           'data-[state=closed]:visible data-[state=open]:invisible',
         )}
         asChild
@@ -57,7 +57,7 @@ const TripSidebar = (props: TripSidebarProps) => {
         <div className="flex-1 rounded-lg bg-background/50 p-4 backdrop-blur-md sm:m-4">
           <div
             className={cn(
-              'absolute bottom-16 max-sm:right-4 sm:bottom-4 sm:left-4',
+              'absolute bottom-20 max-sm:right-4 sm:bottom-4 sm:left-4',
               'group-data-[state=closed]:animate-out group-data-[state=open]:animate-in',
               'group-data-[state=open]:fade-in-0 group-data-[state=closed]:fade-out-0',
               'sm:group-data-[state=open]:slide-in-from-left-1/2 sm:group-data-[state=closed]:slide-out-to-left-1/2',
