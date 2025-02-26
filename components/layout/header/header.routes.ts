@@ -1,8 +1,8 @@
 import {
-  Backpack,
   Home,
   MapPin,
-  NotebookPen,
+  MonitorSmartphone,
+  SquarePen,
   SquareTerminal,
 } from 'lucide-react'
 
@@ -29,11 +29,11 @@ export const HEADER_ROUTES = [
   {
     href: '/uses',
     label: 'Uses',
-    icon: Backpack,
+    icon: MonitorSmartphone,
   },
   {
     href: '/blog',
     label: 'Blog',
-    icon: NotebookPen,
+    icon: SquarePen,
   },
 ]
