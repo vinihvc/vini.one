@@ -1,5 +1,4 @@
 import { DEFAULT_FONT_SIZE } from '@/utils/create-og-image'
-/* eslint-disable react/no-unknown-property */
 import { ImageResponse } from 'next/og'
 import type { NextRequest } from 'next/server'
 
