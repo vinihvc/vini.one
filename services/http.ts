@@ -1,5 +1,5 @@
-import { env } from '@/lib/env'
 import type { ResponseType } from '@/types/response'
+import { headers as nextHeaders } from 'next/headers'
 
 export class HttpError extends Error {
   status: number
@@ -33,11 +33,16 @@ const fetchWithTypes = async <T>(
     ...fetchOptions.headers,
   }
 
+  const host = (await nextHeaders()).get('host')
+  const protocol = process?.env.NODE_ENV === 'development' ? 'http' : 'https'
+
+  const apiUrl = `${protocol}://${host}/api`
+
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), timeout)
 
   try {
-    const response = await fetch(`${env.NEXT_PUBLIC_API_URL}/api${url}`, {
+    const response = await fetch(`${apiUrl}${url}`, {
       ...fetchOptions,
       headers,
       signal: controller.signal,
