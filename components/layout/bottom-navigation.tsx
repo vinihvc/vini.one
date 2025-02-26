@@ -12,15 +12,15 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
     <nav
       className={cn(
         'sticky inset-x-0 bottom-0 z-60 sm:hidden',
-        'flex h-16 items-center justify-center',
+        'flex items-center justify-center',
         'bg-black/50 backdrop-blur-md',
-        'pb-safe',
+        'p-2 pb-safe-or-2',
         'border-foreground/10 border-t',
         className,
       )}
       {...rest}
     >
-      <ul className="flex w-full items-center justify-center gap-2 px-2">
+      <ul className="flex w-full items-center justify-center gap-2">
         {HEADER_ROUTES.map((route) => (
           <li key={route.href} className="w-full">
             <Button
