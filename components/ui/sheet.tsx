@@ -41,7 +41,7 @@ const sheetContent = tv({
   base: [
     'fixed z-50',
     'gap-4 p-4',
-    'bg-background/50 backdrop-blur',
+    'bg-background/50 backdrop-blur-md',
     'transition ease-in-out',
     'data-[state=open]:animate-in data-[state=closed]:animate-out',
     'data-[state=open]:fade-in data-[state=closed]:fade-out',

@@ -11,8 +11,11 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
   return (
     <nav
       className={cn(
-        'sticky inset-x-0 bottom-0 z-60 flex h-16 items-center justify-center bg-black/50 backdrop-blur-sm sm:hidden',
-        'border-foreground/20 border-t pb-safe-area-2',
+        'sticky inset-x-0 bottom-0 z-60 sm:hidden',
+        'flex h-16 items-center justify-center',
+        'bg-black/50 backdrop-blur-md',
+        'pb-safe-area-2',
+        'border-foreground/10 border-t',
         className,
       )}
       {...rest}
@@ -22,7 +25,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
           <li key={route.href} className="w-full">
             <Button
               variant="ghost"
-              className="w-full px-0 [&_svg]:h-4.5 [&_svg]:w-4.5"
+              className="w-full px-0 [&_svg]:h-5 [&_svg]:w-5"
               size="lg"
               asChild
             >

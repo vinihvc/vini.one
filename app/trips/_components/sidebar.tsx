@@ -54,7 +54,7 @@ const TripSidebar = (props: TripSidebarProps) => {
         className="group flex flex-col rounded-lg bg-transparent p-0 backdrop-blur-none sm:w-[360px]"
         {...rest}
       >
-        <div className="flex-1 rounded-lg bg-background/50 p-4 backdrop-blur-sm sm:m-4">
+        <div className="flex-1 rounded-lg bg-background/50 p-4 backdrop-blur-md sm:m-4">
           <div
             className={cn(
               'absolute bottom-16 max-sm:right-4 sm:bottom-4 sm:left-4',

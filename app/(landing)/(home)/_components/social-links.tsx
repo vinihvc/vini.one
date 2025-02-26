@@ -13,7 +13,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
       {SOCIAL_LINKS.map((link) => (
         <Button
           key={link.link}
-          className="h-9 w-9 bg-background/70 text-foreground ring-orange-500 backdrop-blur-sm hover:bg-background/80"
+          className="h-9 w-9 bg-background/70 text-foreground ring-orange-500 backdrop-blur-md hover:bg-background/80"
           size="icon"
           asChild
         >
