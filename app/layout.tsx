@@ -14,6 +14,9 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const viewport: Viewport = {
   themeColor: '#0E0F0F',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 export const metadata: Metadata = {

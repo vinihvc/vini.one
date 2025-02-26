@@ -14,7 +14,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
         'sticky inset-x-0 bottom-0 z-60 sm:hidden',
         'flex h-16 items-center justify-center',
         'bg-black/50 backdrop-blur-md',
-        'pb-safe-area-2',
+        'pb-safe',
         'border-foreground/10 border-t',
         className,
       )}
