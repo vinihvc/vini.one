@@ -34,7 +34,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
     >
       <Popup minWidth={300} closeOnEscapeKey>
         <article className="flex h-auto flex-col gap-4 px-4 py-2">
-          <h1 className="font-medium text-base">{data.name}</h1>
+          <h1 className="font-medium text-base">{data.title}</h1>
 
           <div className="grid grid-cols-2 gap-3">
             {data.thumbnails.map((thumbnail) => (
@@ -44,7 +44,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
               >
                 <Image
                   src={thumbnail}
-                  alt={data.name}
+                  alt={data.title}
                   className="object-cover"
                   fill
                 />

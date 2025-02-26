@@ -84,13 +84,13 @@ const TripSidebar = (props: TripSidebarProps) => {
                       src={trip.thumbnails[0] ?? ''}
                       width={64}
                       height={64}
-                      alt={trip.name}
+                      alt={trip.title}
                       className="h-16 w-16 object-cover"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1">
-                    <h3 className="font-medium">{trip.name}</h3>
+                    <h3 className="font-medium">{trip.title}</h3>
                   </div>
                 </article>
               </NavLink>

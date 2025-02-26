@@ -18,5 +18,5 @@ export type BookType = {
   /**
    * The date the book was read
    */
-  readAt: string
+  readAt?: string
 }
