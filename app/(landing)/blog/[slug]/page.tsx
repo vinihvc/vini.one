@@ -22,7 +22,9 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async (props: BlogSlugPageProps) => {
   const { slug } = await props.params
 
-  const post = allPosts.find((post) => post.slug === slug)
+  const post = allPosts.find(
+    (post) => post.slug === slug && post.status === 'published',
+  )
 
   if (!post) {
     notFound()
@@ -50,7 +52,9 @@ export const generateMetadata = async (props: BlogSlugPageProps) => {
 const BlogSlugPage = async (props: BlogSlugPageProps) => {
   const { slug } = await props.params
 
-  const post = allPosts.find((post) => post.slug === slug)
+  const post = allPosts.find(
+    (post) => post.slug === slug && post.status === 'published',
+  )
 
   if (!post) {
     notFound()

@@ -5,8 +5,8 @@ import type { MetadataRoute } from 'next'
 const sitemap = (): MetadataRoute.Sitemap => {
   const pages = ['', '/projects', '/uses', '/bookshelf', '/blog', '/trips']
 
-  const publishedPosts = allPosts.filter((post) => post.publishedAt)
-  const publishedTrips = allTrips.filter((trip) => trip.publishedAt)
+  const publishedPosts = allPosts.filter((post) => post.status === 'published')
+  const publishedTrips = allTrips.filter((trip) => trip.status === 'published')
 
   const posts = publishedPosts.map((post) => ({
     url: `${SEO.url}/blog/${post.slug}`,

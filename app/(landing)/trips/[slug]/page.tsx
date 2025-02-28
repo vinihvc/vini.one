@@ -20,7 +20,9 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async ({ params }: TripsSlugPageProps) => {
   const { slug } = await params
 
-  const trip = allTrips.find((trip) => trip.slug === slug)
+  const trip = allTrips.find(
+    (trip) => trip.slug === slug && trip.status === 'published',
+  )
 
   if (!trip) {
     notFound()
@@ -50,7 +52,9 @@ export const generateMetadata = async ({ params }: TripsSlugPageProps) => {
 const TripsSlugPage = async (props: TripsSlugPageProps) => {
   const { slug } = await props.params
 
-  const trip = allTrips.find((trip) => trip.slug === slug)
+  const trip = allTrips.find(
+    (trip) => trip.slug === slug && trip.status === 'published',
+  )
 
   if (!trip) {
     notFound()
