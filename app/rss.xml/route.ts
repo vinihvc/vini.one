@@ -2,6 +2,8 @@ import { SEO } from '@/config/seo'
 import { POSTS } from '@/content/posts'
 import { TRIPS } from '@/content/trips'
 
+export const dynamic = 'force-static'
+
 export const GET = async () => {
   const items = [
     ...POSTS.map((post) => ({
