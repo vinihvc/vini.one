@@ -1,9 +1,7 @@
-import type { Metadata } from 'next'
-
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
-
-import { getProjects } from '@/services/requests'
+import { PROJECTS } from '@/content/projects'
+import type { Metadata } from 'next'
 import { RepoCard } from './_components/repo-card'
 import { VisitGithub } from './_components/visit-github'
 
@@ -12,8 +10,6 @@ export const metadata: Metadata = {
 }
 
 const ProjectsPage = async () => {
-  const data = await getProjects()
-
   return (
     <div className="container selection:bg-green-500">
       <div className="space-y-1">
@@ -25,7 +21,7 @@ const ProjectsPage = async () => {
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {data.map((repo) => (
+        {PROJECTS.map((repo) => (
           <NavLink
             key={repo.title}
             className="group rounded-md ring-green-500"

@@ -1,12 +1,12 @@
 import { BlurImage } from '@/components/ui/blur-image'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
-import { getCompanies } from '@/services/requests'
+import { COMPANIES } from '@/content/companies'
 import { CompaniesSection } from './_components/companies'
 import { SocialLinks } from './_components/social-links'
 
 const HomePage = async () => {
-  const data = await getCompanies()
+  const data = COMPANIES
 
   const firstJob = data[data.length - 1]
 

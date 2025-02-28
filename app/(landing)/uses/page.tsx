@@ -1,16 +1,13 @@
-import type { Metadata } from 'next'
-
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
-import { getUses } from '@/services/requests'
+import { USES } from '@/content/uses'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Uses',
 }
 
 const UsesPage = async () => {
-  const data = await getUses()
-
   return (
     <div className="container selection:bg-purple-500">
       <div className="space-y-1">
@@ -22,7 +19,7 @@ const UsesPage = async () => {
       </div>
 
       <div className="prose prose-invert mt-10 text-muted-foreground">
-        {data.map((use) => (
+        {USES.map((use) => (
           <div key={use.title}>
             <h2>{use.title}</h2>
 

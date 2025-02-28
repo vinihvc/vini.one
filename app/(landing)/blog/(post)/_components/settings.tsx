@@ -1,4 +1,5 @@
 'use client'
+
 import { Button } from '@/components/ui/button'
 import {
   Popover,
@@ -45,11 +46,11 @@ const PostSettings = () => {
   }
 
   return (
-    <div className="sticky right-4 bottom-20 z-50 flex w-full justify-end sm:right-0 sm:bottom-4">
+    <div className="pointer-events-none fixed right-4 bottom-20 z-50 flex w-full justify-end sm:sticky sm:right-0 sm:bottom-4">
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            className="w-9 bg-rose-500 px-0 hover:bg-rose-500/90 focus-visible:ring-rose-500"
+            className="pointer-events-auto w-9 bg-rose-500 px-0 hover:bg-rose-500/90 focus-visible:ring-rose-500"
             variant="primary"
             size="sm"
           >
@@ -62,6 +63,7 @@ const PostSettings = () => {
         <PopoverContent
           align="end"
           sideOffset={16}
+          side="top"
           className="mx-auto flex w-auto items-center gap-2 selection:bg-rose-500"
         >
           <div className="flex flex-col gap-2">

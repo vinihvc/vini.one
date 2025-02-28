@@ -1,5 +1,5 @@
 import { Heading } from '@/components/ui/heading'
-import { getBooks } from '@/services/requests'
+import { BOOKS } from '@/content/books'
 import type { Metadata } from 'next'
 import { BookCard } from './_components/book-card'
 
@@ -8,8 +8,6 @@ export const metadata: Metadata = {
 }
 
 const BookshelfPage = async () => {
-  const data = await getBooks()
-
   return (
     <section className="container selection:bg-amber-500">
       <div className="space-y-1">
@@ -21,7 +19,7 @@ const BookshelfPage = async () => {
       </div>
 
       <div className="mt-10 grid grid-cols-3 items-start gap-2 sm:grid-cols-5 sm:gap-5">
-        {data.map((book) => (
+        {BOOKS.map((book) => (
           <BookCard key={book.title} data={book} />
         ))}
       </div>

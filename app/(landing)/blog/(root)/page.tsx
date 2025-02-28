@@ -1,16 +1,18 @@
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
-import { getPosts } from '@/services/requests'
+import { POSTS } from '@/content/posts'
 import type { Metadata } from 'next'
 import { PostCard } from './_components/post-card'
+
+export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'Blog',
 }
 
-const BlogPage = async () => {
-  const data = await getPosts()
+const BlogPage = () => {
+  const data = POSTS
 
   return (
     <div className="container selection:bg-rose-500">

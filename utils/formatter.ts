@@ -28,3 +28,19 @@ export const formatDate = (
 export const pluralize = (word: string, count: number) => {
   return `${word}${count > 1 ? 's' : ''}`
 }
+
+/**
+ * Slugify a string
+ *
+ * ```ts
+ * slugify('Hello World') // hello-world
+ * ```
+ */
+export const slugify = (text: string) => {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '')
+}

@@ -8,18 +8,18 @@ const sitemap = (): MetadataRoute.Sitemap => {
 
   const trips = TRIPS.map((trip) => ({
     url: `${SEO.url}/trips/${trip.slug}`,
-    lastModified: new Date(trip.updatedAt ?? trip.createdAt),
+    lastModified: new Date(trip.updatedAt ?? trip.createdAt).toISOString(),
   }))
 
   const posts = POSTS.map((post) => ({
     url: `${SEO.url}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedAt ?? post.createdAt),
+    lastModified: new Date(post.updatedAt ?? post.createdAt).toISOString(),
   }))
 
   return [
     ...pages.map((page) => ({
       url: `${SEO.url}${page}`,
-      lastModified: new Date(),
+      lastModified: new Date().toISOString(),
     })),
     ...trips,
     ...posts,

@@ -14,7 +14,7 @@ export const BlogPostWrapper = (props: BlogPostWrapperProps) => {
   return (
     <div
       className={cn(
-        'prose prose-invert relative mx-auto w-full px-4 text-muted-foreground transition-all',
+        'prose prose-invert relative mx-auto w-full px-4 text-muted-foreground prose-a:no-underline transition-all',
         className,
       )}
       style={{

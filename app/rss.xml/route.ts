@@ -36,7 +36,7 @@ export const GET = async () => {
     <title>${item.title}</title>
     <link>${item.link}</link>
     <description>${item.description}</description>
-    <pubDate>${new Date(item.date).toUTCString()}</pubDate>
+    <pubDate>${new Date(item.date).toISOString()}</pubDate>
   </item>
   `,
     )
