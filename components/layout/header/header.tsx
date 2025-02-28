@@ -22,7 +22,7 @@ export const Header = async (props: HeaderProps) => {
           'h-16',
           'px-3',
           'flex items-center justify-between',
-          'bg-black/50 backdrop-blur-md',
+          'bg-black/60 backdrop-blur-md',
           'border border-foreground/5',
           'rounded-xl',
           className,

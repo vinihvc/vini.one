@@ -1,14 +1,13 @@
+import type { Post, Trip } from '@/.contentlayer/generated'
 import type { BookType } from '@/types/book'
 import type { CompanyType } from '@/types/company'
-import type { PostType } from '@/types/post'
 import type { ProjectType } from '@/types/project'
 import type { TravelType } from '@/types/travel'
-import type { TripType } from '@/types/trip'
 import type { UseType } from '@/types/use'
 import { http } from './http'
 
 export const getTrips = async () => {
-  const { data } = await http.get<TripType[]>('/trips', {
+  const { data } = await http.get<Trip[]>('/trips', {
     cache: 'force-cache',
   })
 
@@ -16,7 +15,7 @@ export const getTrips = async () => {
 }
 
 export const getTripBySlug = async (slug: string) => {
-  const { data } = await http.get<TripType>(`/trips/${slug}`, {
+  const { data } = await http.get<Trip>(`/trips/${slug}`, {
     cache: 'force-cache',
   })
 
@@ -64,7 +63,7 @@ export const getTravel = async () => {
 }
 
 export const getPosts = async () => {
-  const { data } = await http.get<PostType[]>('/posts', {
+  const { data } = await http.get<Post[]>('/posts', {
     cache: 'force-cache',
   })
 

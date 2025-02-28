@@ -1,13 +1,17 @@
+import { cn } from '@/lib/cn'
+import { slugify } from '@/utils/formatter'
 import { Hash } from 'lucide-react'
-import type { MDXComponents } from 'mdx/types'
+import type { MDXComponents as MDXComponentsType } from 'mdx/types'
+import { useMDXComponent } from 'next-contentlayer/hooks'
 import Link from 'next/link'
 import React from 'react'
-import { slugify } from './utils/formatter'
+import { BlurImage } from './blur-image'
 
 const hashtagClasses =
   'absolute -right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 text-muted-foreground transition-opacity'
 
-const components: MDXComponents = {
+const components: MDXComponentsType = {
+  BlurImage,
   h2: ({ children, ...props }: React.ComponentPropsWithoutRef<'h2'>) => (
     <h2
       {...props}
@@ -77,8 +81,28 @@ const components: MDXComponents = {
   },
 }
 
-export const useMDXComponents = (): MDXComponents => {
-  return components
+interface MDXComponentsProps extends React.ComponentProps<'div'> {
+  code: string
+}
+
+export const MDXComponents = (props: MDXComponentsProps) => {
+  const { code, className, children, ...rest } = props
+
+  const Component = useMDXComponent(code)
+
+  return (
+    <div
+      className={cn(
+        'prose-invert prose container prose-img:my-0 text-muted-foreground prose-a:no-underline',
+        className,
+      )}
+      {...rest}
+    >
+      {children}
+
+      <Component components={components} />
+    </div>
+  )
 }
 
 const childrenToString = (children: React.ReactNode) => {

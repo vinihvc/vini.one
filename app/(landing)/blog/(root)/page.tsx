@@ -1,10 +1,8 @@
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
-import { POSTS } from '@/content/posts'
+import { allPosts } from 'contentlayer/generated'
 import type { Metadata } from 'next'
 import { PostCard } from './_components/post-card'
-
-export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -12,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 const BlogPage = () => {
-  const data = POSTS
+  const publishedPosts = allPosts.filter((post) => post.status === 'published')
 
   return (
     <div className="container selection:bg-rose-500">
@@ -25,7 +23,7 @@ const BlogPage = () => {
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
-        {data.map((repo) => (
+        {publishedPosts.map((repo) => (
           <NavLink
             key={repo.title}
             className="rounded-md ring-rose-500"

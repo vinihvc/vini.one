@@ -1,8 +1,8 @@
 'use client'
 
+import type { Trip } from '@/.contentlayer/generated'
 import { cn } from '@/lib/cn'
 import type { TravelType } from '@/types/travel'
-import type { TripType } from '@/types/trip'
 import { MapContainer } from 'react-leaflet'
 import { LeafletMapHomeMarker } from './leaflet-map.home'
 import { LeafletMapLayer } from './leaflet-map.layer'
@@ -14,7 +14,7 @@ interface LeafletMapProps extends React.ComponentProps<typeof MapContainer> {
   /**
    * The places to display on the map
    */
-  places?: TripType[]
+  places?: Trip[]
   /**
    * The current location to display on the map
    */

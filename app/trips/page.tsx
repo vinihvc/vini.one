@@ -1,17 +1,17 @@
-import { TRIPS } from '@/content/trips'
+import { allTrips } from '@/.contentlayer/generated'
 import dynamic from 'next/dynamic'
 import { TripMap } from './_components/map'
 
 const TripSidebar = dynamic(() => import('./_components/sidebar'))
 
 const TripsPage = async () => {
-  const trips = TRIPS
+  const publishedTrips = allTrips.filter((trip) => trip.status === 'published')
 
   return (
     <>
-      <TripMap data={trips} />
+      <TripMap data={publishedTrips} />
 
-      <TripSidebar data={trips} />
+      <TripSidebar data={publishedTrips} />
     </>
   )
 }

@@ -1,8 +1,8 @@
-import type { TripType } from '@/types/trip'
+import type { Trip } from '@/.contentlayer/generated'
 import { formatDate } from '@/utils/formatter'
 import L from 'leaflet'
-import Image from 'next/image'
 import { Marker, Popup } from 'react-leaflet'
+import { BlurImage } from '../blur-image'
 import { Button } from '../button'
 import { NavLink } from '../nav-link'
 
@@ -23,11 +23,13 @@ interface LeafletMapMarkerProps
   /**
    * The data of the place
    */
-  data: TripType
+  data: Trip
 }
 
 export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
   const { data, ...rest } = props
+
+  const firstTwoPhotos = data.photos.slice(0, 2)
 
   return (
     <Marker
@@ -52,18 +54,14 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            {data.thumbnails.map((thumbnail) => (
-              <div
-                key={thumbnail}
-                className="relative aspect-video overflow-hidden rounded-md"
-              >
-                <Image
-                  src={thumbnail}
-                  alt={`${data.city}, ${data.country}`}
-                  className="object-cover"
-                  fill
-                />
-              </div>
+            {firstTwoPhotos.map((photo) => (
+              <BlurImage
+                key={photo}
+                src={photo}
+                alt={`${data.city}, ${data.country}`}
+                className="aspect-square rounded-md object-cover"
+                fill
+              />
             ))}
           </div>
 

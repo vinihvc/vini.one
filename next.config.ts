@@ -1,17 +1,9 @@
-import createMDX from '@next/mdx'
 import type { NextConfig } from 'next'
+import { withContentlayer } from 'next-contentlayer2'
 
 const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
-  },
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  images: {
-    remotePatterns: [
-      {
-        hostname: 'images.unsplash.com',
-      },
-    ],
   },
   async redirects() {
     return [
@@ -44,6 +36,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-const withMDX = createMDX({})
-
-export default withMDX(nextConfig)
+export default withContentlayer(nextConfig)

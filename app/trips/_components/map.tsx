@@ -1,7 +1,7 @@
 'use client'
 
+import type { Trip } from '@/.contentlayer/generated'
 import type { TravelType } from '@/types/travel'
-import type { TripType } from '@/types/trip'
 import dynamic from 'next/dynamic'
 
 const LeafletMap = dynamic(() => import('@/components/ui/leaflet-map'), {
@@ -12,7 +12,7 @@ interface TripMapProps {
   /**
    * The places to display on the map
    */
-  data: TripType[]
+  data?: Trip[]
   /**
    * The travel to display on the map
    */

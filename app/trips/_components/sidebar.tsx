@@ -1,5 +1,7 @@
 'use client'
 
+import type { Trip } from '@/.contentlayer/generated'
+import { BlurImage } from '@/components/ui/blur-image'
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
 import {
@@ -11,10 +13,8 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { cn } from '@/lib/cn'
-import type { TripType } from '@/types/trip'
 import { formatDate } from '@/utils/formatter'
 import { AlignLeft, Plus } from 'lucide-react'
-import Image from 'next/image'
 import React from 'react'
 
 interface TripSidebarProps
@@ -22,7 +22,7 @@ interface TripSidebarProps
   /**
    * The data of the routes
    */
-  data: TripType[]
+  data?: Trip[]
 }
 
 const TripSidebar = (props: TripSidebarProps) => {
@@ -87,38 +87,42 @@ const TripSidebar = (props: TripSidebarProps) => {
           </div> */}
 
           <div className="grid grid-cols-1 gap-4 rounded-none">
-            {data.map((trip) => (
-              <NavLink
-                key={trip.slug}
-                className="flex w-full rounded-lg ring-blue-500"
-                href={`/trips/${trip.slug}`}
-              >
-                <article className="flex w-full items-center gap-4 rounded-lg border p-2">
-                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
-                    <Image
-                      src={trip.thumbnails[0] ?? ''}
-                      width={64}
-                      height={64}
-                      alt={`${trip.city}, ${trip.country}`}
-                      className="h-16 w-16 object-cover"
-                    />
-                  </div>
+            {data?.map((trip) => {
+              const firstPhoto = trip.photos[0]
 
-                  <div className="flex flex-col gap-1">
-                    <h3 className="font-medium">
-                      {trip.city}, {trip.country}
-                    </h3>
+              return (
+                <NavLink
+                  key={trip.slug}
+                  className="flex w-full rounded-lg ring-blue-500"
+                  href={`/trips/${trip.slug}`}
+                >
+                  <article className="flex w-full items-center gap-4 rounded-lg border p-2">
+                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
+                      <BlurImage
+                        src={firstPhoto ?? ''}
+                        width={64}
+                        height={64}
+                        alt={`${trip.city}, ${trip.country}`}
+                        className="h-16 w-16 object-cover"
+                      />
+                    </div>
 
-                    <time
-                      dateTime={trip.arrivalDate}
-                      className="text-muted-foreground text-xs"
-                    >
-                      {formatDate(trip.arrivalDate)}
-                    </time>
-                  </div>
-                </article>
-              </NavLink>
-            ))}
+                    <div className="flex flex-col gap-1">
+                      <h3 className="font-medium">
+                        {trip.city}, {trip.country}
+                      </h3>
+
+                      <time
+                        dateTime={trip.arrivalDate}
+                        className="text-muted-foreground text-xs"
+                      >
+                        {formatDate(trip.arrivalDate)}
+                      </time>
+                    </div>
+                  </article>
+                </NavLink>
+              )
+            })}
           </div>
         </div>
       </SheetContent>

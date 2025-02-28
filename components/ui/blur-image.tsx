@@ -5,25 +5,43 @@ import type { ImageProps } from 'next/image'
 import NextImage from 'next/image'
 import React from 'react'
 
-export const BlurImage = (props: ImageProps) => {
+interface BlurImageProps extends ImageProps {
+  /**
+   * The fallback image to display if the image is not available
+   */
+  fallbackImage?: string
+}
+
+export const BlurImage = (props: BlurImageProps) => {
   const {
     sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+    src,
     className,
+    fallbackImage,
     ...rest
   } = props
 
+  const [imageSrc, setImageSrc] = React.useState(src)
+
   const [isLoading, setLoading] = React.useState(true)
+
+  const handleError = () => {
+    setLoading(false)
+
+    setImageSrc(fallbackImage || '/images/fallback.svg')
+  }
 
   return (
     <div
       className={cn(
-        'relative h-full w-full overflow-hidden bg-background',
+        'relative h-full w-full overflow-hidden',
         { 'animate-pulse': isLoading },
         className,
       )}
     >
       <NextImage
         {...rest}
+        src={imageSrc}
         className={cn('h-full w-full object-cover transition', {
           'scale-[1.02] blur-xl': isLoading,
         })}
@@ -31,6 +49,7 @@ export const BlurImage = (props: ImageProps) => {
         blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(500, 300))}`}
         sizes={sizes}
         onLoad={() => setLoading(false)}
+        onError={handleError}
       />
     </div>
   )

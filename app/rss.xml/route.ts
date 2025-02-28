@@ -1,22 +1,21 @@
+import { allPosts, allTrips } from '@/.contentlayer/generated'
 import { SEO } from '@/config/seo'
-import { POSTS } from '@/content/posts'
-import { TRIPS } from '@/content/trips'
 
 export const dynamic = 'force-static'
 
 export const GET = async () => {
   const items = [
-    ...POSTS.map((post) => ({
+    ...allPosts.map((post) => ({
       title: post.title,
       link: `${SEO.url}/blog/${post.slug}`,
       description: post.description,
-      date: post.createdAt,
+      date: post.publishedAt,
     })),
-    ...TRIPS.map((trip) => ({
+    ...allTrips.map((trip) => ({
       title: `${trip.city}, ${trip.country}`,
       link: `${SEO.url}/trips/${trip.slug}`,
       description: trip.description,
-      date: trip.createdAt,
+      date: trip.publishedAt,
     })),
   ]
 

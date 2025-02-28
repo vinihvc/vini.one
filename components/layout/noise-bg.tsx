@@ -1,9 +1,9 @@
-import Image from 'next/image'
+import { BlurImage } from '../ui/blur-image'
 
 export const NoiseBg = () => {
   return (
     <>
-      <Image
+      <BlurImage
         src="/images/gradient-bg.png"
         alt="Custom Background"
         className="-z-[1] absolute inset-x-0 top-0 mx-auto opacity-30"
