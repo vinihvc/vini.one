@@ -30,7 +30,7 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
               asChild
             >
               <NavLink
-                className="[&.active]:bg-foreground/10 [&.active]:text-foreground"
+                className="text-muted-foreground [&.active]:bg-foreground/10 [&.active]:text-foreground"
                 exact={route.href === '/'}
                 href={route.href}
               >

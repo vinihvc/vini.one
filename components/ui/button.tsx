@@ -18,7 +18,7 @@ export const buttonStyle = tv({
       solid:
         'text-muted-foreground font-medium hover:text-foreground ring-foreground/30 bg-foreground/5 hover:bg-foreground/10 focus-visible:text-foreground',
       primary: 'bg-blue-500 text-white hover:bg-blue-500/90 ring-blue-500/50',
-      outline: 'border border-foreground/10 hover:bg-foreground/5',
+      outline: 'border hover:bg-foreground/5',
       ghost: 'hover:bg-foreground/5',
     },
     size: {

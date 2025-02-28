@@ -7,10 +7,11 @@ import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
 import type { CompanyType } from '@/types/company'
 
+import { FadeUp } from '@/components/ui/fade-up'
 import { ChevronDown } from 'lucide-react'
 import { CompanyCard } from './company-card'
 
-interface CompaniesSectionProps extends React.ComponentProps<'div'> {
+interface CompaniesSectionProps extends React.ComponentProps<'section'> {
   /**
    * The data of the companies
    */
@@ -25,7 +26,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
   const [showAll, setShowAll] = React.useState(false)
 
   return (
-    <div {...rest}>
+    <section {...rest}>
       <ul className="group space-y-2">
         {data.map((company, index) => {
           if (!showAll && index >= MAX_COMPANIES) {
@@ -33,22 +34,23 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
           }
 
           return (
-            <li
-              className={cn(
-                'hover:!opacity-100 w-full animate-in transition group-hover:opacity-50',
-                { 'fade-in slide-in-from-bottom-10': showAll },
-              )}
-              key={company.company}
-            >
-              <NavLink
-                className="block rounded-md px-2 ring-orange-500"
+            <FadeUp key={company.company} asChild>
+              <li
+                className={cn(
+                  'hover:!opacity-100 w-full group-hover:opacity-50',
+                )}
                 key={company.company}
-                href={company.url}
-                isExternal
               >
-                <CompanyCard data={company} />
-              </NavLink>
-            </li>
+                <NavLink
+                  className="block rounded-md px-2 ring-orange-500"
+                  key={company.company}
+                  href={company.url}
+                  isExternal
+                >
+                  <CompanyCard data={company} />
+                </NavLink>
+              </li>
+            </FadeUp>
           )
         })}
       </ul>
@@ -64,6 +66,6 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
           <ChevronDown className="size-4 transition group-data-[state=open]:rotate-180" />
         </Button>
       </div>
-    </div>
+    </section>
   )
 }

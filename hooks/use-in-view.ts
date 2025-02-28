@@ -16,7 +16,9 @@ export const useInView = (threshold = 0.1) => {
           setHasPlayed(true)
         }
       },
-      { threshold },
+      {
+        threshold,
+      },
     )
 
     const currentRef = ref.current

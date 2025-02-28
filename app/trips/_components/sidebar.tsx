@@ -13,7 +13,7 @@ import {
 import { cn } from '@/lib/cn'
 import type { TripType } from '@/types/trip'
 import { formatDate } from '@/utils/formatter'
-import { Plus } from 'lucide-react'
+import { AlignLeft, Plus } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
@@ -34,7 +34,7 @@ const TripSidebar = (props: TripSidebarProps) => {
     <Sheet modal={false} open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger
         className={cn(
-          'group fixed bottom-20 z-50 max-sm:right-4 sm:bottom-4 sm:left-4',
+          'group fixed bottom-20 z-50 max-sm:right-4 sm:bottom-8 sm:left-8',
           'data-[state=closed]:visible data-[state=open]:invisible',
         )}
         asChild
@@ -44,7 +44,7 @@ const TripSidebar = (props: TripSidebarProps) => {
           variant="primary"
           size="icon"
         >
-          <Plus className="transition group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-45" />
+          <AlignLeft className="transition group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-45" />
         </Button>
       </SheetTrigger>
 
@@ -59,9 +59,6 @@ const TripSidebar = (props: TripSidebarProps) => {
             className={cn(
               'absolute bottom-20 max-sm:right-4 sm:bottom-4 sm:left-4',
               'group-data-[state=closed]:animate-out group-data-[state=open]:animate-in',
-              'group-data-[state=open]:fade-in-0 group-data-[state=closed]:fade-out-0',
-              'sm:group-data-[state=open]:slide-in-from-left-1/2 sm:group-data-[state=closed]:slide-out-to-left-1/2',
-              'sm:group-data-[state=open]:slide-in-from-bottom-1/2 sm:group-data-[state=closed]:slide-out-to-bottom-1/2',
             )}
           >
             <SheetClose asChild>

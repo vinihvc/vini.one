@@ -13,7 +13,7 @@ const BlogPage = async () => {
   const data = await getPosts()
 
   return (
-    <div className="container selection:bg-amber-500">
+    <div className="container selection:bg-rose-500">
       <div className="space-y-1">
         <Heading className="from-rose-500 to-fuchsia-500">Blog</Heading>
 

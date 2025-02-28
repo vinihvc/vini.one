@@ -5,7 +5,7 @@ import { NavLink } from '@/components/ui/nav-link'
 import { getUses } from '@/services/requests'
 
 export const metadata: Metadata = {
-  title: 'Personal Uses',
+  title: 'Uses',
 }
 
 const UsesPage = async () => {
@@ -14,9 +14,7 @@ const UsesPage = async () => {
   return (
     <div className="container selection:bg-purple-500">
       <div className="space-y-1">
-        <Heading className="from-purple-500 to-blue-500 max-sm:text-4xl">
-          Personal Uses
-        </Heading>
+        <Heading className="from-purple-500 to-blue-500">Uses</Heading>
 
         <h2 className="text-lg text-muted-foreground">
           Some of the tools, apps, and gear that I use on a daily basis.
