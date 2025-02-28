@@ -4,14 +4,17 @@ import { SEO } from '@/config/seo'
 export const dynamic = 'force-static'
 
 export const GET = async () => {
+  const publishedPosts = allPosts.filter((post) => post.publishedAt)
+  const publishedTrips = allTrips.filter((trip) => trip.publishedAt)
+
   const items = [
-    ...allPosts.map((post) => ({
+    ...publishedPosts.map((post) => ({
       title: post.title,
       link: `${SEO.url}/blog/${post.slug}`,
       description: post.description,
       date: post.publishedAt,
     })),
-    ...allTrips.map((trip) => ({
+    ...publishedTrips.map((trip) => ({
       title: `${trip.city}, ${trip.country}`,
       link: `${SEO.url}/trips/${trip.slug}`,
       description: trip.description,

@@ -5,14 +5,17 @@ import type { MetadataRoute } from 'next'
 const sitemap = (): MetadataRoute.Sitemap => {
   const pages = ['', '/projects', '/uses', '/bookshelf', '/blog', '/trips']
 
-  const trips = allTrips.map((trip) => ({
-    url: `${SEO.url}/trips/${trip.slug}`,
-    lastModified: new Date(trip.updatedAt ?? trip.publishedAt).toISOString(),
-  }))
+  const publishedPosts = allPosts.filter((post) => post.publishedAt)
+  const publishedTrips = allTrips.filter((trip) => trip.publishedAt)
 
-  const posts = allPosts.map((post) => ({
+  const posts = publishedPosts.map((post) => ({
     url: `${SEO.url}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt ?? post.publishedAt).toISOString(),
+  }))
+
+  const trips = publishedTrips.map((trip) => ({
+    url: `${SEO.url}/trips/${trip.slug}`,
+    lastModified: new Date(trip.updatedAt ?? trip.publishedAt).toISOString(),
   }))
 
   return [
