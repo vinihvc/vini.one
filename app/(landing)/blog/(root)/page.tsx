@@ -1,3 +1,4 @@
+import { FadeSection } from '@/components/ui/fade-section'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
 import { allPosts } from 'contentlayer/generated'
@@ -19,23 +20,24 @@ const BlogPage = () => {
 
   return (
     <div className="container selection:bg-rose-500">
-      <div className="space-y-1">
+      <FadeSection className="space-y-1">
         <Heading className="from-rose-500 to-fuchsia-500">Blog</Heading>
 
         <h2 className="text-lg text-muted-foreground">
           Writing about my experiences and thoughts.
         </h2>
-      </div>
+      </FadeSection>
 
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
-        {publishedPosts.map((repo) => (
-          <NavLink
-            key={repo.title}
-            className="rounded-md ring-rose-500"
-            href={`/blog/${repo.slug}`}
-          >
-            <PostCard data={repo} />
-          </NavLink>
+        {publishedPosts.map((repo, index) => (
+          <FadeSection key={repo.title} delay={(index + 1) * 0.05} blur asChild>
+            <NavLink
+              className="rounded-md ring-rose-500"
+              href={`/blog/${repo.slug}`}
+            >
+              <PostCard data={repo} />
+            </NavLink>
+          </FadeSection>
         ))}
       </div>
     </div>

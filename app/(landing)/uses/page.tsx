@@ -1,3 +1,4 @@
+import { FadeSection } from '@/components/ui/fade-section'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
 import { USES } from '@/content/uses'
@@ -10,18 +11,18 @@ export const metadata: Metadata = {
 const UsesPage = async () => {
   return (
     <div className="container selection:bg-purple-500">
-      <div className="space-y-1">
+      <FadeSection className="space-y-1">
         <Heading className="from-purple-500 to-blue-500">Uses</Heading>
 
         <h2 className="text-lg text-muted-foreground">
           Some of the tools, apps, and gear that I use on a daily basis.
         </h2>
-      </div>
+      </FadeSection>
 
       <div className="prose prose-invert mt-10 text-muted-foreground">
-        {USES.map((use) => (
-          <div key={use.title}>
-            <h2>{use.title}</h2>
+        {USES.map((use, index) => (
+          <FadeSection key={use.title} delay={(index + 1) * 0.05} blur>
+            <h3>{use.title}</h3>
 
             <ul>
               {use.items.map((item) => (
@@ -50,7 +51,7 @@ const UsesPage = async () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeSection>
         ))}
       </div>
     </div>

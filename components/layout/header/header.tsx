@@ -12,7 +12,7 @@ export const Header = async (props: HeaderProps) => {
   return (
     <header
       className={cn(
-        'container fixed inset-x-0 top-2 z-50 mx-2 selection:bg-yellow-500 max-sm:hidden sm:top-5',
+        'container fixed inset-x-0 top-4 z-50 mx-2 selection:bg-yellow-500 max-sm:hidden',
         RemoveScroll.classNames.zeroRight,
       )}
       {...rest}
@@ -30,7 +30,7 @@ export const Header = async (props: HeaderProps) => {
       >
         <HeaderLogo />
 
-        <nav className="flex gap-2 max-sm:hidden max-sm:flex-col">
+        <nav className="flex gap-2">
           {HEADER_ROUTES.map((route) => {
             if (route.onlyMobile) return null
 

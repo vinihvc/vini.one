@@ -1,19 +1,40 @@
 import { cn } from '@/lib/cn'
 import { slugify } from '@/utils/formatter'
-import { Hash, NotebookText } from 'lucide-react'
+import { Hash } from 'lucide-react'
 import type { MDXComponents as MDXComponentsType } from 'mdx/types'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import Link from 'next/link'
 import React from 'react'
-import { BlurImage } from './blur-image'
+import { BlurImage } from '../ui/blur-image'
 
-const hashtagClasses =
+interface MDXComponentsProps {
+  /**
+   * The content to be rendered
+   */
+  content: string
+  /**
+   * Override the default components
+   *
+   * @default {}
+   */
+  components?: MDXComponentsType
+}
+
+export const MDXComponents = (props: MDXComponentsProps) => {
+  const { content, components } = props
+
+  const Component = useMDXComponent(content)
+
+  return <Component components={{ ...mdxComponents, ...components }} />
+}
+
+export const hashtagClasses =
   'absolute -right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 text-muted-foreground transition-opacity'
 
-const linkClasses =
+export const linkClasses =
   'outline-0 focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md'
 
-const components: MDXComponentsType = {
+const mdxComponents: MDXComponentsType = {
   BlurImage,
   h2: ({ children, ...props }: React.ComponentPropsWithoutRef<'h2'>) => (
     <h2
@@ -90,65 +111,6 @@ const components: MDXComponentsType = {
   },
 }
 
-interface MDXComponentsProps {
-  /**
-   * The content to be rendered
-   */
-  content: string
-  /**
-   * Whether to show the table of contents
-   *
-   * @default true
-   */
-  showTableOfContents?: boolean
-}
-
-export const MDXComponents = (props: MDXComponentsProps) => {
-  const { content, showTableOfContents = true } = props
-
-  const Component = useMDXComponent(content)
-
-  return (
-    <>
-      {showTableOfContents && (
-        <div className="group relative my-8 overflow-clip rounded-lg border bg-card p-4">
-          <NotebookText className="absolute top-4 right-4 stroke-1 opacity-60 transition-opacity group-hover:opacity-100 md:h-20 md:w-20" />
-
-          <h4 className="mt-0 mb-3 font-medium text-lg">
-            Neste artigo você vai ler:
-          </h4>
-          <ol className="mb-0 text-base">
-            <Component
-              components={{
-                h1: () => null,
-                h2: ({ children }) => (
-                  <li>
-                    <a
-                      href={`#${slugify(childrenToString(children))}`}
-                      className={cn(
-                        'inline-flex text-muted-foreground hover:text-rose-500',
-                        linkClasses,
-                      )}
-                    >
-                      {children}
-                    </a>
-                  </li>
-                ),
-                h3: () => null,
-                h4: () => null,
-                p: () => null,
-                ul: () => null,
-              }}
-            />
-          </ol>
-        </div>
-      )}
-
-      <Component components={components} />
-    </>
-  )
-}
-
-const childrenToString = (children: React.ReactNode) => {
+export const childrenToString = (children: React.ReactNode) => {
   return React.Children.toArray(children).join('')
 }

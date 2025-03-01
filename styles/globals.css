@@ -24,6 +24,10 @@
 }
 
 @theme inline {
+	--font-sans: "Outfit", sans-serif;
+
+	--default-font-family: var(--font-sans);
+
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 
@@ -69,11 +73,11 @@
 	}
 
 	body {
-		@apply flex h-full min-h-dvh flex-col overflow-y-scroll bg-background font-sans text-foreground antialiased selection:text-black;
+		@apply min-h-screen flex flex-col overflow-y-scroll bg-background text-foreground antialiased selection:text-black;
 	}
 
 	main {
-		@apply flex flex-1 flex-col;
+		@apply flex flex-col flex-1;
 	}
 }
 

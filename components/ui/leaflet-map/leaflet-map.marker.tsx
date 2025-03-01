@@ -39,7 +39,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
       icon={markerIcon}
     >
       <Popup minWidth={300} closeOnEscapeKey>
-        <article className="flex h-auto flex-col gap-4 px-4 py-2">
+        <article className="flex h-auto flex-col gap-4 px-4 py-2 selection:bg-blue-500">
           <div>
             <h1 className="font-medium text-base">
               {data.city}, {data.country}

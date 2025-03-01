@@ -77,6 +77,10 @@ export const Trip = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    title: {
+      type: 'string',
+      resolve: (doc) => `${doc.city}, ${doc.country}`,
+    },
     slug: {
       type: 'string',
       resolve: (doc) =>

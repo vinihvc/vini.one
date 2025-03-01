@@ -51,7 +51,7 @@ const TripSidebar = (props: TripSidebarProps) => {
       <SheetContent
         side="left"
         animation={['fade']}
-        className="group flex flex-col rounded-lg bg-transparent p-0 backdrop-blur-none sm:w-[360px]"
+        className="group flex flex-col rounded-lg bg-transparent p-0 backdrop-blur-none selection:bg-blue-500 sm:w-[360px]"
         {...rest}
       >
         <div className="flex-1 rounded-lg bg-background/50 p-4 backdrop-blur-md sm:m-4">
@@ -78,14 +78,6 @@ const TripSidebar = (props: TripSidebarProps) => {
             View of all my trips
           </SheetDescription>
 
-          {/* <div className="relative">
-            <Search className="absolute top-2.5 left-2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search for places"
-              className="ps-8 ring-blue-500"
-            />
-          </div> */}
-
           <div className="grid grid-cols-1 gap-4 rounded-none">
             {data?.map((trip) => {
               const firstPhoto = trip.photos[0]
@@ -96,8 +88,8 @@ const TripSidebar = (props: TripSidebarProps) => {
                   className="flex w-full rounded-lg ring-blue-500"
                   href={`/trips/${trip.slug}`}
                 >
-                  <article className="flex w-full items-center gap-4 rounded-lg border p-2">
-                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
+                  <article className="flex w-full items-center gap-4 rounded-lg border p-2 transition hover:border-blue-500">
+                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md">
                       <BlurImage
                         src={firstPhoto ?? ''}
                         width={64}

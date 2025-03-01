@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
 import type { CompanyType } from '@/types/company'
 
-import { FadeUp } from '@/components/ui/fade-up'
+import { FadeSection } from '@/components/ui/fade-section'
 import { ChevronDown } from 'lucide-react'
 import { CompanyCard } from './company-card'
 
@@ -34,7 +34,12 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
           }
 
           return (
-            <FadeUp key={company.company} asChild>
+            <FadeSection
+              key={company.company}
+              delay={(index + 1) * 0.05}
+              blur
+              asChild
+            >
               <li
                 className={cn(
                   'hover:!opacity-100 w-full group-hover:opacity-50',
@@ -50,7 +55,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
                   <CompanyCard data={company} />
                 </NavLink>
               </li>
-            </FadeUp>
+            </FadeSection>
           )
         })}
       </ul>

@@ -14,7 +14,7 @@ export const SocialLinks = (props: SocialLinksProps) => {
         <Button
           key={link.link}
           aria-label={`Visit my ${link.title}`}
-          className="h-9 w-9 border bg-background/70 text-foreground ring-orange-500 backdrop-blur-md hover:bg-background/80"
+          className="h-9 w-9 border bg-background text-foreground ring-orange-500 hover:bg-background/80"
           size="icon"
           asChild
         >
