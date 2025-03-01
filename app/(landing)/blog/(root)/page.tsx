@@ -10,7 +10,12 @@ export const metadata: Metadata = {
 }
 
 const BlogPage = () => {
-  const publishedPosts = allPosts.filter((post) => post.status === 'published')
+  const publishedPosts = allPosts
+    .filter((post) => post.status === 'published')
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    )
 
   return (
     <div className="container selection:bg-rose-500">

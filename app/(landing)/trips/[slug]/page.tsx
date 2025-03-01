@@ -3,6 +3,8 @@ import { BlurImage } from '@/components/ui/blur-image'
 import { MDXComponents } from '@/components/ui/mdx-components'
 import { SEO } from '@/config/seo'
 import { createOgImage } from '@/utils/create-og-image'
+import { formatDate, readTime } from '@/utils/formatter'
+import { Calendar } from 'lucide-react'
 import { notFound } from 'next/navigation'
 
 interface TripsSlugPageProps {
@@ -61,18 +63,49 @@ const TripsSlugPage = async (props: TripsSlugPageProps) => {
   }
 
   return (
-    <MDXComponents code={trip.body.code}>
-      <figure className="mb-10 grid gap-2">
+    <div className="prose-invert prose container relative prose-hr:my-4 prose-img:my-0 text-muted-foreground prose-a:no-underline selection:bg-rose-500">
+      <header>
+        <h1 className="mb-2">
+          {trip.city}, {trip.country}
+        </h1>
+
+        <p className="!my-0 text-foreground text-lg opacity-90">
+          {trip.description}
+        </p>
+
+        <hr className="border-0 border-t" />
+
+        <div className="flex justify-between">
+          <time
+            dateTime={trip.publishedAt}
+            className="flex items-center gap-2 text-base text-muted-foreground"
+          >
+            <Calendar className="h-4 w-4" />
+
+            {formatDate(trip.publishedAt, {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </time>
+
+          <div>{readTime(trip.body.code)}</div>
+        </div>
+      </header>
+
+      <figure>
         <BlurImage
           src={trip.thumbnail.path}
           alt={trip.thumbnail.alt}
-          className="aspect-video rounded-md sm:scale-105"
+          className="aspect-square rounded-md"
           fill
         />
 
         <figcaption>{trip.thumbnail.alt}</figcaption>
       </figure>
-    </MDXComponents>
+
+      <MDXComponents content={trip.body.code} />
+    </div>
   )
 }
 

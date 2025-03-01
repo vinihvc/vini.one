@@ -1,5 +1,7 @@
 import type { Post } from '@/.contentlayer/generated'
+import { Badge } from '@/components/ui/badge'
 import { BlurImage } from '@/components/ui/blur-image'
+import { FlagIcon } from '@/components/ui/flag-icon'
 import { cn } from '@/lib/cn'
 import { formatDate } from '@/utils/formatter'
 import { Calendar } from 'lucide-react'
@@ -17,7 +19,7 @@ export const PostCard = (props: PostCardProps) => {
   return (
     <article
       className={cn(
-        'flex h-full flex-col rounded-md border bg-card p-3',
+        'relative flex h-full flex-col rounded-md border bg-card p-3',
         className,
       )}
       {...rest}
@@ -32,6 +34,14 @@ export const PostCard = (props: PostCardProps) => {
         />
 
         <div className="flex flex-1 flex-col gap-4 p-1">
+          <div className="flex gap-1">
+            {data.tags.map((tag) => (
+              <Badge key={tag} variant="outline">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+
           <h1 className="font-medium text-lg/tight">{data.title}</h1>
 
           <p className="flex-1 text-base text-muted-foreground">
@@ -47,6 +57,13 @@ export const PostCard = (props: PostCardProps) => {
           </div>
         </div>
       </div>
+
+      {data.language && (
+        <FlagIcon
+          className="absolute right-4 bottom-4 rounded-sm"
+          country={data.language}
+        />
+      )}
     </article>
   )
 }

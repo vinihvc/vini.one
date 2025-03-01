@@ -3,6 +3,8 @@ import { BlurImage } from '@/components/ui/blur-image'
 import { MDXComponents } from '@/components/ui/mdx-components'
 import { SEO } from '@/config/seo'
 import { createOgImage } from '@/utils/create-og-image'
+import { formatDate, readTime } from '@/utils/formatter'
+import { Calendar } from 'lucide-react'
 import { notFound } from 'next/navigation'
 
 interface BlogSlugPageProps {
@@ -61,18 +63,47 @@ const BlogSlugPage = async (props: BlogSlugPageProps) => {
   }
 
   return (
-    <MDXComponents className="selection:bg-rose-500" code={post.body.code}>
-      <figure className="mb-10 grid gap-2">
+    <div className="prose-invert prose container relative prose-hr:my-4 prose-img:my-0 text-muted-foreground prose-a:no-underline selection:bg-rose-500">
+      <header>
+        <h1 className="mb-2">{post.title}</h1>
+
+        <p className="!my-0 text-foreground text-lg opacity-90">
+          {post.description}
+        </p>
+
+        <hr className="border-0 border-t" />
+
+        <div className="flex justify-between">
+          <time
+            dateTime={post.publishedAt}
+            className="flex items-center gap-2 text-base text-muted-foreground"
+          >
+            <Calendar className="h-4 w-4" />
+
+            {formatDate(post.publishedAt, {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })}
+          </time>
+
+          <div>{readTime(post.body.code)}</div>
+        </div>
+      </header>
+
+      <figure>
         <BlurImage
           src={post.thumbnail.path}
           alt={post.thumbnail.alt}
-          className="aspect-video rounded-md sm:scale-105"
+          className="aspect-square rounded-md"
           fill
         />
 
         <figcaption>{post.thumbnail.alt}</figcaption>
       </figure>
-    </MDXComponents>
+
+      <MDXComponents content={post.body.code} />
+    </div>
   )
 }
 

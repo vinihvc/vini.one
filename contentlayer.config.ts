@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 
+const tags = ['travel', 'life']
+
 export const Post = defineDocumentType(() => ({
   name: 'Post',
   filePathPattern: 'posts/**/*.mdx',
@@ -17,6 +19,12 @@ export const Post = defineDocumentType(() => ({
     publishedAt: { type: 'date', required: true },
     updatedAt: { type: 'date', required: false },
     status: { type: 'enum', options: ['draft', 'published'], required: true },
+    tags: { type: 'list', of: { type: 'enum', options: tags }, required: true },
+    language: {
+      type: 'enum',
+      options: ['en', 'br'],
+      required: false,
+    },
   },
   computedFields: {
     slug: {
@@ -25,6 +33,11 @@ export const Post = defineDocumentType(() => ({
         doc._raw.sourceFileName
           // hello-world.mdx => hello-world
           .replace(/\.mdx$/, ''),
+    },
+    language: {
+      type: 'enum',
+      options: ['en', 'br'],
+      resolve: (doc) => doc.language || 'br',
     },
   },
 }))
@@ -57,12 +70,22 @@ export const Trip = defineDocumentType(() => ({
     publishedAt: { type: 'date', required: true },
     updatedAt: { type: 'date', required: false },
     status: { type: 'enum', options: ['draft', 'published'], required: true },
+    language: {
+      type: 'enum',
+      options: ['en', 'br'],
+      required: false,
+    },
   },
   computedFields: {
     slug: {
       type: 'string',
       resolve: (doc) =>
         `${doc.city.toLowerCase().replace(/\s+/g, '-')}-${doc.country.toLowerCase().replace(/\s+/g, '-')}`,
+    },
+    language: {
+      type: 'enum',
+      options: ['en', 'br'],
+      resolve: (doc) => doc.language || 'br',
     },
   },
 }))

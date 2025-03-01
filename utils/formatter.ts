@@ -44,3 +44,11 @@ export const slugify = (text: string) => {
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '')
 }
+
+export const readTime = (text: string) => {
+  const wordsPerMinute = 200
+  const noOfWords = text.split(/\s+/).length
+  const minutes = Math.ceil(noOfWords / wordsPerMinute)
+
+  return `${minutes} min read`
+}
