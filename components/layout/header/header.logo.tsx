@@ -13,7 +13,7 @@ export const HeaderLogo = (props: HeaderLogoProps) => {
   return (
     <Button
       className={cn(
-        'h-auto w-auto border-none bg-transparent p-0 text-foreground hover:bg-foreground/5 [&.active]:bg-foreground/5',
+        'h-auto w-auto border-none bg-foreground/5 p-0 text-foreground hover:bg-foreground/5 [&.active]:bg-foreground/10',
         className,
       )}
       asChild
@@ -21,6 +21,7 @@ export const HeaderLogo = (props: HeaderLogoProps) => {
       <NavLink
         href="/"
         aria-label="Vinicius Vicentini, Back to homepage"
+        exact
         {...rest}
       >
         <Logo />
