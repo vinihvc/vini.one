@@ -28,7 +28,7 @@ const HomePage = async () => {
       </FadeSection>
 
       <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
-        <FadeSection delay={0.2} className="relative">
+        <FadeSection delay={0.1} className="relative">
           <BlurImage
             className="w-full shrink-0 rounded-md sm:h-80 sm:w-80"
             src="/images/me.webp"
@@ -41,7 +41,7 @@ const HomePage = async () => {
         </FadeSection>
 
         <div className="prose prose-invert prose-p:text-justify text-muted-foreground">
-          <FadeSection delay={0.4} asChild>
+          <FadeSection delay={0.2} asChild>
             <p>
               <span className="font-medium text-foreground">{`Hi, I'm Vini`}</span>
               , my first foray into programming came from editing Mods for
@@ -50,7 +50,7 @@ const HomePage = async () => {
             </p>
           </FadeSection>
 
-          <FadeSection delay={0.6} asChild>
+          <FadeSection delay={0.3} asChild>
             <p>
               I enjoy working where design meets code.
               <span className="font-medium text-foreground">
@@ -62,7 +62,7 @@ const HomePage = async () => {
             </p>
           </FadeSection>
 
-          <FadeSection delay={0.8} asChild>
+          <FadeSection delay={0.4} asChild>
             <p>
               In my free time, I enjoy{' '}
               <NavLink
@@ -81,9 +81,9 @@ const HomePage = async () => {
         </div>
       </div>
 
-      <FadeSection delay={1.2} className="mt-14">
+      <div className="mt-14">
         <div className="flex items-center justify-between">
-          <div>
+          <FadeSection delay={0.5}>
             <h2 className="font-black text-2xl">Career</h2>
 
             <h3 className="text-muted-foreground">
@@ -91,11 +91,13 @@ const HomePage = async () => {
                 new Date().getFullYear() - startYear
               }+ years of experience in the industry`}
             </h3>
-          </div>
+          </FadeSection>
         </div>
 
-        <CompaniesSection className="mt-4" data={data} />
-      </FadeSection>
+        <FadeSection delay={0.6}>
+          <CompaniesSection className="mt-4" data={data} />
+        </FadeSection>
+      </div>
     </section>
   )
 }

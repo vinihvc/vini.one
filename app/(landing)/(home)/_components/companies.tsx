@@ -29,17 +29,17 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
     <section {...rest}>
       <ul className="group space-y-2">
         {data.map((company, index) => {
+          const isGreaterThanMaxCompanies = index >= MAX_COMPANIES
+          const incrementalDelay = (index + 1) * 0.05
+
+          const delay = isGreaterThanMaxCompanies ? 0 : incrementalDelay
+
           if (!showAll && index >= MAX_COMPANIES) {
             return null
           }
 
           return (
-            <FadeSection
-              key={company.company}
-              delay={(index + 1) * 0.05}
-              blur
-              asChild
-            >
+            <FadeSection key={company.company} delay={delay} blur asChild>
               <li
                 className={cn(
                   'hover:!opacity-100 w-full group-hover:opacity-50',

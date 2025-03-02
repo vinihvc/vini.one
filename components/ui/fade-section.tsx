@@ -1,9 +1,10 @@
 'use client'
 
 import { useInView } from '@/hooks/use-in-view'
+import { useMergeRefs } from '@/hooks/use-merge-ref'
 import { Slot } from '@radix-ui/react-slot'
 
-interface FadeUpProps extends React.HTMLAttributes<HTMLDivElement> {
+interface FadeUpProps extends React.ComponentProps<'div'> {
   /**
    * The side of the component to fade up from.
    *
@@ -49,11 +50,12 @@ export const FadeSection = (props: FadeUpProps) => {
     threshold = 0.1,
     duration = 0.4,
     blur = false,
+    ref,
     asChild,
     ...rest
   } = props
 
-  const { ref, isInView } = useInView(threshold)
+  const { ref: $ref, isInView } = useInView(threshold)
 
   const Component = asChild ? Slot : 'div'
 
@@ -78,7 +80,7 @@ export const FadeSection = (props: FadeUpProps) => {
 
   return (
     <Component
-      ref={ref}
+      ref={useMergeRefs(ref, $ref)}
       style={{
         opacity: 0,
         transform: transform[side].initial,

@@ -35,6 +35,7 @@ const TripSidebar = (props: TripSidebarProps) => {
       <SheetTrigger
         className={cn(
           'group fixed bottom-20 z-50 max-sm:right-4 sm:bottom-8 sm:left-8',
+          'zoom-in-50 animate-in',
           'data-[state=closed]:visible data-[state=open]:invisible',
         )}
         asChild

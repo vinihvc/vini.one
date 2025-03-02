@@ -1,3 +1,4 @@
+import { FadeSection } from '@/components/ui/fade-section'
 import { Heading } from '@/components/ui/heading'
 import { BOOKS } from '@/content/books'
 import type { Metadata } from 'next'
@@ -10,18 +11,27 @@ export const metadata: Metadata = {
 const BookshelfPage = async () => {
   return (
     <section className="container selection:bg-amber-500">
-      <div className="space-y-1">
+      <FadeSection className="space-y-1">
         <Heading className="from-amber-500 to-red-500">Bookshelf</Heading>
 
         <h2 className="text-lg text-muted-foreground">
           {`That's what I've been reading lately. Enjoy!`}
         </h2>
-      </div>
+      </FadeSection>
 
       <div className="mt-10 grid grid-cols-3 items-start gap-2 sm:grid-cols-5 sm:gap-5">
-        {BOOKS.map((book) => (
-          <BookCard key={book.title} data={book} />
-        ))}
+        {BOOKS.map((book, index) => {
+          const TOTAL_COLS = 5
+
+          const normalizedIndex = index % TOTAL_COLS
+          const incrementalDelay = normalizedIndex * 0.05
+
+          return (
+            <FadeSection delay={incrementalDelay} key={book.title}>
+              <BookCard data={book} />
+            </FadeSection>
+          )
+        })}
       </div>
     </section>
   )
