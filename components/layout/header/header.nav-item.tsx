@@ -1,8 +1,6 @@
-import { cn } from '@/lib/cn'
-
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
-
+import { cn } from '@/lib/cn'
 import type { RouteType } from './header.routes'
 
 interface HeaderNavItemProps

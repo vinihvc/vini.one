@@ -1,8 +1,7 @@
-import { cn } from '@/lib/cn'
-
 import { Button } from '@/components/ui/button'
 import { Logo } from '@/components/ui/logo'
 import { NavLink } from '@/components/ui/nav-link'
+import { cn } from '@/lib/cn'
 
 interface HeaderLogoProps
   extends Omit<React.ComponentProps<typeof NavLink>, 'href'> {}

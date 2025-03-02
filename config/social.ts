@@ -1,24 +1,14 @@
-import { Github, Instagram, Linkedin, Twitter } from 'lucide-react'
+import { SiGithub, SiX } from '@icons-pack/react-simple-icons'
 
 export const SOCIAL_LINKS = [
   {
     title: 'GitHub',
-    icon: Github,
+    icon: SiGithub,
     link: '/github',
   },
   {
     title: 'Twitter',
-    icon: Twitter,
+    icon: SiX,
     link: '/twitter',
-  },
-  {
-    title: 'Linkedin',
-    icon: Linkedin,
-    link: '/linkedin',
-  },
-  {
-    title: 'Instagram',
-    icon: Instagram,
-    link: '/instagram',
   },
 ]

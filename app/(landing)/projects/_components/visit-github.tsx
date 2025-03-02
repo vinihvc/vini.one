@@ -1,8 +1,7 @@
-import { cn } from '@/lib/cn'
-import { ExternalLink } from 'lucide-react'
-
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
+import { cn } from '@/lib/cn'
+import { ExternalLink } from 'lucide-react'
 
 interface VisitGithubProps extends React.ComponentProps<'div'> {}
 

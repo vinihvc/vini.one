@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/x',
+        destination: 'https://twitter.com/vinihvc',
+        permanent: true,
+      },
+      {
         source: '/linkedin',
         destination: 'https://www.linkedin.com/in/vinihvc',
         permanent: true,

@@ -1,14 +1,12 @@
 'use client'
 
-import { cn } from '@/lib/cn'
-import React from 'react'
-
 import { Button } from '@/components/ui/button'
-import { NavLink } from '@/components/ui/nav-link'
-import type { CompanyType } from '@/types/company'
-
 import { FadeSection } from '@/components/ui/fade-section'
+import { NavLink } from '@/components/ui/nav-link'
+import { cn } from '@/lib/cn'
+import type { CompanyType } from '@/types/company'
 import { ChevronDown } from 'lucide-react'
+import React from 'react'
 import { CompanyCard } from './company-card'
 
 interface CompaniesSectionProps extends React.ComponentProps<'section'> {

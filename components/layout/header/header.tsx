@@ -23,7 +23,7 @@ export const Header = async (props: HeaderProps) => {
           'px-3',
           'flex items-center justify-between',
           'bg-black/60 backdrop-blur-md',
-          'border border-foreground/5',
+          'border border-foreground/5 shadow-2xl',
           'rounded-xl',
           className,
         )}
