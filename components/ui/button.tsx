@@ -6,7 +6,7 @@ export const buttonStyle = tv({
   base: [
     'inline-flex items-center justify-center',
     'gap-2',
-    'rounded-lg drop-shadow',
+    'rounded-lg',
     'transition-all',
     'cursor-pointer',
     'outline-0 ring-offset-2 ring-offset-black focus-visible:ring-2',

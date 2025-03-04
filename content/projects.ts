@@ -8,6 +8,12 @@ export const PROJECTS: ProjectType[] = [
     website: 'https://eletrohits.vini.one',
   },
   {
+    title: 'Vini OS',
+    description: 'A simple operating system',
+    url: 'https://github.com/vinihvc/vini-os',
+    website: 'https://os.vini.one',
+  },
+  {
     title: 'Challenge Books',
     description: 'Google books, with search and filter',
     url: 'https://github.com/vinihvc/challenge-books',
@@ -24,6 +30,12 @@ export const PROJECTS: ProjectType[] = [
     description: 'Idle game with a lot of adventures',
     url: 'https://github.com/vinihvc/adventure',
     website: 'https://adventure.vini.one',
+  },
+  {
+    title: 'Optimizer',
+    description: 'Easy image optimizer and converter',
+    url: 'https://github.com/vinihvc/optimizer',
+    website: 'https://optimizer.vini.one',
   },
   {
     title: 'Date Formatter',

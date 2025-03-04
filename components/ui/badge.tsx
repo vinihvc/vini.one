@@ -12,21 +12,14 @@ const badgeVariants = tv({
   ],
   variants: {
     variant: {
-      solid: [
-        'text-primary-foreground',
-        'border-transparent bg-primary',
-        'shadow',
-        'hover:bg-primary/80',
-      ],
+      solid: ['text-foreground', 'border-transparent bg-background', 'shadow'],
       secondary: [
         'text-secondary-foreground',
         'border-transparent bg-secondary',
-        'hover:bg-secondary/80',
       ],
       destructive: [
         'text-destructive-foreground',
         'border-transparent bg-destructive',
-        'hover:bg-destructive/80',
       ],
       outline: ['text-foreground'],
     },

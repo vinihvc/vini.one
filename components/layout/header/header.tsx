@@ -12,7 +12,7 @@ export const Header = async (props: HeaderProps) => {
   return (
     <header
       className={cn(
-        'container fixed inset-x-0 top-4 z-50 mx-2 selection:bg-yellow-500 max-sm:hidden',
+        '!max-w-[54rem] container fixed inset-x-0 top-4 z-50 mx-2 selection:bg-yellow-500 max-sm:hidden',
         RemoveScroll.classNames.zeroRight,
       )}
       {...rest}
