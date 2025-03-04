@@ -1,6 +1,5 @@
-import { Badge } from '@/components/ui/badge'
+import { Announcement } from '@/components/layout/announcement'
 import { BlurImage } from '@/components/ui/blur-image'
-import { Button } from '@/components/ui/button'
 import { FadeSection } from '@/components/ui/fade-section'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
@@ -22,19 +21,13 @@ const HomePage = async () => {
   return (
     <section className="container selection:bg-orange-500">
       <FadeSection delay={0.2}>
-        <Button
-          className="gap-4 rounded-full pr-4 pl-1.5 text-xs"
-          variant="outline"
-          size="sm"
-          asChild
-        >
-          <NavLink href="/projects">
-            <Badge className="rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-background">
-              New
-            </Badge>
-            Projects updated
-          </NavLink>
-        </Button>
+        <Announcement
+          className="focus-visible:ring-orange-500"
+          data={{
+            label: 'Projects updated',
+            href: '/projects',
+          }}
+        />
       </FadeSection>
 
       <FadeSection className="mt-2 space-y-1">
