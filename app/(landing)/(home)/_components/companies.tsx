@@ -3,8 +3,8 @@
 import { Button } from '@/components/ui/button'
 import { FadeSection } from '@/components/ui/fade-section'
 import { NavLink } from '@/components/ui/nav-link'
+import type { CompanyType } from '@/content/companies'
 import { cn } from '@/lib/cn'
-import type { CompanyType } from '@/types/company'
 import { ChevronDown } from 'lucide-react'
 import React from 'react'
 import { CompanyCard } from './company-card'
@@ -25,7 +25,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
 
   return (
     <section {...rest}>
-      <ul className="group space-y-2">
+      <ul className="group space-y-2 transition">
         {data.map((company, index) => {
           const isGreaterThanMaxCompanies = index >= MAX_COMPANIES
           const incrementalDelay = (index + 1) * 0.05
@@ -40,7 +40,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
             <FadeSection key={company.company} delay={delay} blur asChild>
               <li
                 className={cn(
-                  'hover:!opacity-100 w-full group-hover:opacity-50',
+                  'hover:!opacity-100 w-full transition sm:group-hover:opacity-50',
                 )}
                 key={company.company}
               >

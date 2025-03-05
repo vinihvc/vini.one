@@ -3,7 +3,7 @@ import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
 import { PROJECTS } from '@/content/projects'
 import type { Metadata } from 'next'
-import { RepoCard } from './_components/repo-card'
+import { ProjectCard } from './_components/project-card'
 import { VisitGithub } from './_components/visit-github'
 
 export const metadata: Metadata = {
@@ -21,15 +21,20 @@ const ProjectsPage = async () => {
         </h2>
       </FadeSection>
 
-      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {PROJECTS.map((repo, index) => (
-          <FadeSection key={repo.title} delay={(index + 1) * 0.05} blur asChild>
+      <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {PROJECTS.map((project, index) => (
+          <FadeSection
+            key={project.title}
+            delay={(index + 1) * 0.05}
+            blur
+            asChild
+          >
             <NavLink
               className="group rounded-md ring-green-500"
-              href={repo.website}
+              href={project.website}
               isExternal
             >
-              <RepoCard data={repo} />
+              <ProjectCard data={project} />
             </NavLink>
           </FadeSection>
         ))}

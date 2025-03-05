@@ -2,6 +2,7 @@
 
 import { useInView } from '@/hooks/use-in-view'
 import { useMergeRefs } from '@/hooks/use-merge-ref'
+import { cn } from '@/lib/cn'
 import { Slot } from '@radix-ui/react-slot'
 
 interface FadeUpProps extends React.ComponentProps<'div'> {
@@ -48,9 +49,10 @@ export const FadeSection = (props: FadeUpProps) => {
     side = 'top',
     delay = 0,
     threshold = 0.1,
-    duration = 0.4,
+    duration = 0.2,
     blur = false,
     ref,
+    className,
     asChild,
     ...rest
   } = props
@@ -81,14 +83,13 @@ export const FadeSection = (props: FadeUpProps) => {
   return (
     <Component
       ref={useMergeRefs(ref, $ref)}
+      className={cn('opacity-0', { 'opacity-100': isInView }, className)}
       style={{
-        opacity: 0,
         transform: transform[side].initial,
         filter: blur ? 'blur(2px)' : 'none',
         transition: `all ${duration}s ease-out`,
         transitionDelay: `${delay}s`,
         ...(isInView && {
-          opacity: 1,
           transform: transform[side].inView,
           filter: blur ? 'blur(0px)' : 'none',
         }),

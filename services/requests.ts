@@ -1,9 +1,9 @@
 import type { Post, Trip } from '@/.contentlayer/generated'
-import type { BookType } from '@/types/book'
-import type { CompanyType } from '@/types/company'
-import type { ProjectType } from '@/types/project'
-import type { TravelType } from '@/types/travel'
-import type { UseType } from '@/types/use'
+import type { BookType } from '@/content/books'
+import type { CompanyType } from '@/content/companies'
+import type { ProjectType } from '@/content/projects'
+import type { TravelType } from '@/content/travel'
+import type { UseType } from '@/content/uses'
 import { http } from './http'
 
 export const getTrips = async () => {

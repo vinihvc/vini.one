@@ -66,7 +66,7 @@ const HomePage = async () => {
               I enjoy working where design meets code.
               <span className="font-medium text-foreground">
                 {' '}
-                CSS, Design Systems, and Animation
+                CSS, Design Systems, and Animations
               </span>{' '}
               - these are my passion points. Crafting exceptional component APIs
               that users love to use.

@@ -1,8 +1,8 @@
 'use client'
 
 import type { Trip } from '@/.contentlayer/generated'
+import type { TravelType } from '@/content/travel'
 import { cn } from '@/lib/cn'
-import type { TravelType } from '@/types/travel'
 import { MapContainer } from 'react-leaflet'
 import { LeafletMapHomeMarker } from './leaflet-map.home'
 import { LeafletMapLayer } from './leaflet-map.layer'

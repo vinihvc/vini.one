@@ -1,8 +1,8 @@
 import type { Post } from '@/.contentlayer/generated'
 import { Badge } from '@/components/ui/badge'
 import { BlurImage } from '@/components/ui/blur-image'
-import { FlagIcon } from '@/components/ui/flag-icon'
 import { cn } from '@/lib/cn'
+import { Flags } from '@/lib/flags'
 import { formatDate } from '@/utils/formatter'
 import { Calendar } from 'lucide-react'
 
@@ -15,6 +15,8 @@ interface PostCardProps extends React.ComponentProps<'div'> {
 
 export const PostCard = (props: PostCardProps) => {
   const { data, className, ...rest } = props
+
+  const Flag = Flags[data.language as keyof typeof Flags]
 
   return (
     <article
@@ -59,10 +61,7 @@ export const PostCard = (props: PostCardProps) => {
       </div>
 
       {data.language && (
-        <FlagIcon
-          className="absolute right-4 bottom-4 rounded-sm"
-          country={data.language}
-        />
+        <Flag className="absolute right-4 bottom-4 rounded-sm" />
       )}
     </article>
   )

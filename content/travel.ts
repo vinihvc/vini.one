@@ -1,6 +1,6 @@
-import type { TravelType } from '@/types/travel'
+export type TravelType = (typeof TRAVEL)[number]
 
-export const TRAVEL: TravelType[] = [
+export const TRAVEL = [
   // went 20/03/2025
   {
     country: 'Mexico',
@@ -73,4 +73,4 @@ export const TRAVEL: TravelType[] = [
     arrivalDate: '02/04/2023',
     departureDate: '19/01/2024',
   },
-]
+] as const

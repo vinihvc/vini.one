@@ -1,6 +1,6 @@
-import type { CompanyType } from '@/types/company'
+export type CompanyType = (typeof COMPANIES)[number]
 
-export const COMPANIES: CompanyType[] = [
+export const COMPANIES = [
   {
     title: 'Design Engineer',
     company: 'CyberBrokers',
@@ -9,6 +9,7 @@ export const COMPANIES: CompanyType[] = [
     city: 'Chicago',
     state: 'Illinois',
     startDate: '2023-05-15',
+    endDate: undefined,
   },
   {
     title: 'Software Engineer',

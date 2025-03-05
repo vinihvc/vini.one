@@ -1,4 +1,4 @@
-import type { TravelType } from '@/types/travel'
+import type { TravelType } from '@/content/travel'
 import L from 'leaflet'
 import { Marker } from 'react-leaflet'
 

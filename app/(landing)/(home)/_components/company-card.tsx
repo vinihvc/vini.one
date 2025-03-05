@@ -1,7 +1,7 @@
 import { cn } from '@/lib/cn'
 
 import { BlurImage } from '@/components/ui/blur-image'
-import type { CompanyType } from '@/types/company'
+import type { CompanyType } from '@/content/companies'
 import { formatDate } from '@/utils/formatter'
 
 interface CompanyCardProps extends React.ComponentProps<'article'> {

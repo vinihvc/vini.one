@@ -1,7 +1,7 @@
 'use client'
 
 import type { Trip } from '@/.contentlayer/generated'
-import type { TravelType } from '@/types/travel'
+import type { TravelType } from '@/content/travel'
 import dynamic from 'next/dynamic'
 
 const LeafletMap = dynamic(() => import('@/components/ui/leaflet-map'), {

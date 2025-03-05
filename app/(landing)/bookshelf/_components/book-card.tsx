@@ -1,7 +1,7 @@
 import { BlurImage } from '@/components/ui/blur-image'
 import { Rating } from '@/components/ui/rating'
+import type { BookType } from '@/content/books'
 import { cn } from '@/lib/cn'
-import type { BookType } from '@/types/book'
 import type React from 'react'
 
 interface BookCardProps extends React.ComponentProps<'article'> {

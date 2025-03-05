@@ -1,6 +1,6 @@
-import type { UseType } from '@/types/use'
+export type UseType = (typeof USES)[number]
 
-export const USES: UseType[] = [
+export const USES = [
   {
     title: 'Desk',
     items: [
@@ -8,40 +8,49 @@ export const USES: UseType[] = [
         title: 'MacBook M2 Pro 14"',
         description:
           '16 GB RAM and 256GB storage, the perfect balance for my needs.',
+        link: undefined,
       },
       {
         title: 'AirPods 2 Pro',
         description: 'Great sound quality and noise cancellation.',
+        link: undefined,
       },
       {
         title: 'NuPhy Air75',
         description:
           "Compact, wireless, and with a great battery life. I'm in love.",
+        link: undefined,
       },
       {
         title: 'MX Master 3S',
         description: 'Ergonomic, customizable, and with a long battery life.',
+        link: undefined,
       },
       {
         title: 'Dell UltraSharp 27" 4K Monitor',
         description: 'USB-C hub monitor with great color accuracy.',
+        link: undefined,
       },
       {
         title: 'SlikDesk',
         description: 'Standing desk to keep me moving during the day.',
+        link: undefined,
       },
       {
         title: 'DX Racer Wide W0-N',
         description: 'I sit all day, so I might as well get a good chair.',
+        link: undefined,
       },
       {
         title: 'Alexa Echo 4rd Gen',
         description:
           'I use it to turn on/off lights and set timers. Basically a glorified alarm clock.',
+        link: undefined,
       },
       {
         title: 'UGREEN Vertical Laptop Stand',
         description: 'To use my MacBook in clamshell mode. It saves space.',
+        link: undefined,
       },
     ],
   },
@@ -127,4 +136,4 @@ export const USES: UseType[] = [
       },
     ],
   },
-]
+] as const

@@ -1,8 +1,8 @@
 import { SEO } from '@/config/seo'
 import { TRAVEL } from '@/content/travel'
 import { cn } from '@/lib/cn'
+import { Flags } from '@/lib/flags'
 import type React from 'react'
-import { FlagIcon } from '../ui/flag-icon'
 
 interface FooterProps extends React.ComponentProps<'footer'> {}
 
@@ -10,6 +10,8 @@ export const Footer = async (props: FooterProps) => {
   const { className, ...rest } = props
 
   const travelingCountry = TRAVEL.at(0)
+
+  const Flag = Flags[travelingCountry?.countryCode ?? 'br']
 
   return (
     <footer className={cn('py-10 selection:bg-green-500', className)} {...rest}>
@@ -24,7 +26,7 @@ export const Footer = async (props: FooterProps) => {
             <div className="flex items-center gap-2">
               <span className="text-xs">Chilling in</span>
 
-              <FlagIcon country={travelingCountry.countryCode} />
+              <Flag />
             </div>
           </div>
         ) : (
