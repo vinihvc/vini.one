@@ -56,8 +56,6 @@ const BlogSlugPage = async (props: BlogSlugPageProps) => {
 
   const photos = await getImageFromFolder(`vini.one/posts/${post?.slug}`)
 
-  console.log(photos)
-
   if (!post) {
     notFound()
   }

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
-import { Logo } from '@/components/ui/logo'
 import { NavLink } from '@/components/ui/nav-link'
 import { cn } from '@/lib/cn'
+import { Icons } from '@/lib/icons'
 
 interface HeaderLogoProps
   extends Omit<React.ComponentProps<typeof NavLink>, 'href'> {}
@@ -12,9 +12,10 @@ export const HeaderLogo = (props: HeaderLogoProps) => {
   return (
     <Button
       className={cn(
-        'h-auto w-auto border-none bg-foreground/5 p-0 text-foreground hover:bg-foreground/5 [&.active]:bg-foreground/10',
+        'border-none text-foreground hover:bg-foreground/5 [&.active]:bg-foreground/10 [&_svg]:h-5 [&_svg]:w-5',
         className,
       )}
+      size="icon"
       asChild
     >
       <NavLink
@@ -23,7 +24,7 @@ export const HeaderLogo = (props: HeaderLogoProps) => {
         exact
         {...rest}
       >
-        <Logo />
+        <Icons.logo />
       </NavLink>
     </Button>
   )

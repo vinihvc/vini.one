@@ -43,7 +43,7 @@ const MDXPhotos = (props: MDXPhotosProps) => {
       <Carousel className="w-full" opts={{ align: 'start', loop: true }}>
         <CarouselContent className="-ml-2">
           {data?.map((photo, index) => (
-            <Dialog key={photo.asset_id} modal={false}>
+            <Dialog key={photo.asset_id}>
               <DialogTrigger asChild>
                 <CarouselItem className="basis-1/3 cursor-pointer pl-2">
                   <div className="relative aspect-square rounded-md">
@@ -57,7 +57,7 @@ const MDXPhotos = (props: MDXPhotosProps) => {
                 </CarouselItem>
               </DialogTrigger>
 
-              <DialogContent className="flex h-full w-full items-center justify-between bg-background/60 backdrop-blur-sm">
+              <DialogContent className="flex h-full w-full items-center justify-between">
                 <DialogTitle className="sr-only">Photos</DialogTitle>
 
                 <DialogDescription className="sr-only">

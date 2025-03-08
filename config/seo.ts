@@ -1,7 +1,7 @@
 export const SEO = {
-  title: 'Vinicius Vicentini',
+  name: 'Vinicius Vicentini',
   description: 'Front-end engineer who loves UX, Performance and Design.',
-  keywords: ['Frontend', 'Developer', 'React', 'Tailwind', 'Next'],
+  keywords: ['frontend', 'developer', 'personal website', 'portfolio'],
   url: 'https://vini.one',
   twitter: '@vinihvc',
 }

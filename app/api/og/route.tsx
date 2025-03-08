@@ -53,8 +53,8 @@ export const GET = async (request: NextRequest) => {
       </div>
     </div>,
     {
-      width: 1600,
-      height: 836,
+      width: 1200,
+      height: 630,
       fonts: [
         {
           name: 'Outfit',

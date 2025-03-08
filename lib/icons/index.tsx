@@ -10,6 +10,7 @@ import {
   TrendingDown,
 } from 'lucide-react'
 import { Eletrohits } from './eletrohits'
+import { Logo } from './logo'
 
 export const Icons = {
   github: SiGithub,
@@ -24,4 +25,5 @@ export const Icons = {
   optimizer: TrendingDown,
   date: CalendarSearch,
   fit: Salad,
+  logo: Logo,
 } as const
