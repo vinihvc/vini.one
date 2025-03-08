@@ -34,7 +34,7 @@ export const Footer = async (props: FooterProps) => {
         )}
 
         <span className="text-sm">
-          &copy;{` ${new Date().getFullYear()} ${SEO.title}`}
+          &copy;{` ${new Date().getFullYear()} ${SEO.name}`}
         </span>
       </div>
     </footer>

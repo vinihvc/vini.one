@@ -30,7 +30,7 @@ export const GET = async () => {
     `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-  <title>${SEO.title}</title>
+  <title>${SEO.name}</title>
   <link>${SEO.url}</link>
   <description>${SEO.description}</description>
   ${orderedItems
