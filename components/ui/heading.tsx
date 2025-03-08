@@ -19,7 +19,7 @@ export const Heading = (props: HeadingProps) => {
   return (
     <Comp
       className={cn(
-        'inline-block bg-gradient-to-r bg-clip-text font-bold text-5xl text-transparent leading-tight',
+        'inline-block bg-gradient-to-r bg-clip-text font-bold text-5xl/tight text-transparent',
         className,
       )}
       {...rest}

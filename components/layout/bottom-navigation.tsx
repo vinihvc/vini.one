@@ -5,7 +5,7 @@ import { HEADER_ROUTES } from './header/header.routes'
 
 interface BottomNavigationProps extends React.ComponentProps<'nav'> {}
 
-export const BottomNavigation = (props: BottomNavigationProps) => {
+const BottomNavigation = (props: BottomNavigationProps) => {
   const { className, ...rest } = props
 
   return (
@@ -44,3 +44,5 @@ export const BottomNavigation = (props: BottomNavigationProps) => {
     </nav>
   )
 }
+
+export default BottomNavigation

@@ -1,6 +1,6 @@
 import { BlurImage } from '../ui/blur-image'
 
-export const NoiseBg = () => {
+const NoiseBg = () => {
   return (
     <>
       <BlurImage
@@ -10,7 +10,6 @@ export const NoiseBg = () => {
         width={1000}
         height={670}
         priority
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
 
       {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
@@ -28,3 +27,5 @@ export const NoiseBg = () => {
     </>
   )
 }
+
+export default NoiseBg

@@ -18,7 +18,7 @@ interface CompaniesSectionProps extends React.ComponentProps<'section'> {
 
 const MAX_COMPANIES = 3
 
-export const CompaniesSection = (props: CompaniesSectionProps) => {
+const CompaniesSection = (props: CompaniesSectionProps) => {
   const { data, ...rest } = props
 
   const [showAll, setShowAll] = React.useState(false)
@@ -72,3 +72,5 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
     </section>
   )
 }
+
+export default CompaniesSection

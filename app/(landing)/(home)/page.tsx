@@ -4,8 +4,10 @@ import { FadeSection } from '@/components/ui/fade-section'
 import { Heading } from '@/components/ui/heading'
 import { NavLink } from '@/components/ui/nav-link'
 import { COMPANIES } from '@/content/companies'
-import { CompaniesSection } from './_components/companies'
+import React from 'react'
 import { SocialLinks } from './_components/social-links'
+
+const CompaniesSection = React.lazy(() => import('./_components/companies'))
 
 const HomePage = async () => {
   const data = COMPANIES
@@ -95,7 +97,7 @@ const HomePage = async () => {
       <div className="mt-14">
         <div className="flex items-center justify-between">
           <FadeSection delay={0.5}>
-            <h2 className="font-black text-2xl">Career</h2>
+            <h2 className="font-semibold text-2xl">Career</h2>
 
             <h3 className="text-muted-foreground">
               {`${

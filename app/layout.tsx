@@ -1,14 +1,16 @@
 import '@/styles/globals.css'
 import { MediaQueriesIndicator } from '@/components/debug/media-queries'
-import { BottomNavigation } from '@/components/layout/bottom-navigation'
 import { Header } from '@/components/layout/header'
 import { UmamiTracking } from '@/components/tracking/umami'
 import { SEO } from '@/config/seo'
 import { fontSans } from '@/lib/font'
 import { createOgImage } from '@/utils/create-og-image'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
+import React from 'react'
+
+const BottomNavigation = React.lazy(
+  () => import('@/components/layout/bottom-navigation'),
+)
 
 export const viewport: Viewport = {
   colorScheme: 'dark',
@@ -73,10 +75,6 @@ const RootLayout = async ({ children }: React.PropsWithChildren) => {
         <MediaQueriesIndicator />
 
         <UmamiTracking />
-
-        <SpeedInsights />
-
-        <Analytics />
       </body>
     </html>
   )

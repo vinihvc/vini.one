@@ -1,7 +1,8 @@
-import Link from 'next/link'
-
-import { NoiseBg } from '@/components/layout/noise-bg'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import React from 'react'
+
+const NoiseBg = React.lazy(() => import('@/components/layout/noise-bg'))
 
 const NotFoundPage = () => {
   return (

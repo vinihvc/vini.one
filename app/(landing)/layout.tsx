@@ -1,5 +1,7 @@
-import { Footer } from '@/components/layout/footer'
-import { NoiseBg } from '@/components/layout/noise-bg'
+import React from 'react'
+
+const NoiseBg = React.lazy(() => import('@/components/layout/noise-bg'))
+const Footer = React.lazy(() => import('@/components/layout/footer'))
 
 const LandingLayout = ({ children }: React.PropsWithChildren) => {
   return (

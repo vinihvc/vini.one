@@ -6,7 +6,7 @@ import type React from 'react'
 
 interface FooterProps extends React.ComponentProps<'footer'> {}
 
-export const Footer = async (props: FooterProps) => {
+const Footer = async (props: FooterProps) => {
   const { className, ...rest } = props
 
   const travelingCountry = TRAVEL.at(0)
@@ -40,3 +40,5 @@ export const Footer = async (props: FooterProps) => {
     </footer>
   )
 }
+
+export default Footer
