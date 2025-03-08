@@ -1,9 +1,12 @@
 import { cn } from '@/lib/cn'
 import { formatDate, readTime } from '@/utils/formatter'
 import { Calendar, Clock } from 'lucide-react'
+import React from 'react'
 import { BlurImage } from '../ui/blur-image'
 import { MDXComponents } from './mdx-components'
 import { TableOfContent } from './table-of-content'
+
+const MDXPhotos = React.lazy(() => import('./mdx-photos'))
 
 interface MDXContentProps extends React.ComponentProps<'article'> {
   data: {
@@ -14,6 +17,12 @@ interface MDXContentProps extends React.ComponentProps<'article'> {
       path: string
       alt: string
     }
+    photos?: {
+      asset_id: string
+      url: string
+      width: number
+      height: number
+    }[]
     content: string
   }
 }
@@ -44,7 +53,7 @@ export const MDXContent = (props: MDXContentProps) => {
           >
             <Calendar className="h-4 w-4" />
 
-            {formatDate(data.publishedAt, {
+            {formatDate(data.publishedAt ?? '', {
               month: 'long',
               day: 'numeric',
               year: 'numeric',
@@ -73,6 +82,8 @@ export const MDXContent = (props: MDXContentProps) => {
       <TableOfContent content={data.content} />
 
       <MDXComponents content={data.content} />
+
+      <MDXPhotos data={data.photos} />
     </article>
   )
 }

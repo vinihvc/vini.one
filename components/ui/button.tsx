@@ -35,7 +35,7 @@ export const buttonStyle = tv({
   },
 })
 
-interface ButtonProps
+export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonStyle> {
   /**

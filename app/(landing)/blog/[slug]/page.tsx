@@ -1,6 +1,7 @@
 import { allPosts } from '@/.contentlayer/generated'
 import { MDXContent } from '@/components/mdx/mdx-content'
 import { SEO } from '@/config/seo'
+import { getImageFromFolder } from '@/lib/cloudinary'
 import { createOgImage } from '@/utils/create-og-image'
 import { notFound } from 'next/navigation'
 
@@ -53,6 +54,10 @@ const BlogSlugPage = async (props: BlogSlugPageProps) => {
     (post) => post.slug === slug && post.status === 'published',
   )
 
+  const photos = await getImageFromFolder(`vini.one/posts/${post?.slug}`)
+
+  console.log(photos)
+
   if (!post) {
     notFound()
   }
@@ -65,6 +70,7 @@ const BlogSlugPage = async (props: BlogSlugPageProps) => {
         publishedAt: post.publishedAt,
         thumbnail: post.thumbnail,
         content: post.body.code,
+        photos,
       }}
     />
   )

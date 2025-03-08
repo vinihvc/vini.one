@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Blog',
 }
 
-const BlogPage = () => {
+const BlogPage = async () => {
   const publishedPosts = allPosts
     .filter((post) => post.status === 'published')
     .sort(
