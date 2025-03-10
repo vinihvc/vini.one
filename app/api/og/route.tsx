@@ -2,7 +2,7 @@ import { DEFAULT_FONT_SIZE } from '@/utils/create-og-image'
 import { ImageResponse } from 'next/og'
 import type { NextRequest } from 'next/server'
 
-import { SEO } from '@/config/seo'
+import { SITE_CONFIG } from '@/config/site'
 
 export const runtime = 'edge'
 
@@ -47,7 +47,7 @@ export const GET = async (request: NextRequest) => {
           </h2>
 
           <p tw="text-neutral-400 text-5xl absolute bottom-0 right-0">
-            {SEO.url.replace('https://', '')}
+            {SITE_CONFIG.url.replace('https://', '')}
           </p>
         </div>
       </div>

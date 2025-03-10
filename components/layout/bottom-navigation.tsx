@@ -1,12 +1,15 @@
 import { cn } from '@/lib/cn'
+import { getTranslations } from 'next-intl/server'
 import { Button } from '../ui/button'
 import { NavLink } from '../ui/nav-link'
 import { HEADER_ROUTES } from './header/header.routes'
 
 interface BottomNavigationProps extends React.ComponentProps<'nav'> {}
 
-const BottomNavigation = (props: BottomNavigationProps) => {
+const BottomNavigation = async (props: BottomNavigationProps) => {
   const { className, ...rest } = props
+
+  const t = await getTranslations('components.header.navigation')
 
   return (
     <nav
@@ -35,7 +38,7 @@ const BottomNavigation = (props: BottomNavigationProps) => {
                 href={route.href}
               >
                 <route.icon />
-                <span className="sr-only">{route.label}</span>
+                <span className="sr-only">{t(route.key)}</span>
               </NavLink>
             </Button>
           </li>

@@ -36,6 +36,9 @@
 						"functions": ["cn", "cva", "tw"]
 					}
 				}
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
 			}
 		}
 	},

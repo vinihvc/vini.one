@@ -1,4 +1,4 @@
-import { SEO } from '@/config/seo'
+import { SITE_CONFIG } from '@/config/site'
 
 export const DEFAULT_FONT_SIZE = 110
 
@@ -10,5 +10,5 @@ export const DEFAULT_FONT_SIZE = 110
  * ```
  */
 export const createOgImage = (title: string, fontSize = DEFAULT_FONT_SIZE) => {
-  return `${SEO.url}/api/og?title=${title}&fontSize=${fontSize}`
+  return `${SITE_CONFIG.url}/api/og?title=${title}&fontSize=${fontSize}`
 }

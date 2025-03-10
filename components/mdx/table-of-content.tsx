@@ -2,6 +2,7 @@ import { cn } from '@/lib/cn'
 import { slugify } from '@/utils/formatter'
 import { NotebookText } from 'lucide-react'
 import type { MDXComponents as MDXComponentsType } from 'mdx/types'
+import { getTranslations } from 'next-intl/server'
 import { MDXComponents, childrenToString, linkClasses } from './mdx-components'
 
 const mdxComponents: MDXComponentsType = {
@@ -32,15 +33,17 @@ interface TableOfContentProps {
   content: string
 }
 
-export const TableOfContent = (props: TableOfContentProps) => {
+export const TableOfContent = async (props: TableOfContentProps) => {
   const { content } = props
+
+  const t = await getTranslations('page.blog.section')
 
   return (
     <div className="group relative my-8 overflow-clip rounded-lg border bg-card p-4">
       <NotebookText className="absolute top-4 right-4 stroke-1 opacity-60 transition-opacity group-hover:opacity-100 md:h-10 md:w-10" />
 
       <h4 className="mt-0 mb-3 font-medium text-lg">
-        Neste artigo você vai ler:
+        {t('post.common.summary')}
       </h4>
 
       <ol className="mb-0 text-base">

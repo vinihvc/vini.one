@@ -1,5 +1,7 @@
 import { cn } from '@/lib/cn'
+import { getTranslations } from 'next-intl/server'
 import { RemoveScroll } from 'react-remove-scroll'
+import { HeaderLanguage } from './header.language'
 import { HeaderLogo } from './header.logo'
 import { HeaderNavItem } from './header.nav-item'
 import { HEADER_ROUTES } from './header.routes'
@@ -8,6 +10,8 @@ interface HeaderProps extends React.ComponentProps<'header'> {}
 
 export const Header = async (props: HeaderProps) => {
   const { className, ...rest } = props
+
+  const t = await getTranslations('components.header.navigation')
 
   return (
     <header
@@ -30,12 +34,16 @@ export const Header = async (props: HeaderProps) => {
       >
         <HeaderLogo />
 
-        <nav className="flex gap-2">
+        <nav className="flex items-center gap-2">
           {HEADER_ROUTES.map((route) => {
             if (route.onlyMobile) return null
 
-            return <HeaderNavItem key={route.href} data={route} />
+            const label = t(route.key)
+
+            return <HeaderNavItem key={route.href} data={{ ...route, label }} />
           })}
+
+          <HeaderLanguage />
         </nav>
       </div>
     </header>

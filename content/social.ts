@@ -1,4 +1,4 @@
-import { SEO } from '@/config/seo'
+import { SITE_CONFIG } from '@/config/site'
 
 export type SocialType = (typeof SOCIAL)[number]
 
@@ -6,26 +6,31 @@ export const SOCIAL = [
   {
     key: 'github',
     title: 'GitHub',
-    url: `${SEO.url}/github`,
+    url: `${SITE_CONFIG.url}/github`,
+    handle: '@vinihvc',
   },
   {
     key: 'x',
     title: 'X',
-    url: `${SEO.url}/x`,
+    url: `${SITE_CONFIG.url}/x`,
+    handle: '@vinihvc',
   },
   {
     key: 'linkedin',
     title: 'LinkedIn',
-    url: `${SEO.url}/linkedin`,
+    url: `${SITE_CONFIG.url}/linkedin`,
+    handle: '@vinihvc',
   },
   {
     key: 'instagram',
     title: 'Instagram',
-    url: `${SEO.url}/instagram`,
+    url: `${SITE_CONFIG.url}/instagram`,
+    handle: '@vinihvc',
   },
   {
     key: 'email',
     title: 'Email',
     url: 'mailto:viniciusvicentini@live.com',
+    handle: undefined,
   },
 ] as const

@@ -1,0 +1,123 @@
+{
+	"page": {
+		"home": {
+			"metadata": {
+				"title": "Início",
+				"description": "Esta é a página inicial"
+			},
+			"section": {
+				"announcement": {
+					"badge": "Novo",
+					"title": "Projetos atualizados"
+				},
+				"heading": {
+					"title": "Saudações",
+					"description": "Aqui eu compartilho um pouco sobre mim, minha carreira e o que eu faço."
+				},
+				"about": {
+					"image": {
+						"alt": "Foto de Vinicius Vicentini, olhando para cima e atrás está o Rijksmuseum, em Amsterdã",
+						"cta": "Visite meu {name}"
+					},
+					"content": {
+						"part-1": "<b>Olá, eu sou o Vini</b>, meu primeiro contato com programação veio da edição de Mods para Counter-Strike 1.6. Depois tive alguns sites e blogs e eventualmente decidi transformar isso em uma carreira.",
+						"part-2": "Eu gosto de trabalhar onde o design encontra o código. <b>CSS, Design Systems e Animações</b> - esses são meus pontos de paixão. Criar APIs de componentes excepcionais que os usuários adoram usar.",
+						"part-3": "No meu tempo livre, gosto de <link>ler livros</link>, cozinhar e <b>passar tempo com meus cachorros</b>."
+					}
+				},
+				"career": {
+					"title": "Carreira",
+					"description": "{years}+ anos de experiência na indústria",
+					"common": {
+						"now": "Atual"
+					},
+					"cta": {
+						"more": "Mostrar mais",
+						"less": "Mostrar menos"
+					}
+				}
+			}
+		},
+		"projects": {
+			"metadata": {
+				"title": "Projetos",
+				"description": "Meus projetos open-source e contribuições."
+			},
+			"section": {
+				"heading": {
+					"title": "Projetos",
+					"description": "Meus projetos open-source e contribuições."
+				},
+				"projects": {
+					"apps": {
+						"eletrohits": "App de streaming de música",
+						"os": "Sistema operacional minimalista",
+						"books": "Biblioteca de livros",
+						"clock": "Relógio com gradiente",
+						"adventure": "Jogo medieval autônomo",
+						"optimizer": "Compressor e conversor de imagens",
+						"date": "Formatação de data usando Intl API",
+						"fit": "App de informações nutricionais"
+					},
+					"cta": "Visite meu GitHub"
+				}
+			}
+		},
+		"trips": {},
+		"uses": {
+			"section": {
+				"heading": {
+					"title": "Usos",
+					"description": "Algumas das ferramentas, aplicativos e equipamentos que eu uso no meu dia a dia."
+				}
+			}
+		},
+		"blog": {
+			"section": {
+				"heading": {
+					"title": "Blog",
+					"description": "Escrevendo sobre minhas experiências e pensamentos."
+				},
+				"post": {
+					"common": {
+						"read-time": "{time} min de leitura",
+						"summary": "Neste artigo você encontrará:",
+						"gallery": "Galeria de fotos"
+					}
+				}
+			}
+		},
+		"not-found": {
+			"title": "404",
+			"description": "<span>Não entre em pânico</span>, mas esta página não existe.",
+			"cta": "Voltar para o Início"
+		}
+	},
+	"components": {
+		"header": {
+			"logo": "{name}, Voltar para a página inicial",
+			"navigation": {
+				"home": "Início",
+				"projects": "Projetos",
+				"trips": "Viagens",
+				"uses": "Usos",
+				"blog": "Blog"
+			}
+		},
+		"footer": {
+			"chilling": "Visitando"
+		},
+		"carousel": {
+			"previous": "Slide anterior",
+			"next": "Slide seguinte"
+		}
+	},
+	"common": {
+		"button": {
+			"text": "Clique aqui"
+		}
+	},
+	"metadata": {
+		"description": "Engenheiro front-end que ama UX, Performance e Design."
+	}
+}

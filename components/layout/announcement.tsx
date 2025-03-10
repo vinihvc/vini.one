@@ -10,6 +10,10 @@ interface AnnouncementProps
    */
   data: {
     /**
+     * The badge to display in the announcement
+     */
+    badge: string
+    /**
      * The label to display in the announcement
      */
     label: string
@@ -33,7 +37,7 @@ export const Announcement = (props: AnnouncementProps) => {
     >
       <NavLink href={data.href}>
         <Badge className="rounded-full bg-gradient-to-r from-green-500 to-teal-500 text-background">
-          New
+          {data.badge}
         </Badge>
 
         {data.label}
