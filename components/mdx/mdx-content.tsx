@@ -39,7 +39,7 @@ interface MDXContentProps extends React.ComponentProps<'article'> {
 export const MDXContent = async (props: MDXContentProps) => {
   const { data, locale, ...rest } = props
 
-  const t = await getTranslations('page.blog.section')
+  const t = await getTranslations('pages.blog.section')
 
   const formattedDate = formatDate(
     data.publishedAt,

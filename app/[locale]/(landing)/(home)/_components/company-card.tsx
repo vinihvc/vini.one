@@ -16,7 +16,7 @@ export const CompanyCard = (props: CompanyCardProps) => {
 
   const locale = useLocale()
 
-  const t = useTranslations('page.home.section.career')
+  const t = useTranslations('pages.home.section.career')
 
   return (
     <article

@@ -24,10 +24,31 @@ interface TripSidebarProps
    * The data of the routes
    */
   data?: Trip[]
+  /**
+   * The translations of the component
+   */
+  translations: {
+    /**
+     * The label of the button
+     */
+    open: string
+    /**
+     * The title of the sheet
+     */
+    title: string
+    /**
+     * The description of the sheet
+     */
+    description: string
+    /**
+     * The close button label
+     */
+    close: string
+  }
 }
 
 const TripSidebar = (props: TripSidebarProps) => {
-  const { data, ...rest } = props
+  const { data, translations, ...rest } = props
 
   const [isOpen, setIsOpen] = React.useState(false)
 
@@ -49,6 +70,8 @@ const TripSidebar = (props: TripSidebarProps) => {
           size="icon"
         >
           <AlignLeft className="transition group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-45" />
+
+          <span className="sr-only">{translations.open}</span>
         </Button>
       </SheetTrigger>
 
@@ -72,14 +95,16 @@ const TripSidebar = (props: TripSidebarProps) => {
                 size="icon"
               >
                 <Plus className="transition group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-45" />
+
+                <span className="sr-only">{translations.close}</span>
               </Button>
             </SheetClose>
           </div>
 
-          <SheetTitle className="sr-only">Search for places</SheetTitle>
+          <SheetTitle className="sr-only">{translations.title}</SheetTitle>
 
           <SheetDescription className="sr-only">
-            View of all my trips
+            {translations.description}
           </SheetDescription>
 
           <div className="grid grid-cols-1 gap-4 rounded-none">

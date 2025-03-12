@@ -36,7 +36,7 @@ interface TableOfContentProps {
 export const TableOfContent = async (props: TableOfContentProps) => {
   const { content } = props
 
-  const t = await getTranslations('page.blog.section')
+  const t = await getTranslations('pages.blog.section')
 
   return (
     <div className="group relative my-8 overflow-clip rounded-lg border bg-card p-4">

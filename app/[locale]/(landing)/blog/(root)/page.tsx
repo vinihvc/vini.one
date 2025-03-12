@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 const BlogPage = async () => {
-  const t = await getTranslations('page.blog.section.heading')
+  const t = await getTranslations('pages.blog.section.heading')
 
   const publishedPosts = allPosts
     .filter((post) => post.status === 'published')

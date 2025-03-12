@@ -22,7 +22,7 @@ const MAX_COMPANIES = 3
 const CompaniesSection = (props: CompaniesSectionProps) => {
   const { data, ...rest } = props
 
-  const t = useTranslations('page.home.section.career')
+  const t = useTranslations('pages.home.section.career')
 
   const [showAll, setShowAll] = React.useState(false)
 

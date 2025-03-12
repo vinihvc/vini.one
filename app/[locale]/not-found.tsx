@@ -6,7 +6,7 @@ import React from 'react'
 const NoiseBg = React.lazy(() => import('@/components/layout/noise-bg'))
 
 const NotFoundPage = async () => {
-  const t = await getTranslations('page.not-found')
+  const t = await getTranslations('pages.not-found')
 
   return (
     <>

@@ -12,7 +12,7 @@ const SOCIAL_KEYS = ['x', 'github']
 export const SocialLinks = async (props: SocialLinksProps) => {
   const { className, ...rest } = props
 
-  const t = await getTranslations('page.home.section.about.image')
+  const t = await getTranslations('pages.home.section.about.image')
 
   const filteredSocial = SOCIAL.filter((social) =>
     SOCIAL_KEYS.includes(social.key),

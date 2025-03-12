@@ -11,7 +11,7 @@ import { getTranslations } from 'next-intl/server'
 import { ProjectCard } from './_components/project-card'
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const t = await getTranslations('page.projects.metadata')
+  const t = await getTranslations('pages.projects.metadata')
 
   return {
     title: t('title'),
@@ -33,7 +33,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const ProjectsPage = async () => {
-  const t = await getTranslations('page.projects.section')
+  const t = await getTranslations('pages.projects.section')
 
   return (
     <div className="container selection:bg-green-500">

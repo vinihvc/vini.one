@@ -1,5 +1,8 @@
 {
-	"page": {
+	"metadata": {
+		"description": "Front-end engineer who loves UX, Performance and Design."
+	},
+	"pages": {
 		"home": {
 			"metadata": {
 				"title": "Vinicius Vicentini",
@@ -12,7 +15,7 @@
 				},
 				"heading": {
 					"title": "Greetings",
-					"description": "Here I share a little about me, my career and what I do."
+					"description": "Sharing my projects, trips and articles."
 				},
 				"about": {
 					"image": {
@@ -51,12 +54,12 @@
 				"projects": {
 					"apps": {
 						"eletrohits": "A streaming music app",
-						"os": "A minimal operating system",
-						"books": "Book library",
-						"clock": "Beautiful gradient clock",
-						"adventure": "Medieval idle game",
-						"optimizer": "Image compressor and converter",
-						"date": "Date formatter using Intl API",
+						"os": "A minimalist operating system",
+						"books": "Book library using Google API",
+						"clock": "A customizable gradient clock",
+						"adventure": "A medieval idle game",
+						"optimizer": "Image compressor & converter",
+						"date": "Date formatter using native API",
 						"fit": "Nutrition facts app"
 					},
 					"cta": "Visit my GitHub"
@@ -66,30 +69,42 @@
 		"trips": {
 			"metadata": {
 				"title": "Trips",
-				"description": "My trips and adventures."
+				"description": "Some places I've visited"
+			},
+			"section": {
+				"sidebar": {
+					"open": "Open trips list",
+					"title": "Trips",
+					"description": "Some places I've visited",
+					"cta": "Open trips list",
+					"close": "Close trips list"
+				},
+				"marker": {
+					"cta": "See all details of this trip"
+				}
 			}
 		},
 		"uses": {
 			"metadata": {
 				"title": "Uses",
-				"description": "Some of the tools, apps, and gear that I use on a daily basis."
+				"description": "Tools, apps, and gear that I use on a daily basis."
 			},
 			"section": {
 				"heading": {
 					"title": "Uses",
-					"description": "Some of the tools, apps, and gear that I use on a daily basis."
+					"description": "Tools, apps, and gear that I use on a daily basis."
 				}
 			}
 		},
 		"blog": {
 			"metadata": {
 				"title": "Blog",
-				"description": "Writing about my experiences and thoughts."
+				"description": "Writing about things that interest me."
 			},
 			"section": {
 				"heading": {
 					"title": "Blog",
-					"description": "Writing about my experiences and thoughts."
+					"description": "Writing about things that interest me."
 				},
 				"post": {
 					"common": {
@@ -118,19 +133,12 @@
 			}
 		},
 		"footer": {
-			"chilling": "Chilling in"
+			"chilling": "Currently"
 		},
 		"carousel": {
 			"previous": "Previous slide",
 			"next": "Next slide"
 		}
 	},
-	"common": {
-		"button": {
-			"text": "Click me"
-		}
-	},
-	"metadata": {
-		"description": "Front-end engineer who loves UX, Performance and Design."
-	}
+	"common": {}
 }

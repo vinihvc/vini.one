@@ -3,7 +3,7 @@
 import type { Trip } from '@/.contentlayer/generated'
 import { formatDate } from '@/utils/formatter'
 import L from 'leaflet'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Marker, Popup } from 'react-leaflet'
 import { BlurImage } from '../blur-image'
 import { Button } from '../button'
@@ -33,6 +33,8 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
   const { data, ...rest } = props
 
   const firstTwoPhotos = data.photos.slice(0, 2)
+
+  const t = useTranslations('pages.trips.section.marker')
 
   const locale = useLocale()
 
@@ -81,9 +83,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
           </div>
 
           <Button variant="primary" size="sm" asChild>
-            <NavLink href={`/trips/${data.slug}`}>
-              Check all details about this trip
-            </NavLink>
+            <NavLink href={`/trips/${data.slug}`}>{t('cta')}</NavLink>
           </Button>
         </article>
       </Popup>

@@ -40,7 +40,7 @@ const MDXPhotos = async (props: MDXPhotosProps) => {
   return (
     <div {...rest}>
       <h2 id="gallery" className="mt-10">
-        <a href="#gallery">{t('page.blog.section.post.common.gallery')}</a>
+        <a href="#gallery">{t('pages.blog.section.post.common.gallery')}</a>
       </h2>
 
       <Carousel className="w-full" opts={{ align: 'start', loop: true }}>

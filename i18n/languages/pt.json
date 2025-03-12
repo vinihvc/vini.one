@@ -1,5 +1,8 @@
 {
-	"page": {
+	"metadata": {
+		"description": "Engenheiro front-end que ama UX, Performance e Design."
+	},
+	"pages": {
 		"home": {
 			"metadata": {
 				"title": "Início",
@@ -12,7 +15,7 @@
 				},
 				"heading": {
 					"title": "Saudações",
-					"description": "Aqui eu compartilho um pouco sobre mim, minha carreira e o que eu faço."
+					"description": "Compartilhando meus projetos, viagens e artigos."
 				},
 				"about": {
 					"image": {
@@ -20,14 +23,14 @@
 						"cta": "Visite meu {name}"
 					},
 					"content": {
-						"part-1": "<b>Olá, eu sou o Vini</b>, meu primeiro contato com programação veio da edição de Mods para Counter-Strike 1.6. Depois tive alguns sites e blogs e eventualmente decidi transformar isso em uma carreira.",
-						"part-2": "Eu gosto de trabalhar onde o design encontra o código. <b>CSS, Design Systems e Animações</b> - esses são meus pontos de paixão. Criar APIs de componentes excepcionais que os usuários adoram usar.",
+						"part-1": "<b>Olá, sou o Vini</b>, meu primeiro contato com programação foi editando Mods para Counter-Strike 1.6. Depois tive alguns sites e blogs e eventualmente decidi transformar isso em uma carreira.",
+						"part-2": "Eu gosto de trabalhar onde o design encontra o código. <b>CSS, Design Systems e Animações</b> - é o que eu amo fazer. Criar interfaces excepcionais para as pessoas usarem.",
 						"part-3": "No meu tempo livre, gosto de <link>ler livros</link>, cozinhar e <b>passar tempo com meus cachorros</b>."
 					}
 				},
 				"career": {
 					"title": "Carreira",
-					"description": "{years}+ anos de experiência na indústria",
+					"description": "{years}+ anos de experiência profissional",
 					"common": {
 						"now": "Atual"
 					},
@@ -52,31 +55,56 @@
 					"apps": {
 						"eletrohits": "App de streaming de música",
 						"os": "Sistema operacional minimalista",
-						"books": "Biblioteca de livros",
-						"clock": "Relógio com gradiente",
-						"adventure": "Jogo medieval autônomo",
-						"optimizer": "Compressor e conversor de imagens",
-						"date": "Formatação de data usando Intl API",
-						"fit": "App de informações nutricionais"
+						"books": "Biblioteca de livros usando API do Google",
+						"clock": "Relógio personalizável com gradiente",
+						"adventure": "Jogo medieval automático",
+						"optimizer": "Compressor & conversor de imagens",
+						"date": "Formatação de datas usando API nativa",
+						"fit": "App de informação nutricional de alimentos"
 					},
 					"cta": "Visite meu GitHub"
 				}
 			}
 		},
-		"trips": {},
+		"trips": {
+			"metadata": {
+				"title": "Viagens",
+				"description": "Alguns lugares que eu já visitei"
+			},
+			"section": {
+				"sidebar": {
+					"open": "Abrir lista de viagens",
+					"title": "Viagens",
+					"description": "Alguns lugares que eu já visitei",
+					"cta": "Abrir lista de viagens",
+					"close": "Fechar lista de viagens"
+				},
+				"marker": {
+					"cta": "Ver os detalhes desta viagem"
+				}
+			}
+		},
 		"uses": {
+			"metadata": {
+				"title": "Usos",
+				"description": "Ferramentas, apps e equipamentos que eu uso no dia a dia."
+			},
 			"section": {
 				"heading": {
 					"title": "Usos",
-					"description": "Algumas das ferramentas, aplicativos e equipamentos que eu uso no meu dia a dia."
+					"description": "Ferramentas, apps e equipamentos que eu uso no dia a dia."
 				}
 			}
 		},
 		"blog": {
+			"metadata": {
+				"title": "Blog",
+				"description": "Escrevendo sobre coisas que me interessam."
+			},
 			"section": {
 				"heading": {
 					"title": "Blog",
-					"description": "Escrevendo sobre minhas experiências e pensamentos."
+					"description": "Escrevendo sobre coisas que me interessam."
 				},
 				"post": {
 					"common": {
@@ -105,19 +133,12 @@
 			}
 		},
 		"footer": {
-			"chilling": "Visitando"
+			"chilling": "Atualmente"
 		},
 		"carousel": {
 			"previous": "Slide anterior",
 			"next": "Slide seguinte"
 		}
 	},
-	"common": {
-		"button": {
-			"text": "Clique aqui"
-		}
-	},
-	"metadata": {
-		"description": "Engenheiro front-end que ama UX, Performance e Design."
-	}
+	"common": {}
 }

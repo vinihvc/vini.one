@@ -19,7 +19,7 @@ const HomePage = async () => {
     throw new Error('First job not found')
   }
 
-  const t = await getTranslations('page.home.section')
+  const t = await getTranslations('pages.home.section')
 
   const startYear = new Date(firstJob.startDate).getFullYear()
 

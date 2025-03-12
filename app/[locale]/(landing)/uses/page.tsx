@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const t = await getTranslations('page.uses.section')
+  const t = await getTranslations('pages.uses.section')
 
   return {
     title: t('heading.title'),
@@ -14,7 +14,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 }
 
 const UsesPage = async () => {
-  const t = await getTranslations('page.uses.section')
+  const t = await getTranslations('pages.uses.section')
 
   return (
     <div className="container selection:bg-purple-500">

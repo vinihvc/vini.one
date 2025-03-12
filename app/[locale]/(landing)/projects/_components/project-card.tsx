@@ -50,7 +50,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
       <div className="text-center">
         <h1 className="font-medium">{data.name}</h1>
 
-        <p className="line-clamp-2 text-muted-foreground text-sm">
+        <p className="line-clamp-2 text-balance px-5 text-muted-foreground text-sm">
           {data.description}
         </p>
       </div>
