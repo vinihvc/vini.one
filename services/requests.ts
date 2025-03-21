@@ -1,9 +1,8 @@
-import type { Post, Trip } from '@/.contentlayer/generated'
+import type { Post, Trip, Uses } from '@/.contentlayer/generated'
 import type { BookType } from '@/content/books'
 import type { CompanyType } from '@/content/companies'
 import type { ProjectType } from '@/content/projects'
 import type { TravelType } from '@/content/travel'
-import type { UseType } from '@/content/uses'
 import { http } from './http'
 
 export const getTrips = async () => {
@@ -47,7 +46,7 @@ export const getBooks = async () => {
 }
 
 export const getUses = async () => {
-  const { data } = await http.get<UseType[]>('/uses', {
+  const { data } = await http.get<Uses[]>('/uses', {
     cache: 'force-cache',
   })
 

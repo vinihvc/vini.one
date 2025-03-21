@@ -3,7 +3,7 @@
 import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/cn'
 import { usePathname } from 'next/navigation'
-import type React from 'react'
+import React from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
 
 export const linkVariants = tv({
@@ -40,10 +40,17 @@ export const NavLink = (props: NavLinkProps) => {
   } = props
 
   const pathname = usePathname()
+  const pathnameWithoutLocale = React.useMemo(() => {
+    // Remove locale prefix more efficiently with a single replace
+    const newPathname = pathname.replace(/^\/(en|pt)/, '')
+
+    // Return root path if empty after locale removal
+    return newPathname || '/'
+  }, [pathname])
 
   const isCurrent = exact
-    ? href === pathname
-    : pathname.startsWith(href.toString())
+    ? href === pathnameWithoutLocale
+    : pathnameWithoutLocale.startsWith(href.toString())
 
   return (
     <Link

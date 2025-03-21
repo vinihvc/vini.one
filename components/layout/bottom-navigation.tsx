@@ -28,8 +28,8 @@ const BottomNavigation = async (props: BottomNavigationProps) => {
         {HEADER_ROUTES.map((route) => (
           <li key={route.href} className="w-full">
             <Button
-              variant="ghost"
               className="w-full px-0 [&_svg]:h-5 [&_svg]:w-5"
+              variant="ghost"
               size="lg"
               asChild
             >
