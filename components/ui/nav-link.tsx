@@ -1,7 +1,7 @@
 'use client'
 
+import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/cn'
-import NextLink, { type LinkProps as NextLinkProps } from 'next/link'
 import { usePathname } from 'next/navigation'
 import type React from 'react'
 import { type VariantProps, tv } from 'tailwind-variants'
@@ -16,7 +16,7 @@ export const linkVariants = tv({
 
 interface NavLinkProps
   extends VariantProps<typeof linkVariants>,
-    NextLinkProps,
+    React.ComponentProps<typeof Link>,
     Omit<React.ComponentProps<'a'>, 'href'> {
   /**
    *  If `true`, the link will open in new tab
@@ -46,12 +46,13 @@ export const NavLink = (props: NavLinkProps) => {
     : pathname.startsWith(href.toString())
 
   return (
-    <NextLink
+    <Link
       className={cn(linkVariants({ className }), {
         active: isCurrent,
       })}
       href={href}
       aria-current={isCurrent ? 'page' : undefined}
+      prefetch
       {...rest}
       {...(isExternal && {
         target: '_blank',
@@ -60,6 +61,6 @@ export const NavLink = (props: NavLinkProps) => {
       })}
     >
       {children}
-    </NextLink>
+    </Link>
   )
 }

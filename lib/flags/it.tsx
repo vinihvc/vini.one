@@ -2,6 +2,7 @@ import { createIcon } from '@/components/ui/create-icon'
 
 export const ItFlag = createIcon({
   title: 'Italy',
+  className: 'flag',
   viewBox: '0 0 512 512',
   path: (
     <>

@@ -1,9 +1,10 @@
+import { allUses } from '@/.contentlayer/generated'
+import { MDXComponents } from '@/components/mdx/mdx-components'
 import { FadeSection } from '@/components/ui/fade-section'
 import { Heading } from '@/components/ui/heading'
-import { NavLink } from '@/components/ui/nav-link'
-import { USES } from '@/content/uses'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { notFound } from 'next/navigation'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations('pages.uses.section')
@@ -13,8 +14,22 @@ export const generateMetadata = async (): Promise<Metadata> => {
   }
 }
 
-const UsesPage = async () => {
+interface UsesPageProps {
+  params: Promise<{
+    locale: string
+  }>
+}
+
+const UsesPage = async (props: UsesPageProps) => {
+  const { locale } = await props.params
+
   const t = await getTranslations('pages.uses.section')
+
+  const uses = allUses.find((use) => use.slug === locale)
+
+  if (!uses) {
+    notFound()
+  }
 
   return (
     <div className="container selection:bg-purple-500">
@@ -28,40 +43,8 @@ const UsesPage = async () => {
         </h2>
       </FadeSection>
 
-      <div className="prose prose-invert mt-10 text-muted-foreground">
-        {USES.map((use, index) => (
-          <FadeSection key={use.title} delay={(index + 1) * 0.05} blur>
-            <h3>{use.title}</h3>
-
-            <ul>
-              {use.items.map((item) => (
-                <li key={item.title}>
-                  {item.link && (
-                    <NavLink
-                      href={item.link}
-                      className="rounded-xs underline underline-offset-4 ring-purple-500 transition hover:text-purple-500"
-                      isExternal
-                    >
-                      {item.title}
-                    </NavLink>
-                  )}
-
-                  {!item.link && (
-                    <span
-                      // biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
-                      tabIndex={0}
-                      className="rounded-xs font-medium text-foreground outline-0 ring-offset-2 ring-offset-background transition focus-visible:ring-2 focus-visible:ring-purple-500"
-                    >
-                      {item.title}
-                    </span>
-                  )}
-
-                  <span> - {item.description}</span>
-                </li>
-              ))}
-            </ul>
-          </FadeSection>
-        ))}
+      <div className="prose prose-invert prose-p:my-0 mt-10 prose-strong:font-medium text-muted-foreground prose-a:transition-colors prose-a:hover:text-purple-500">
+        <MDXComponents content={uses.body.code} />
       </div>
     </div>
   )

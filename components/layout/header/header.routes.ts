@@ -1,6 +1,5 @@
 import {
   Home,
-  MapPin,
   MonitorSmartphone,
   SquarePen,
   SquareTerminal,
@@ -15,16 +14,10 @@ export const HEADER_ROUTES = [
     onlyMobile: true,
     icon: Home,
   },
-
   {
     href: '/projects',
     key: 'projects',
     icon: SquareTerminal,
-  },
-  {
-    href: '/trips',
-    key: 'trips',
-    icon: MapPin,
   },
   {
     href: '/uses',

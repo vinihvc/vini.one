@@ -25,7 +25,7 @@
 					"content": {
 						"part-1": "<b>Olá, sou o Vini</b>, meu primeiro contato com programação foi editando Mods para Counter-Strike 1.6. Depois tive alguns sites e blogs e eventualmente decidi transformar isso em uma carreira.",
 						"part-2": "Eu gosto de trabalhar onde o design encontra o código. <b>CSS, Design Systems e Animações</b> - é o que eu amo fazer. Criar interfaces excepcionais para as pessoas usarem.",
-						"part-3": "No meu tempo livre, gosto de <link>ler livros</link>, cozinhar e <b>passar tempo com meus cachorros</b>."
+						"part-3": "No meu tempo livre, gosto de <read>ler livros</read>, cozinhar, <travel>viajar</travel> e <b>passar tempo com meus cachorros</b>."
 					}
 				},
 				"career": {
@@ -130,6 +130,11 @@
 				"trips": "Viagens",
 				"uses": "Usos",
 				"blog": "Blog"
+			},
+			"language": {
+				"pt": "Português",
+				"en": "Inglês",
+				"cta": "Mudar idioma para {language}"
 			}
 		},
 		"footer": {

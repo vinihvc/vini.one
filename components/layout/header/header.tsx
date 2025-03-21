@@ -1,7 +1,7 @@
+import { SwitchLanguage } from '@/components/ui/switch-language'
 import { cn } from '@/lib/cn'
 import { getTranslations } from 'next-intl/server'
 import { RemoveScroll } from 'react-remove-scroll'
-import { HeaderLanguage } from './header.language'
 import { HeaderLogo } from './header.logo'
 import { HeaderNavItem } from './header.nav-item'
 import { HEADER_ROUTES } from './header.routes'
@@ -43,7 +43,7 @@ export const Header = async (props: HeaderProps) => {
             return <HeaderNavItem key={route.href} data={{ ...route, label }} />
           })}
 
-          <HeaderLanguage />
+          <SwitchLanguage />
         </nav>
       </div>
     </header>

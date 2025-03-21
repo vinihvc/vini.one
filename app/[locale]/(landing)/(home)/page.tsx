@@ -83,10 +83,18 @@ const HomePage = async () => {
           <FadeSection delay={0.4} asChild>
             <p>
               {t.rich('about.content.part-3', {
-                link: (chunks: React.ReactNode) => (
+                read: (chunks: React.ReactNode) => (
                   <NavLink
                     className="rounded-xs text-foreground underline ring-orange-500 hover:text-orange-500"
                     href="/bookshelf"
+                  >
+                    {chunks}
+                  </NavLink>
+                ),
+                travel: (chunks: React.ReactNode) => (
+                  <NavLink
+                    className="rounded-xs text-foreground underline ring-orange-500 hover:text-orange-500"
+                    href="/trips"
                   >
                     {chunks}
                   </NavLink>

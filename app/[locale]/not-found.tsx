@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
+import { Link } from '@/i18n/navigation'
 import { getTranslations } from 'next-intl/server'
-import Link from 'next/link'
 import React from 'react'
 
 const NoiseBg = React.lazy(() => import('@/components/layout/noise-bg'))
@@ -12,7 +12,7 @@ const NotFoundPage = async () => {
     <>
       <NoiseBg />
 
-      <main className="items-center justify-center selection:bg-pink-500">
+      <main className="container items-center justify-center selection:bg-pink-500">
         <div
           className="fixed top-1/2 left-1/2 h-px w-px animate-zoom rounded-full bg-foreground shadow-2xl"
           style={{

@@ -7,7 +7,7 @@ import { routing } from '@/i18n/routing'
 import { fontSans } from '@/lib/font'
 import { createOgImage } from '@/utils/create-og-image'
 import type { Metadata, Viewport } from 'next'
-import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import React from 'react'
@@ -89,17 +89,15 @@ const LocaleLayout = async ({ params, children }: LocaleLayoutProps) => {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={fontSans.variable}>
-        <NextIntlClientProvider>
-          <Header />
+        <Header />
 
-          {children}
+        {children}
 
-          <BottomNavigation />
+        <BottomNavigation />
 
-          <MediaQueriesIndicator />
+        <MediaQueriesIndicator />
 
-          <UmamiTracking />
-        </NextIntlClientProvider>
+        <UmamiTracking />
       </body>
     </html>
   )

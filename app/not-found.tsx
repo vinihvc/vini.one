@@ -2,7 +2,7 @@
 
 import NextError from 'next/error'
 
-const NotFound = () => {
+const NotFoundPage = () => {
   return (
     <html lang="en">
       <body>
@@ -12,4 +12,4 @@ const NotFound = () => {
   )
 }
 
-export default NotFound
+export default NotFoundPage

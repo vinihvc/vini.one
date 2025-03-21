@@ -2,6 +2,7 @@ import { cn } from '@/lib/cn'
 import { getTranslations } from 'next-intl/server'
 import { Button } from '../ui/button'
 import { NavLink } from '../ui/nav-link'
+import { SwitchLanguage } from '../ui/switch-language'
 import { HEADER_ROUTES } from './header/header.routes'
 
 interface BottomNavigationProps extends React.ComponentProps<'nav'> {}
@@ -38,11 +39,23 @@ const BottomNavigation = async (props: BottomNavigationProps) => {
                 href={route.href}
               >
                 <route.icon />
+
                 <span className="sr-only">{t(route.key)}</span>
               </NavLink>
             </Button>
           </li>
         ))}
+
+        <li className="w-full">
+          <Button
+            className="[&_svg]:h-5 [&_svg]:w-5"
+            variant="ghost"
+            size="lg"
+            asChild
+          >
+            <SwitchLanguage />
+          </Button>
+        </li>
       </ul>
     </nav>
   )

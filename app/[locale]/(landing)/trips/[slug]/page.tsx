@@ -2,11 +2,13 @@ import { allTrips } from '@/.contentlayer/generated'
 import { MDXContent } from '@/components/mdx/mdx-content'
 import { SITE_CONFIG } from '@/config/site'
 import { createOgImage } from '@/utils/create-og-image'
+import type { Locale } from 'next-intl'
 import { notFound } from 'next/navigation'
 
 interface TripsSlugPageProps {
   params: Promise<{
     slug: string
+    locale: Locale
   }>
 }
 
@@ -45,7 +47,7 @@ export const generateMetadata = async ({ params }: TripsSlugPageProps) => {
 }
 
 const TripsSlugPage = async (props: TripsSlugPageProps) => {
-  const { slug } = await props.params
+  const { slug, locale } = await props.params
 
   const trip = allTrips.find(
     (trip) => trip.slug === slug && trip.status === 'published',
@@ -55,6 +57,7 @@ const TripsSlugPage = async (props: TripsSlugPageProps) => {
 
   return (
     <MDXContent
+      locale={locale}
       data={{
         title: trip.title,
         description: trip.description,
