@@ -30,6 +30,7 @@ export const createIcon = ({
   viewBox = '0 0 24 24',
   path,
   title,
+  className: iconClassName,
   d: pathDefinition,
   defaultProps,
 }: IconProps) => {
@@ -44,7 +45,7 @@ export const createIcon = ({
 
     return (
       <svg
-        className={cn('inline-flex', className)}
+        className={cn('inline-flex', iconClassName, className)}
         viewBox={viewBox}
         {...defaults}
         {...rest}

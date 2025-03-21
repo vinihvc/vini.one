@@ -1,6 +1,9 @@
+'use client'
+
 import type { Trip } from '@/.contentlayer/generated'
 import { formatDate } from '@/utils/formatter'
 import L from 'leaflet'
+import { useLocale, useTranslations } from 'next-intl'
 import { Marker, Popup } from 'react-leaflet'
 import { BlurImage } from '../blur-image'
 import { Button } from '../button'
@@ -31,6 +34,20 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
 
   const firstTwoPhotos = data.photos.slice(0, 2)
 
+  const t = useTranslations('pages.trips.section.marker')
+
+  const locale = useLocale()
+
+  const formattedDate = formatDate(
+    data.arrivalDate,
+    {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    },
+    locale,
+  )
+
   return (
     <Marker
       title={`${data.city}, ${data.country}`}
@@ -47,9 +64,9 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
 
             <time
               className="text-muted-foreground text-xs"
-              dateTime={data.arrivalDate}
+              dateTime={formattedDate}
             >
-              {formatDate(data.arrivalDate)}
+              {formattedDate}
             </time>
           </div>
 
@@ -66,9 +83,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
           </div>
 
           <Button variant="primary" size="sm" asChild>
-            <NavLink href={`/trips/${data.slug}`}>
-              Check all details about this trip
-            </NavLink>
+            <NavLink href={`/trips/${data.slug}`}>{t('cta')}</NavLink>
           </Button>
         </article>
       </Popup>

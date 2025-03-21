@@ -1,3 +1,5 @@
+import type { Locale } from 'next-intl'
+
 /**
  * Format date to YYYY
  *
@@ -7,12 +9,8 @@
  */
 export const formatDate = (
   date: string,
-  options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-  },
-  locale = 'en-US',
+  options: Intl.DateTimeFormatOptions,
+  locale: Locale,
 ) => {
   return new Intl.DateTimeFormat(locale, options).format(new Date(date))
 }
@@ -50,5 +48,5 @@ export const readTime = (text: string) => {
   const noOfWords = text.split(/\s+/).length
   const minutes = Math.ceil(noOfWords / wordsPerMinute)
 
-  return `${minutes} min read`
+  return minutes
 }

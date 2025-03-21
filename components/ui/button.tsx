@@ -36,7 +36,7 @@ export const buttonStyle = tv({
 })
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.ComponentProps<'button'>,
     VariantProps<typeof buttonStyle> {
   /**
    * If true, the button will be rendered as a child of a link
@@ -45,15 +45,7 @@ export interface ButtonProps
 }
 
 export const Button = (props: ButtonProps) => {
-  const {
-    type = 'button',
-    variant,
-    size,
-    asChild,
-    className,
-    children,
-    ...rest
-  } = props
+  const { type = 'button', variant, size, asChild, className, ...rest } = props
 
   const Comp = asChild ? Slot : 'button'
 
@@ -62,8 +54,6 @@ export const Button = (props: ButtonProps) => {
       type={type}
       className={buttonStyle({ variant, size, className })}
       {...rest}
-    >
-      {children}
-    </Comp>
+    />
   )
 }

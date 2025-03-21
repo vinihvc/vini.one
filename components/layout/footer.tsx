@@ -1,13 +1,16 @@
-import { SEO } from '@/config/seo'
+import { SITE_CONFIG } from '@/config/site'
 import { TRAVEL } from '@/content/travel'
 import { cn } from '@/lib/cn'
 import { Flags } from '@/lib/flags'
+import { getTranslations } from 'next-intl/server'
 import type React from 'react'
 
 interface FooterProps extends React.ComponentProps<'footer'> {}
 
 const Footer = async (props: FooterProps) => {
   const { className, ...rest } = props
+
+  const t = await getTranslations('components.footer')
 
   const travelingCountry = TRAVEL.at(0)
 
@@ -24,7 +27,7 @@ const Footer = async (props: FooterProps) => {
             </span>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs">Chilling in</span>
+              <span className="text-xs">{t('chilling')}</span>
 
               <Flag />
             </div>
@@ -34,7 +37,7 @@ const Footer = async (props: FooterProps) => {
         )}
 
         <span className="text-sm">
-          &copy;{` ${new Date().getFullYear()} ${SEO.name}`}
+          &copy;{` ${new Date().getFullYear()} ${SITE_CONFIG.name}`}
         </span>
       </div>
     </footer>

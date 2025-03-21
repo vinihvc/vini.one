@@ -1,0 +1,149 @@
+{
+	"metadata": {
+		"description": "Engenheiro front-end que ama UX, Performance e Design."
+	},
+	"pages": {
+		"home": {
+			"metadata": {
+				"title": "Início",
+				"description": "Esta é a página inicial"
+			},
+			"section": {
+				"announcement": {
+					"badge": "Novo",
+					"title": "Projetos atualizados"
+				},
+				"heading": {
+					"title": "Saudações",
+					"description": "Compartilhando meus projetos, viagens e artigos."
+				},
+				"about": {
+					"image": {
+						"alt": "Foto de Vinicius Vicentini, olhando para cima e atrás está o Rijksmuseum, em Amsterdã",
+						"cta": "Visite meu {name}"
+					},
+					"content": {
+						"part-1": "<b>Olá, sou o Vini</b>, meu primeiro contato com programação foi editando Mods para Counter-Strike 1.6. Depois tive alguns sites e blogs e eventualmente decidi transformar isso em uma carreira.",
+						"part-2": "Eu gosto de trabalhar onde o design encontra o código. <b>CSS, Design Systems e Animações</b> - é o que eu amo fazer. Criar interfaces excepcionais para as pessoas usarem.",
+						"part-3": "No meu tempo livre, gosto de <read>ler livros</read>, cozinhar, <travel>viajar</travel> e <b>passar tempo com meus cachorros</b>."
+					}
+				},
+				"career": {
+					"title": "Carreira",
+					"description": "{years}+ anos de experiência profissional",
+					"common": {
+						"now": "Atual"
+					},
+					"cta": {
+						"more": "Mostrar mais",
+						"less": "Mostrar menos"
+					}
+				}
+			}
+		},
+		"projects": {
+			"metadata": {
+				"title": "Projetos",
+				"description": "Meus projetos open-source e contribuições."
+			},
+			"section": {
+				"heading": {
+					"title": "Projetos",
+					"description": "Meus projetos open-source e contribuições."
+				},
+				"projects": {
+					"apps": {
+						"eletrohits": "App de streaming de música",
+						"os": "Sistema operacional minimalista",
+						"books": "Biblioteca usando API do Google",
+						"clock": "Relógio personalizável com gradiente",
+						"adventure": "Jogo medieval automático",
+						"optimizer": "Compressor & conversor de imagens",
+						"date": "Formatação de datas usando API nativa",
+						"fit": "App de informação nutricional de alimentos"
+					},
+					"cta": "Visite meu GitHub"
+				}
+			}
+		},
+		"trips": {
+			"metadata": {
+				"title": "Viagens",
+				"description": "Alguns lugares que eu já visitei"
+			},
+			"section": {
+				"sidebar": {
+					"open": "Abrir lista de viagens",
+					"title": "Viagens",
+					"description": "Alguns lugares que eu já visitei",
+					"cta": "Abrir lista de viagens",
+					"close": "Fechar lista de viagens"
+				},
+				"marker": {
+					"cta": "Ver os detalhes desta viagem"
+				}
+			}
+		},
+		"uses": {
+			"metadata": {
+				"title": "Usos",
+				"description": "Ferramentas, apps e equipamentos que eu uso no dia a dia."
+			},
+			"section": {
+				"heading": {
+					"title": "Usos",
+					"description": "Ferramentas, apps e equipamentos que eu uso no dia a dia."
+				}
+			}
+		},
+		"blog": {
+			"metadata": {
+				"title": "Blog",
+				"description": "Escrevendo sobre coisas que me interessam."
+			},
+			"section": {
+				"heading": {
+					"title": "Blog",
+					"description": "Escrevendo sobre coisas que me interessam."
+				},
+				"post": {
+					"common": {
+						"read-time": "{time} min de leitura",
+						"summary": "Neste artigo você encontrará:",
+						"gallery": "Galeria de fotos"
+					}
+				}
+			}
+		},
+		"not-found": {
+			"title": "404",
+			"description": "<span>Não entre em pânico</span>, mas esta página não existe.",
+			"cta": "Voltar para o Início"
+		}
+	},
+	"components": {
+		"header": {
+			"logo": "{name}, Voltar para a página inicial",
+			"navigation": {
+				"home": "Início",
+				"projects": "Projetos",
+				"trips": "Viagens",
+				"uses": "Usos",
+				"blog": "Blog"
+			},
+			"language": {
+				"pt": "Português",
+				"en": "Inglês",
+				"cta": "Mudar idioma para {language}"
+			}
+		},
+		"footer": {
+			"chilling": "Atualmente"
+		},
+		"carousel": {
+			"previous": "Slide anterior",
+			"next": "Slide seguinte"
+		}
+	},
+	"common": {}
+}

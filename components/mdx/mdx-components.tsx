@@ -1,9 +1,9 @@
+import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/cn'
 import { slugify } from '@/utils/formatter'
 import { Hash } from 'lucide-react'
 import type { MDXComponents as MDXComponentsType } from 'mdx/types'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
-import Link from 'next/link'
 import React from 'react'
 import { BlurImage } from '../ui/blur-image'
 

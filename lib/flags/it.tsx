@@ -2,7 +2,8 @@ import { createIcon } from '@/components/ui/create-icon'
 
 export const ItFlag = createIcon({
   title: 'Italy',
-  viewBox: '0 0    512',
+  className: 'flag',
+  viewBox: '0 0 512 512',
   path: (
     <>
       <path fill="#EEE" d="M136 512V0h240v512z" />
