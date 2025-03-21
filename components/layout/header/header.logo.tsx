@@ -1,13 +1,17 @@
 import { Button } from '@/components/ui/button'
 import { NavLink } from '@/components/ui/nav-link'
+import { SITE_CONFIG } from '@/config/site'
 import { cn } from '@/lib/cn'
 import { Icons } from '@/lib/icons'
+import { getTranslations } from 'next-intl/server'
 
 interface HeaderLogoProps
   extends Omit<React.ComponentProps<typeof NavLink>, 'href'> {}
 
-export const HeaderLogo = (props: HeaderLogoProps) => {
+export const HeaderLogo = async (props: HeaderLogoProps) => {
   const { className, ...rest } = props
+
+  const t = await getTranslations('components.header')
 
   return (
     <Button
@@ -20,7 +24,7 @@ export const HeaderLogo = (props: HeaderLogoProps) => {
     >
       <NavLink
         href="/"
-        aria-label="Vinicius Vicentini, Back to homepage"
+        aria-label={t('logo', { name: SITE_CONFIG.name })}
         exact
         {...rest}
       >

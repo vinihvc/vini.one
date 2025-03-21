@@ -8,7 +8,7 @@ interface HeaderNavItemProps
   /**
    * Route data
    */
-  data: RouteType
+  data: RouteType & { label: string }
 }
 
 export const HeaderNavItem = (props: HeaderNavItemProps) => {

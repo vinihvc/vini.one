@@ -1,6 +1,5 @@
 import {
   Home,
-  MapPin,
   MonitorSmartphone,
   SquarePen,
   SquareTerminal,
@@ -11,29 +10,23 @@ export type RouteType = (typeof HEADER_ROUTES)[number]
 export const HEADER_ROUTES = [
   {
     href: '/',
-    label: 'Home',
+    key: 'home',
     onlyMobile: true,
     icon: Home,
   },
-
   {
     href: '/projects',
-    label: 'Projects',
+    key: 'projects',
     icon: SquareTerminal,
   },
   {
-    href: '/trips',
-    label: 'Trips',
-    icon: MapPin,
-  },
-  {
     href: '/uses',
-    label: 'Uses',
+    key: 'uses',
     icon: MonitorSmartphone,
   },
   {
     href: '/blog',
-    label: 'Blog',
+    key: 'blog',
     icon: SquarePen,
   },
 ]

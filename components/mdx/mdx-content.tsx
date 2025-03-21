@@ -1,6 +1,8 @@
 import { cn } from '@/lib/cn'
 import { formatDate, readTime } from '@/utils/formatter'
 import { Calendar, Clock } from 'lucide-react'
+import type { Locale } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import React from 'react'
 import { BlurImage } from '../ui/blur-image'
 import { MDXComponents } from './mdx-components'
@@ -9,6 +11,13 @@ import { TableOfContent } from './table-of-content'
 const MDXPhotos = React.lazy(() => import('./mdx-photos'))
 
 interface MDXContentProps extends React.ComponentProps<'article'> {
+  /**
+   * The locale of the content
+   */
+  locale: Locale
+  /**
+   * The data of the content
+   */
   data: {
     title: string
     description: string
@@ -27,8 +36,20 @@ interface MDXContentProps extends React.ComponentProps<'article'> {
   }
 }
 
-export const MDXContent = (props: MDXContentProps) => {
-  const { data, ...rest } = props
+export const MDXContent = async (props: MDXContentProps) => {
+  const { data, locale, ...rest } = props
+
+  const t = await getTranslations('pages.blog.section')
+
+  const formattedDate = formatDate(
+    data.publishedAt,
+    {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    },
+    locale,
+  )
 
   return (
     <article
@@ -48,22 +69,20 @@ export const MDXContent = (props: MDXContentProps) => {
 
         <div className="flex justify-between text-sm">
           <time
-            dateTime={data.publishedAt}
+            dateTime={formattedDate}
             className="flex items-center gap-2 text-muted-foreground"
           >
             <Calendar className="h-4 w-4" />
 
-            {formatDate(data.publishedAt ?? '', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric',
-            })}
+            {formattedDate}
           </time>
 
           <time className="flex items-center gap-2 text-muted-foreground">
             <Clock className="h-4 w-4" />
 
-            {readTime(data.content)}
+            {t('post.common.read-time', {
+              time: readTime(data.content),
+            })}
           </time>
         </div>
       </header>

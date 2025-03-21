@@ -188,10 +188,15 @@ export const CarouselItem = (props: CarouselItemProps) => {
   )
 }
 
-export const CarouselPrevious = (
-  props: React.ComponentProps<typeof Button>,
-) => {
-  const { className, variant = 'outline', size = 'icon', ...rest } = props
+interface CarouselPreviousProps extends React.ComponentProps<typeof Button> {
+  /**
+   * The text to display on the button
+   */
+  text: string
+}
+
+export const CarouselPrevious = (props: CarouselPreviousProps) => {
+  const { className, variant = 'outline', size = 'icon', text, ...rest } = props
 
   const { scrollPrev, canScrollPrev } = useCarousel()
 
@@ -208,13 +213,20 @@ export const CarouselPrevious = (
       {...rest}
     >
       <ArrowLeft />
-      <span className="sr-only">Previous slide</span>
+      <span className="sr-only">{text}</span>
     </Button>
   )
 }
 
-export const CarouselNext = (props: React.ComponentProps<typeof Button>) => {
-  const { className, variant = 'outline', size = 'icon', ...rest } = props
+interface CarouselNextProps extends React.ComponentProps<typeof Button> {
+  /**
+   * The text to display on the button
+   */
+  text: string
+}
+
+export const CarouselNext = (props: CarouselNextProps) => {
+  const { className, variant = 'outline', size = 'icon', text, ...rest } = props
 
   const { scrollNext, canScrollNext } = useCarousel()
 
@@ -231,7 +243,7 @@ export const CarouselNext = (props: React.ComponentProps<typeof Button>) => {
       {...rest}
     >
       <ArrowRight />
-      <span className="sr-only">Next slide</span>
+      <span className="sr-only">{text}</span>
     </Button>
   )
 }

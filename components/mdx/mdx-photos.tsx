@@ -1,4 +1,5 @@
 import { X } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
 import { BlurImage } from '../ui/blur-image'
 import { Button } from '../ui/button'
 import {
@@ -27,8 +28,10 @@ interface MDXPhotosProps {
   }[]
 }
 
-const MDXPhotos = (props: MDXPhotosProps) => {
+const MDXPhotos = async (props: MDXPhotosProps) => {
   const { data, ...rest } = props
+
+  const t = await getTranslations('')
 
   if (!data || data.length === 0) {
     return null
@@ -37,7 +40,7 @@ const MDXPhotos = (props: MDXPhotosProps) => {
   return (
     <div {...rest}>
       <h2 id="gallery" className="mt-10">
-        <a href="#gallery">Galeria de fotos</a>
+        <a href="#gallery">{t('pages.blog.section.post.common.gallery')}</a>
       </h2>
 
       <Carousel className="w-full" opts={{ align: 'start', loop: true }}>
@@ -57,7 +60,7 @@ const MDXPhotos = (props: MDXPhotosProps) => {
                 </CarouselItem>
               </DialogTrigger>
 
-              <DialogContent className="flex h-full w-full items-center justify-between">
+              <DialogContent className="z-70 flex h-full w-full items-center justify-between bg-black/50 backdrop-blur-sm">
                 <DialogTitle className="sr-only">Photos</DialogTitle>
 
                 <DialogDescription className="sr-only">
@@ -83,9 +86,15 @@ const MDXPhotos = (props: MDXPhotosProps) => {
           ))}
         </CarouselContent>
 
-        <CarouselPrevious className="max-lg:hidden" />
+        <CarouselPrevious
+          className="max-lg:hidden"
+          text={t('components.carousel.previous')}
+        />
 
-        <CarouselNext className="max-lg:hidden" />
+        <CarouselNext
+          className="max-lg:hidden"
+          text={t('components.carousel.next')}
+        />
       </Carousel>
     </div>
   )

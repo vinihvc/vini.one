@@ -1,4 +1,4 @@
-import { SEO } from '@/config/seo'
+import { SITE_CONFIG } from '@/config/site'
 
 import type { MetadataRoute } from 'next'
 
@@ -8,7 +8,7 @@ const robots = (): MetadataRoute.Robots => {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${SEO.url}/sitemap.xml`,
+    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
   }
 }
 
