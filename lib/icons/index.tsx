@@ -3,10 +3,10 @@ import {
   Album,
   CalendarSearch,
   Clock,
+  Crown,
   Linkedin,
   Omega,
   Salad,
-  Swords,
   TrendingDown,
 } from 'lucide-react'
 import { Eletrohits } from './eletrohits'
@@ -21,7 +21,7 @@ export const Icons = {
   os: Omega,
   books: Album,
   clock: Clock,
-  adventure: Swords,
+  adventure: Crown,
   optimizer: TrendingDown,
   date: CalendarSearch,
   fit: Salad,
