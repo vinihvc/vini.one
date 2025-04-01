@@ -15,7 +15,7 @@ const PROJECT_CARD_CLASSES: Record<ProjectType['key'], string> = {
   os: 'text-blue-500',
   books: 'text-pink-500',
   clock: 'text-yellow-500',
-  adventure: 'text-orange-500',
+  idleval: 'text-orange-500',
   optimizer: 'text-purple-500',
   date: 'text-indigo-500',
   fit: 'text-green-500',

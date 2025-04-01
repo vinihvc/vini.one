@@ -30,11 +30,11 @@ export const PROJECTS = [
     website: 'https://clock.vini.one',
   },
   {
-    key: 'adventure',
-    name: 'Adventure',
-    description: 'Idle game with a lot of adventures',
-    url: 'https://github.com/vinihvc/adventure',
-    website: 'https://adventure.vini.one',
+    key: 'idleval',
+    name: 'Idleval',
+    description: 'Medieval idle game',
+    url: 'https://github.com/vinihvc/idleval',
+    website: 'https://idleval.vini.one',
   },
   {
     key: 'optimizer',

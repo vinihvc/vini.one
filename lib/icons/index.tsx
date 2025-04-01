@@ -21,7 +21,7 @@ export const Icons = {
   os: Omega,
   books: Album,
   clock: Clock,
-  adventure: Crown,
+  idleval: Crown,
   optimizer: TrendingDown,
   date: CalendarSearch,
   fit: Salad,
