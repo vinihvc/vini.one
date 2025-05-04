@@ -10,7 +10,6 @@
 		"lint:fix": "biome lint ./ --write",
 		"format": "biome format ./",
 		"format:fix": "biome format ./ --write",
-		"postinstall": "contentlayer2 generate",
 		"build:content": "contentlayer2 build"
 	},
 	"dependencies": {

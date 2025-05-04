@@ -1,3 +1,5 @@
+import 'server-only'
+
 import cloudinary from 'cloudinary'
 import { env } from './env'
 
