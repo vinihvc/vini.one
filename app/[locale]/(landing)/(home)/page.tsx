@@ -99,6 +99,14 @@ const HomePage = async () => {
                     {chunks}
                   </NavLink>
                 ),
+                cook: (chunks: React.ReactNode) => (
+                  <NavLink
+                    className="rounded-xs text-foreground underline ring-orange-500 hover:text-orange-500"
+                    href="/recipes"
+                  >
+                    {chunks}
+                  </NavLink>
+                ),
                 b: (chunks: React.ReactNode) => (
                   <span className="font-medium text-foreground">{chunks}</span>
                 ),

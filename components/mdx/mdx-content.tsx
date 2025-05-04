@@ -61,7 +61,7 @@ export const MDXContent = async (props: MDXContentProps) => {
       <header>
         <h1 className="mb-2">{data.title}</h1>
 
-        <p className="!my-0 text-foreground opacity-90 sm:text-lg">
+        <p className="!my-0 text-muted-foreground opacity-90 sm:text-lg">
           {data.description}
         </p>
 

@@ -1,6 +1,6 @@
 'use client'
 
-import type { Post } from '@/.contentlayer/generated'
+import type { Recipe } from '@/.contentlayer/generated'
 import { Badge } from '@/components/ui/badge'
 import { BlurImage } from '@/components/ui/blur-image'
 import { cn } from '@/lib/cn'
@@ -9,19 +9,19 @@ import { formatDate } from '@/utils/formatter'
 import { Calendar } from 'lucide-react'
 import { useLocale } from 'next-intl'
 
-interface PostCardProps extends React.ComponentProps<'div'> {
+interface RecipeCardProps extends React.ComponentProps<'div'> {
   /**
-   * The post data to display
+   * The recipe data to display
    */
-  data: Post
+  data: Recipe
 }
 
-export const PostCard = (props: PostCardProps) => {
+export const RecipeCard = (props: RecipeCardProps) => {
   const { data, className, ...rest } = props
 
   const locale = useLocale()
 
-  const Flag = Flags[data.language as keyof typeof Flags]
+  const Flag = Flags[data.country as keyof typeof Flags]
 
   const formattedDate = formatDate(
     data.publishedAt,
@@ -61,11 +61,7 @@ export const PostCard = (props: PostCardProps) => {
 
           <h1 className="font-medium text-lg/tight">{data.title}</h1>
 
-          <p className="flex-1 text-base text-muted-foreground">
-            {data.description}
-          </p>
-
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 text-muted-foreground">
             <Calendar className="h-3 w-3" />
 
             <time dateTime={formattedDate} className="text-xs">
@@ -75,7 +71,7 @@ export const PostCard = (props: PostCardProps) => {
         </div>
       </div>
 
-      {data.language && <Flag className="absolute right-4 bottom-4" />}
+      {data.country && <Flag className="absolute right-4 bottom-4" />}
     </article>
   )
 }

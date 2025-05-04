@@ -1,18 +1,6 @@
 export type TravelType = (typeof TRAVEL)[number]
 
 export const TRAVEL = [
-  // went 20/03/2025
-  {
-    country: 'Mexico',
-    city: 'San Luis Potosí',
-    location: {
-      latitude: 22.152583,
-      longitude: -100.987544,
-    },
-    countryCode: 'mx',
-    arrivalDate: '20/03/2025',
-    departureDate: '20/03/2025',
-  },
   // went 02/04/2024
   {
     country: 'Brazil',

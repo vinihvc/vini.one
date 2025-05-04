@@ -25,7 +25,7 @@
 					"content": {
 						"part-1": "<b>Hi, I'm Vini</b>, my first foray into programming came from editing Mods for Counter-Strike 1.6. Then I had some websites and blogs and eventually decided to turn it into a career.",
 						"part-2": "I enjoy working where design meets code. <b>CSS, Design Systems, and Animations</b> - these are my passion points. Crafting exceptional component APIs that users love to use.",
-						"part-3": "In my free time, I enjoy <read>reading books</read>, cooking, <travel>traveling</travel> and <b>spending time with my dogs</b>."
+						"part-3": "In my free time, I enjoy <read>reading books</read>, <cook>cooking</cook>, <travel>traveling</travel> and <b>spending time with my dogs</b>."
 					}
 				},
 				"career": {
@@ -112,6 +112,18 @@
 						"summary": "In this article you will find:",
 						"gallery": "Photo gallery"
 					}
+				}
+			}
+		},
+		"recipes": {
+			"metadata": {
+				"title": "Recipes",
+				"description": "Recipes that I like to cook."
+			},
+			"section": {
+				"heading": {
+					"title": "Recipes",
+					"description": "My public recipe book."
 				}
 			}
 		},
