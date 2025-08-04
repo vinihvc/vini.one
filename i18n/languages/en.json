@@ -54,6 +54,7 @@
 				"projects": {
 					"apps": {
 						"eletrohits": "A streaming music app",
+						"apphub": "Copy and paste commands to install apps",
 						"os": "A minimalist operating system",
 						"books": "Library using Google API",
 						"clock": "A customizable gradient clock",
