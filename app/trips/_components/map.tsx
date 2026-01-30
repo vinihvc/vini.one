@@ -1,9 +1,7 @@
 "use client";
 
-import type { Page } from "fumadocs-core/source";
-import type { DocCollectionEntry } from "fumadocs-mdx/runtime/server";
 import dynamic from "next/dynamic";
-import type { TripType } from "@/types/trips";
+import type { SerializableTrip } from "@/utils/serializer";
 
 const LeafletMap = dynamic(() => import("@/components/ui/leaflet-map"), {
   ssr: false,
@@ -11,13 +9,11 @@ const LeafletMap = dynamic(() => import("@/components/ui/leaflet-map"), {
 
 interface TripMapProps {
   /**
-   * The places to display on the map
+   * The trips to display on the map
    */
-  data?: Page<DocCollectionEntry<"trips", TripType>>[];
+  data?: SerializableTrip[];
 }
 
 export const TripMap = (props: TripMapProps) => {
-  const { data } = props;
-
-  return <LeafletMap data={data} />;
+  return <LeafletMap {...props} />;
 };

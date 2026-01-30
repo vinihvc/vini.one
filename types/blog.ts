@@ -8,7 +8,7 @@ export const blogSchema = z.object({
     alt: z.string(),
   }),
   tags: z.array(z.string()),
-  publishedAt: z.date().or(z.string()),
+  publishedAt: z.string().or(z.date()),
   status: z.enum(["draft", "published"]),
 });
 

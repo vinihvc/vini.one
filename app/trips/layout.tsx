@@ -9,7 +9,7 @@ const TripsLayout = ({ children }: React.PropsWithChildren) => {
 
       <main>{children}</main>
     </>
-  )
-}
+  );
+};
 
-export default TripsLayout
+export default TripsLayout;

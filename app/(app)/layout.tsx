@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const NoiseBg = React.lazy(() => import('@/components/layout/noise-bg'))
-const Footer = React.lazy(() => import('@/components/layout/footer'))
+const NoiseBg = React.lazy(() => import("@/components/layout/noise-bg"));
+const Footer = React.lazy(() => import("@/components/layout/footer"));
 
 const LandingLayout = ({ children }: React.PropsWithChildren) => {
   return (
@@ -12,7 +12,7 @@ const LandingLayout = ({ children }: React.PropsWithChildren) => {
 
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default LandingLayout
+export default LandingLayout;

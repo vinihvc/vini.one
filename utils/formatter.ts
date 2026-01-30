@@ -6,7 +6,7 @@
  * ```
  */
 export const formatDate = (
-  date: string,
+  date: string | Date,
   options: Intl.DateTimeFormatOptions
 ) => {
   return new Intl.DateTimeFormat("pt-BR", options).format(new Date(date));

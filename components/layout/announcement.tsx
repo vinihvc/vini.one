@@ -1,7 +1,7 @@
-import { cn } from '@/lib/cn'
-import { Badge } from '../ui/badge'
-import { Button } from '../ui/button'
-import { NavLink } from '../ui/nav-link'
+import { cn } from "@/lib/cn";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { NavLink } from "../ui/nav-link";
 
 interface AnnouncementProps
   extends React.ComponentPropsWithoutRef<typeof Button> {
@@ -12,27 +12,27 @@ interface AnnouncementProps
     /**
      * The badge to display in the announcement
      */
-    badge: string
+    badge: string;
     /**
      * The label to display in the announcement
      */
-    label: string
+    label: string;
     /**
      * The href to display in the announcement
      */
-    href: string
-  }
+    href: string;
+  };
 }
 
 export const Announcement = (props: AnnouncementProps) => {
-  const { data, className, ...rest } = props
+  const { data, className, ...rest } = props;
 
   return (
     <Button
-      className={cn('gap-4 rounded-full pr-4 pl-1.5 text-xs', className)}
-      variant="outline"
-      size="sm"
       asChild
+      className={cn("gap-4 rounded-full pr-4 pl-1.5 text-xs", className)}
+      size="sm"
+      variant="outline"
       {...rest}
     >
       <NavLink href={data.href}>
@@ -43,5 +43,5 @@ export const Announcement = (props: AnnouncementProps) => {
         {data.label}
       </NavLink>
     </Button>
-  )
-}
+  );
+};

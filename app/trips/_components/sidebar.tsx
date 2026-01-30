@@ -1,7 +1,5 @@
 "use client";
 
-import type { Page } from "fumadocs-core/source";
-import type { DocCollectionEntry } from "fumadocs-mdx/runtime/server";
 import { AlignLeft, Plus } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -16,14 +14,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/cn";
-import type { TripType } from "@/types/trips";
+import { formatDate } from "@/utils/formatter";
+import type { SerializableTrip } from "@/utils/serializer";
 
 interface TripSidebarProps
   extends React.ComponentPropsWithoutRef<typeof Sheet> {
   /**
    * The data of the routes
    */
-  data?: Page<DocCollectionEntry<"trips", TripType>>[];
+  data?: SerializableTrip[];
 }
 
 const TripSidebar = (props: TripSidebarProps) => {
@@ -86,7 +85,7 @@ const TripSidebar = (props: TripSidebarProps) => {
 
           <div className="grid grid-cols-1 gap-4 rounded-none">
             {data?.map((trip) => {
-              const firstPhoto = trip.data.photos[0];
+              const firstPhoto = trip.photos[0];
 
               return (
                 <Link
@@ -97,7 +96,7 @@ const TripSidebar = (props: TripSidebarProps) => {
                   <article className="flex w-full items-center gap-4 rounded-lg border p-2 transition hover:border-blue-500">
                     <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md">
                       <BlurImage
-                        alt={`${trip.data.city}, ${trip.data.country}`}
+                        alt={`${trip.city}, ${trip.country}`}
                         className="h-16 w-16 object-cover"
                         height={64}
                         src={firstPhoto ?? ""}
@@ -107,18 +106,18 @@ const TripSidebar = (props: TripSidebarProps) => {
 
                     <div className="flex flex-col gap-1">
                       <h3 className="font-medium">
-                        {trip.data.city}, {trip.data.country}
+                        {trip.city}, {trip.country}
                       </h3>
 
-                      {/* <time
+                      <time
                         className="text-muted-foreground text-xs"
-                        dateTime={trip.data.arrivalDate as string}
+                        dateTime={trip.arrivalDate.toString()}
                       >
-                        {formatDate(trip.data.arrivalDate as string, {
+                        {formatDate(trip.arrivalDate, {
                           month: "long",
                           year: "numeric",
                         })}
-                      </time> */}
+                      </time>
                     </div>
                   </article>
                 </Link>

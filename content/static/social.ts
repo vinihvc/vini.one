@@ -1,36 +1,36 @@
-import { SITE_CONFIG } from '@/config/site'
+import { SITE_CONFIG } from "@/config/site";
 
-export type SocialType = (typeof SOCIAL)[number]
+export type SocialType = (typeof SOCIAL)[number];
 
 export const SOCIAL = [
   {
-    key: 'github',
-    title: 'GitHub',
+    key: "github",
+    title: "GitHub",
     url: `${SITE_CONFIG.url}/github`,
-    handle: '@vinihvc',
+    handle: "@vinihvc",
   },
   {
-    key: 'x',
-    title: 'X',
+    key: "x",
+    title: "X",
     url: `${SITE_CONFIG.url}/x`,
-    handle: '@vinihvc',
+    handle: "@vinihvc",
   },
   {
-    key: 'linkedin',
-    title: 'LinkedIn',
+    key: "linkedin",
+    title: "LinkedIn",
     url: `${SITE_CONFIG.url}/linkedin`,
-    handle: '@vinihvc',
+    handle: "@vinihvc",
   },
   {
-    key: 'instagram',
-    title: 'Instagram',
+    key: "instagram",
+    title: "Instagram",
     url: `${SITE_CONFIG.url}/instagram`,
-    handle: '@vinihvc',
+    handle: "@vinihvc",
   },
   {
-    key: 'email',
-    title: 'Email',
-    url: 'mailto:viniciusvicentini@live.com',
+    key: "email",
+    title: "Email",
+    url: "mailto:viniciusvicentini@live.com",
     handle: undefined,
   },
-] as const
+] as const;

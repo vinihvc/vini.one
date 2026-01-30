@@ -13,9 +13,9 @@ export const tripsSchema = z.object({
     alt: z.string(),
   }),
   photos: z.array(z.string()),
-  arrivalDate: z.date().or(z.string()).optional(),
-  departureDate: z.date().or(z.string()),
-  publishedAt: z.date().or(z.string()),
+  arrivalDate: z.string().or(z.date()),
+  departureDate: z.string().or(z.date()),
+  publishedAt: z.string().or(z.date()),
   status: z.enum(["draft", "published"]),
 });
 

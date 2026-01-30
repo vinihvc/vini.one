@@ -1,6 +1,13 @@
-import { BOOKS } from '@/content/books'
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
+import { bookshelfSource } from "@/lib/source";
+import { serializeBookshelf } from "@/utils/serializer";
 
-export const GET = async () => {
-  return NextResponse.json({ data: BOOKS })
-}
+export const dynamic = "force-static";
+
+export const GET = () => {
+  const books = bookshelfSource.getPages();
+
+  const serializedBooks = serializeBookshelf(books);
+
+  return NextResponse.json({ data: serializedBooks });
+};

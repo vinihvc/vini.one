@@ -1,10 +1,9 @@
 "use client";
 
-import type { Page } from "fumadocs-core/source";
-import type { DocCollectionEntry } from "fumadocs-mdx/runtime/server";
 import L from "leaflet";
 import { Marker, Popup } from "react-leaflet";
-import type { TripType } from "@/types/trips";
+import { formatDate } from "@/utils/formatter";
+import type { SerializableTrip } from "@/utils/serializer";
 import { BlurImage } from "../blur-image";
 import { Button } from "../button";
 import { NavLink } from "../nav-link";
@@ -26,48 +25,46 @@ interface LeafletMapMarkerProps
   /**
    * The data of the place
    */
-  data: Page<DocCollectionEntry<"trips", TripType>>;
+  data: SerializableTrip;
 }
 
 export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
   const { data, ...rest } = props;
 
-  const { city, country, photos, arrivalDate, location } = data.data;
+  const firstTwoPhotos = data.photos.slice(0, 2);
 
-  const firstTwoPhotos = photos.slice(0, 2);
-
-  // const formattedDate = formatDate(arrivalDate as string, {
-  //   month: "long",
-  //   day: "numeric",
-  //   year: "numeric",
-  // });
+  const formattedDate = formatDate(data.arrivalDate, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
   return (
     <Marker
-      title={`${city}, ${country}`}
+      title={`${data.city}, ${data.country}`}
       {...rest}
       icon={markerIcon}
-      position={[location.latitude, location.longitude]}
+      position={[data.location.latitude, data.location.longitude]}
     >
       <Popup closeOnEscapeKey minWidth={300}>
         <article className="flex h-auto flex-col gap-4 px-4 py-2 selection:bg-blue-500">
           <div>
             <h1 className="font-medium text-base">
-              {city}, {country}
+              {data.city}, {data.country}
             </h1>
 
-            {/* <time
+            <time
               className="text-muted-foreground text-xs"
               dateTime={formattedDate}
             >
               {formattedDate}
-            </time> */}
+            </time>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            {firstTwoPhotos.map((photo) => (
+            {firstTwoPhotos.map((photo: string) => (
               <BlurImage
-                alt={`${city}, ${country}`}
+                alt={`${data.city}, ${data.country}`}
                 className="aspect-square rounded-md object-cover"
                 fill
                 key={photo}

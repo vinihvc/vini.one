@@ -1,10 +1,8 @@
 "use client";
 
-import type { Page } from "fumadocs-core/source";
-import type { DocCollectionEntry } from "fumadocs-mdx/runtime/server";
 import { MapContainer } from "react-leaflet";
 import { cn } from "@/lib/cn";
-import type { TripType } from "@/types/trips";
+import type { SerializableTrip } from "@/utils/serializer";
 import { LeafletMapLayer } from "./leaflet-map.layer";
 import { LeafletMapMarker } from "./leaflet-map.marker";
 
@@ -14,7 +12,7 @@ interface LeafletMapProps extends React.ComponentProps<typeof MapContainer> {
   /**
    * The places to display on the map
    */
-  data?: Page<DocCollectionEntry<"trips", TripType>>[];
+  data?: SerializableTrip[];
 }
 
 const LeafletMap = (props: LeafletMapProps) => {
@@ -69,8 +67,8 @@ const LeafletMap = (props: LeafletMapProps) => {
       >
         <LeafletMapLayer />
 
-        {data?.map((place) => (
-          <LeafletMapMarker data={place} key={place.url} />
+        {data?.map((trip) => (
+          <LeafletMapMarker data={trip} key={trip.url} />
         ))}
       </MapContainer>
     </div>
