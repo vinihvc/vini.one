@@ -107,10 +107,26 @@ export function Stories(props: StoriesProps) {
               <div
                 className={cn(
                   "h-full bg-white transition-all duration-100",
-                  isActive ? "w-full" : isPrev ? "w-full" : "w-0"
+                  (() => {
+                    if (isActive) {
+                      return "w-full";
+                    }
+                    if (isPrev) {
+                      return "w-full";
+                    }
+                    return "w-0";
+                  })()
                 )}
                 style={{
-                  width: isActive ? `${progress}%` : isPrev ? "100%" : "0%",
+                  width: (() => {
+                    if (isActive) {
+                      return `${progress}%`;
+                    }
+                    if (isPrev) {
+                      return "100%";
+                    }
+                    return "0%";
+                  })(),
                 }}
               />
             </div>

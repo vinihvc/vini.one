@@ -1,7 +1,8 @@
 import Link from "fumadocs-core/link";
 import type { MDXComponents } from "mdx/types";
 import { cn } from "@/lib/cn";
-// use this function to get MDX components, you will need it for rendering MDX
+import { BlurImage } from "./components/ui/blur-image";
+
 export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   ...components,
   a: ({ className, ...props }: React.ComponentProps<"a">) => (
@@ -134,8 +135,20 @@ export const mdxComponents = (components?: MDXComponents): MDXComponents => ({
   hr: ({ ...props }: React.ComponentProps<"hr">) => (
     <hr className="my-4 md:my-8" {...props} />
   ),
-  img: ({ className, ...props }: React.ComponentProps<"img">) => (
-    <img className={cn("rounded-md", className)} {...props} />
+  img: ({
+    className,
+    alt,
+    ...props
+  }: React.ComponentProps<typeof BlurImage>) => (
+    <figure {...props}>
+      <BlurImage
+        alt={alt ?? ""}
+        className={cn("aspect-square rounded-md", className)}
+        {...props}
+      />
+
+      <figcaption className="text-muted-foreground text-sm">{alt}</figcaption>
+    </figure>
   ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link

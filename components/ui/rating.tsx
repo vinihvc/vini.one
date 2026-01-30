@@ -45,6 +45,7 @@ export const Rating = (props: RatingProps) => {
             )}
             id={`rating${reactId}star:${position}`}
             key={`rating${reactId}star:${position}`}
+            role="radio"
             tabIndex={-1}
           >
             <Star
