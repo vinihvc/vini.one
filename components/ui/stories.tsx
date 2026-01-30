@@ -11,7 +11,6 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 import type { UseEmblaCarouselType } from 'embla-carousel-react'
-import { useTranslations } from 'next-intl'
 import { BlurImage } from './blur-image'
 
 interface Story {
@@ -38,7 +37,6 @@ export function Stories(props: StoriesProps) {
   const [internalIndex, setInternalIndex] = React.useState(defaultIndex ?? 0)
   const [progress, setProgress] = React.useState(0)
   const [isFirstRender, setIsFirstRender] = React.useState(true)
-  const t = useTranslations('components.carousel')
 
   // Use defaultIndex only on first render
   const currentIndex = isFirstRender
@@ -149,12 +147,12 @@ export function Stories(props: StoriesProps) {
 
         <CarouselPrevious
           className="-translate-y-1/2 -left-4 absolute top-1/2 z-10 h-10 w-10 max-sm:hidden"
-          text={t('previous')}
+          text="Previous slide"
         />
 
         <CarouselNext
           className="-translate-y-1/2 -right-4 absolute top-1/2 z-10 h-10 w-10 max-sm:hidden"
-          text={t('next')}
+          text="Next slide"
         />
 
         <div className="absolute inset-0 flex">

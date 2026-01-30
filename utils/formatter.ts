@@ -1,5 +1,3 @@
-import type { Locale } from 'next-intl'
-
 /**
  * Format date to YYYY
  *
@@ -10,10 +8,10 @@ import type { Locale } from 'next-intl'
 export const formatDate = (
   date: string,
   options: Intl.DateTimeFormatOptions,
-  locale: Locale,
+  locale = "en"
 ) => {
-  return new Intl.DateTimeFormat(locale, options).format(new Date(date))
-}
+  return new Intl.DateTimeFormat(locale, options).format(new Date(date));
+};
 
 /**
  * Pluralize a word
@@ -24,8 +22,8 @@ export const formatDate = (
  * ```
  */
 export const pluralize = (word: string, count: number) => {
-  return `${word}${count > 1 ? 's' : ''}`
-}
+  return `${word}${count > 1 ? "s" : ""}`;
+};
 
 /**
  * Slugify a string
@@ -37,16 +35,18 @@ export const pluralize = (word: string, count: number) => {
 export const slugify = (text: string) => {
   return text
     .toLowerCase()
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .replace(/ /g, '-')
-    .replace(/[^\w-]+/g, '')
-}
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/ /g, "-")
+    .replace(/[^\w-]+/g, "");
+};
+
+const NO_OF_WORDS_REGEX = /\s+/g;
 
 export const readTime = (text: string) => {
-  const wordsPerMinute = 200
-  const noOfWords = text.split(/\s+/).length
-  const minutes = Math.ceil(noOfWords / wordsPerMinute)
+  const wordsPerMinute = 200;
+  const noOfWords = text.split(NO_OF_WORDS_REGEX).length;
+  const minutes = Math.ceil(noOfWords / wordsPerMinute);
 
-  return minutes
-}
+  return minutes;
+};

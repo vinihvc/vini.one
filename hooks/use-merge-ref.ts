@@ -12,7 +12,6 @@ export const useMergeRefs = <T>(...refs: (ReactRef<T> | undefined)[]) => {
         if (ref) assignRef(ref, node)
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, refs)
 }
 

@@ -1,5 +1,4 @@
 import { X } from 'lucide-react'
-import { getTranslations } from 'next-intl/server'
 import { BlurImage } from '../ui/blur-image'
 import { Button } from '../ui/button'
 import {
@@ -31,8 +30,6 @@ interface MDXPhotosProps {
 const MDXPhotos = async (props: MDXPhotosProps) => {
   const { data, ...rest } = props
 
-  const t = await getTranslations('')
-
   if (!data || data.length === 0) {
     return null
   }
@@ -40,7 +37,7 @@ const MDXPhotos = async (props: MDXPhotosProps) => {
   return (
     <div {...rest}>
       <h2 id="gallery" className="mt-10">
-        <a href="#gallery">{t('pages.blog.section.post.common.gallery')}</a>
+        <a href="#gallery">Photo gallery</a>
       </h2>
 
       <Carousel className="w-full" opts={{ align: 'start', loop: true }}>
@@ -88,12 +85,12 @@ const MDXPhotos = async (props: MDXPhotosProps) => {
 
         <CarouselPrevious
           className="max-lg:hidden"
-          text={t('components.carousel.previous')}
+          text="Previous slide"
         />
 
         <CarouselNext
           className="max-lg:hidden"
-          text={t('components.carousel.next')}
+          text="Next slide"
         />
       </Carousel>
     </div>

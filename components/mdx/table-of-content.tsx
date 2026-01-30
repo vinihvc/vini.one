@@ -1,54 +1,50 @@
-import { cn } from '@/lib/cn'
-import { slugify } from '@/utils/formatter'
-import { NotebookText } from 'lucide-react'
-import type { MDXComponents as MDXComponentsType } from 'mdx/types'
-import { getTranslations } from 'next-intl/server'
-import { MDXComponents, childrenToString, linkClasses } from './mdx-components'
-
-const mdxComponents: MDXComponentsType = {
-  h1: () => null,
-  h2: ({ children }) => (
-    <li>
-      <a
-        href={`#${slugify(childrenToString(children))}`}
-        className={cn(
-          'inline-flex text-muted-foreground hover:text-rose-500 active:text-rose-500',
-          linkClasses,
-        )}
-      >
-        {children}
-      </a>
-    </li>
-  ),
-  h3: () => null,
-  h4: () => null,
-  p: () => null,
-  ul: () => null,
-}
+import type { TOCItemType } from "fumadocs-core/toc";
+import { NotebookText } from "lucide-react";
+import { cn } from "@/lib/cn";
 
 interface TableOfContentProps {
   /**
-   * The content to be rendered
+   * Table of content data
    */
-  content: string
+  data: TOCItemType[];
 }
 
-export const TableOfContent = async (props: TableOfContentProps) => {
-  const { content } = props
+export function TableOfContent(props: TableOfContentProps) {
+  const { data } = props;
 
-  const t = await getTranslations('pages.blog.section')
+  if (data.length === 0) {
+    return null;
+  }
 
   return (
-    <div className="group relative my-8 overflow-clip rounded-lg border bg-card p-4">
+    <div className="group relative mt-8 overflow-clip rounded-lg border bg-card p-4">
       <NotebookText className="absolute top-4 right-4 stroke-1 opacity-60 transition-opacity group-hover:opacity-100 md:h-10 md:w-10" />
 
       <h4 className="mt-0 mb-3 font-medium text-lg">
-        {t('post.common.summary')}
+        In this article you will find:
       </h4>
 
-      <ol className="mb-0 text-base">
-        <MDXComponents content={content} components={mdxComponents} />
+      <ol className="my-6 ms-6 list-decimal text-muted-foreground">
+        {data.map((item) => (
+          <li className="mt-2" key={item.url}>
+            <a
+              className={cn(
+                "relative py-1 leading-4.5 no-underline",
+                "text-muted-foreground",
+                "transition-colors",
+                "before:absolute before:inset-y-px before:-left-3.25 before:w-px before:rounded-full",
+                "hover:text-foreground",
+                "data-[depth=3]:ps-3.5",
+                "data-[depth=4]:ps-5.5"
+              )}
+              data-depth={item.depth}
+              href={item.url}
+            >
+              {item.title}
+            </a>
+          </li>
+        ))}
       </ol>
     </div>
-  )
+  );
 }

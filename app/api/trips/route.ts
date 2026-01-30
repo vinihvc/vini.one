@@ -1,6 +1,7 @@
-import { allTrips } from '@/.contentlayer/generated'
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
+import { getAllTrips } from "@/lib/source";
 
 export const GET = async () => {
-  return NextResponse.json({ data: allTrips })
-}
+	const trips = await getAllTrips();
+	return NextResponse.json({ data: trips });
+};

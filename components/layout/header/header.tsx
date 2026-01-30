@@ -1,51 +1,48 @@
-import { SwitchLanguage } from '@/components/ui/switch-language'
-import { cn } from '@/lib/cn'
-import { getTranslations } from 'next-intl/server'
-import { RemoveScroll } from 'react-remove-scroll'
-import { HeaderLogo } from './header.logo'
-import { HeaderNavItem } from './header.nav-item'
-import { HEADER_ROUTES } from './header.routes'
+import { cn } from "@/lib/cn";
+import { HeaderLogo } from "./header.logo";
+import { HeaderNavItem } from "./header.nav-item";
+import { HEADER_ROUTES } from "./header.routes";
 
-interface HeaderProps extends React.ComponentProps<'header'> {}
+interface HeaderProps extends React.ComponentProps<"header"> {}
 
-export const Header = async (props: HeaderProps) => {
-  const { className, ...rest } = props
-
-  const t = await getTranslations('components.header.navigation')
+export const Header = (props: HeaderProps) => {
+  const { className, ...rest } = props;
 
   return (
     <header
       className={cn(
-        '!max-w-[54rem] container fixed inset-x-0 top-4 z-50 mx-2 selection:bg-yellow-500 max-sm:hidden',
-        RemoveScroll.classNames.zeroRight,
+        "container fixed inset-x-0 top-4 z-50 selection:bg-yellow-500 max-sm:hidden"
       )}
       {...rest}
     >
       <div
         className={cn(
-          'h-16',
-          'px-3',
-          'flex items-center justify-between',
-          'bg-black/60 backdrop-blur-md',
-          'border border-foreground/5',
-          'rounded-xl',
-          className,
+          "h-16",
+          "px-3",
+          "flex items-center justify-between",
+          "bg-black/60 backdrop-blur-md",
+          "border border-foreground/5",
+          "rounded-xl",
+          className
         )}
       >
         <HeaderLogo />
 
         <nav className="flex items-center gap-2">
           {HEADER_ROUTES.map((route) => {
-            if (route.onlyMobile) return null
+            if (route.onlyMobile) {
+              return null;
+            }
 
-            const label = t(route.key)
-
-            return <HeaderNavItem key={route.href} data={{ ...route, label }} />
+            return (
+              <HeaderNavItem
+                data={{ ...route, label: route.label }}
+                key={route.href}
+              />
+            );
           })}
-
-          <SwitchLanguage />
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};

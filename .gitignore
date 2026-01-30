@@ -34,5 +34,5 @@ yarn-error.log*
 .turbo
 .vercel
 
-# contentlayer
-.contentlayer
+# fumadocs-mdx
+.source
