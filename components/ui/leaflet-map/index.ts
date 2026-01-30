@@ -1,1 +1,1 @@
-export { default } from './leaflet-map'
+export { default } from "./leaflet-map";

@@ -4,15 +4,15 @@ import { SITE_CONFIG } from "@/config/site";
 import { blogSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 
-export async function generateStaticParams() {
+export const generateStaticParams = () => {
   const posts = blogSource.getPages();
 
   const publishedPosts = posts.filter(
-    (post) => post.data.status === "published"
+    ({ data }) => data.status === "published"
   );
 
   return publishedPosts.map((post) => ({ slug: post.slugs[0] }));
-}
+};
 
 export const generateMetadata = async (props: PageProps<"/blog/[slug]">) => {
   const { slug } = await props.params;

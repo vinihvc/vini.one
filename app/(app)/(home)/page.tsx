@@ -1,15 +1,13 @@
-import React from "react";
 import { Announcement } from "@/components/layout/announcement";
 import { BlurImage } from "@/components/ui/blur-image";
 import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
 import { NavLink } from "@/components/ui/nav-link";
 import { COMPANIES } from "@/content/static/companies";
+import { CompaniesSection } from "./_components/companies";
 import { SocialLinks } from "./_components/social-links";
 
-const CompaniesSection = React.lazy(() => import("./_components/companies"));
-
-const HomePage = async () => {
+const HomePage = () => {
   const data = COMPANIES;
 
   const firstJob = data.at(-1);

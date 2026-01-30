@@ -2,6 +2,8 @@ import {
   blog,
   bookshelf,
   projects,
+  recipes,
+  trips,
   uses,
 } from "fumadocs-mdx:collections/server";
 import { loader } from "fumadocs-core/source";
@@ -24,4 +26,14 @@ export const blogSource = loader({
 export const projectsSource = loader({
   baseUrl: "/projects",
   source: projects.toFumadocsSource(),
+});
+
+export const tripsSource = loader({
+  baseUrl: "/trips",
+  source: trips.toFumadocsSource(),
+});
+
+export const recipesSource = loader({
+  baseUrl: "/recipes",
+  source: recipes.toFumadocsSource(),
 });

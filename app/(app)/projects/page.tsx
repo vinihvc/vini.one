@@ -29,7 +29,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const ProjectsPage = async () => {
+const ProjectsPage = () => {
   const projects = projectsSource.getPages();
 
   if (!projects.length) {

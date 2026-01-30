@@ -2,46 +2,42 @@ import type { Metadata } from "next";
 import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
 import { NavLink } from "@/components/ui/nav-link";
-import { getAllRecipes } from "@/lib/source";
+import { recipesSource } from "@/lib/source";
 import { RecipeCard } from "./_components/recipe-card";
 
 export const metadata: Metadata = {
-	title: "Recipes",
-	description: "Recipes",
+  title: "Recipes",
+  description: "Recipes I've made and I'm proud of.",
 };
 
 const RecipesPage = async () => {
-	const publishedRecipes = await getAllRecipes();
+  const recipes = recipesSource.getPages();
 
-	return (
-		<div className="container selection:bg-rose-500">
-			<FadeSection className="space-y-1">
-				<Heading className="from-rose-500 to-fuchsia-500">Recipes</Heading>
+  const publishedRecipes = recipes.filter(
+    ({ data }) => data.status === "published"
+  );
 
-				<h2 className="text-lg text-muted-foreground">
-					My public recipe book.
-				</h2>
-			</FadeSection>
+  return (
+    <div className="container selection:bg-rose-500">
+      <FadeSection className="space-y-1">
+        <Heading className="from-rose-500 to-fuchsia-500">Recipes</Heading>
 
-			<div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
-				{publishedRecipes.map((recipe, index) => (
-					<FadeSection
-						key={recipe.title}
-						delay={(index + 1) * 0.05}
-						blur
-						asChild
-					>
-						<NavLink
-							className="rounded-md ring-rose-500"
-							href={`/recipes/${recipe.slug}`}
-						>
-							<RecipeCard data={recipe} />
-						</NavLink>
-					</FadeSection>
-				))}
-			</div>
-		</div>
-	);
+        <h2 className="text-lg text-muted-foreground">
+          My public recipe book.
+        </h2>
+      </FadeSection>
+
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        {publishedRecipes.map((recipe, index) => (
+          <FadeSection asChild blur delay={(index + 1) * 0.05} key={recipe.url}>
+            <NavLink className="rounded-md ring-rose-500" href={recipe.url}>
+              <RecipeCard data={recipe.data} />
+            </NavLink>
+          </FadeSection>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default RecipesPage;

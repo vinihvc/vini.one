@@ -26,7 +26,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const UsesPage = async () => {
+const UsesPage = () => {
   const page = usesSource.getPage([]);
 
   if (!page) {

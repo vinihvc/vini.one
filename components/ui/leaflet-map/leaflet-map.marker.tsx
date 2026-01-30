@@ -1,85 +1,86 @@
 "use client";
 
+import type { Page } from "fumadocs-core/source";
+import type { DocCollectionEntry } from "fumadocs-mdx/runtime/server";
 import L from "leaflet";
 import { Marker, Popup } from "react-leaflet";
-import type { TripItem } from "@/types/source";
-import { formatDate } from "@/utils/formatter";
+import type { TripType } from "@/types/trips";
 import { BlurImage } from "../blur-image";
 import { Button } from "../button";
 import { NavLink } from "../nav-link";
 
 const markerIcon = L.icon({
-	iconUrl:
-		"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nZW8tYWx0LWZpbGwiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZD0iTTggMTZzNi01LjY4NiA2LTEwQTYgNiAwIDAgMCAyIDZjMCA0LjMxNCA2IDEwIDYgMTBtMC03YTMgMyAwIDEgMSAwLTYgMyAzIDAgMCAxIDAgNiIvPgo8L3N2Zz4=",
-	iconRetinaUrl:
-		"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nZW8tYWx0LWZpbGwiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZD0iTTggMTZzNi01LjY4NiA2LTEwQTYgNiAwIDAgMCAyIDZjMCA0LjMxNCA2IDEwIDYgMTBtMC03YTMgMyAwIDEgMSAwLTYgMyAzIDAgMCAxIDAgNiIvPgo8L3N2Zz4=",
-	iconSize: [24, 24],
-	iconAnchor: [16, 16],
-	className:
-		"outline-0 focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full p-2 ring-offset-2 ring-offset-[#1B1B1A]",
-	popupAnchor: [0, -35],
+  iconUrl:
+    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nZW8tYWx0LWZpbGwiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZD0iTTggMTZzNi01LjY4NiA2LTEwQTYgNiAwIDAgMCAyIDZjMCA0LjMxNCA2IDEwIDYgMTBtMC03YTMgMyAwIDEgMSAwLTYgMyAzIDAgMCAxIDAgNiIvPgo8L3N2Zz4=",
+  iconRetinaUrl:
+    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0id2hpdGUiIGNsYXNzPSJiaSBiaS1nZW8tYWx0LWZpbGwiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZD0iTTggMTZzNi01LjY4NiA2LTEwQTYgNiAwIDAgMCAyIDZjMCA0LjMxNCA2IDEwIDYgMTBtMC03YTMgMyAwIDEgMSAwLTYgMyAzIDAgMCAxIDAgNiIvPgo8L3N2Zz4=",
+  iconSize: [24, 24],
+  iconAnchor: [16, 16],
+  className:
+    "outline-0 focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full p-2 ring-offset-2 ring-offset-[#1B1B1A]",
+  popupAnchor: [0, -35],
 });
 
 interface LeafletMapMarkerProps
-	extends Omit<React.ComponentProps<typeof Marker>, "icon" | "position"> {
-	/**
-	 * The data of the place
-	 */
-	data: TripItem;
+  extends Omit<React.ComponentProps<typeof Marker>, "icon" | "position"> {
+  /**
+   * The data of the place
+   */
+  data: Page<DocCollectionEntry<"trips", TripType>>;
 }
 
 export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
-	const { data, ...rest } = props;
+  const { data, ...rest } = props;
 
-	const firstTwoPhotos = data.photos.slice(0, 2);
+  const { city, country, photos, arrivalDate, location } = data.data;
 
-	const formattedDate = formatDate(data.arrivalDate, {
-		month: "long",
-		day: "numeric",
-		year: "numeric",
-	});
+  const firstTwoPhotos = photos.slice(0, 2);
 
-	return (
-		<Marker
-			title={`${data.city}, ${data.country}`}
-			{...rest}
-			position={[data.location.latitude, data.location.longitude]}
-			icon={markerIcon}
-		>
-			<Popup minWidth={300} closeOnEscapeKey>
-				<article className="flex h-auto flex-col gap-4 px-4 py-2 selection:bg-blue-500">
-					<div>
-						<h1 className="font-medium text-base">
-							{data.city}, {data.country}
-						</h1>
+  // const formattedDate = formatDate(arrivalDate as string, {
+  //   month: "long",
+  //   day: "numeric",
+  //   year: "numeric",
+  // });
 
-						<time
-							className="text-muted-foreground text-xs"
-							dateTime={formattedDate}
-						>
-							{formattedDate}
-						</time>
-					</div>
+  return (
+    <Marker
+      title={`${city}, ${country}`}
+      {...rest}
+      icon={markerIcon}
+      position={[location.latitude, location.longitude]}
+    >
+      <Popup closeOnEscapeKey minWidth={300}>
+        <article className="flex h-auto flex-col gap-4 px-4 py-2 selection:bg-blue-500">
+          <div>
+            <h1 className="font-medium text-base">
+              {city}, {country}
+            </h1>
 
-					<div className="grid grid-cols-2 gap-3">
-						{firstTwoPhotos.map((photo) => (
-							<BlurImage
-								key={photo}
-								src={photo}
-								alt={`${data.city}, ${data.country}`}
-								className="aspect-square rounded-md object-cover"
-								fill
-							/>
-						))}
-					</div>
+            {/* <time
+              className="text-muted-foreground text-xs"
+              dateTime={formattedDate}
+            >
+              {formattedDate}
+            </time> */}
+          </div>
 
-					<Button variant="primary" size="sm" asChild>
-						<NavLink href={`/trips/${data.slug}`}>
-							See all details of this trip
-						</NavLink>
-					</Button>
-				</article>
-			</Popup>
-		</Marker>
-	);
+          <div className="grid grid-cols-2 gap-3">
+            {firstTwoPhotos.map((photo) => (
+              <BlurImage
+                alt={`${city}, ${country}`}
+                className="aspect-square rounded-md object-cover"
+                fill
+                key={photo}
+                src={photo}
+              />
+            ))}
+          </div>
+
+          <Button asChild size="sm" variant="primary">
+            <NavLink href={data.url}>See all details of this trip</NavLink>
+          </Button>
+        </article>
+      </Popup>
+    </Marker>
+  );
 };

@@ -1,32 +1,28 @@
 "use client";
 
+import type { Page } from "fumadocs-core/source";
+import type { DocCollectionEntry } from "fumadocs-mdx/runtime/server";
 import { MapContainer } from "react-leaflet";
-import type { TravelType } from "@/content/travel";
 import { cn } from "@/lib/cn";
-import type { TripItem } from "@/types/source";
-import { LeafletMapHomeMarker } from "./leaflet-map.home";
+import type { TripType } from "@/types/trips";
 import { LeafletMapLayer } from "./leaflet-map.layer";
 import { LeafletMapMarker } from "./leaflet-map.marker";
 
 const INITIAL_MAP_ZOOM = 3;
 
 interface LeafletMapProps extends React.ComponentProps<typeof MapContainer> {
-	/**
-	 * The places to display on the map
-	 */
-	places?: TripItem[];
-	/**
-	 * The current location to display on the map
-	 */
-	currentLocation?: TravelType;
+  /**
+   * The places to display on the map
+   */
+  data?: Page<DocCollectionEntry<"trips", TripType>>[];
 }
 
 const LeafletMap = (props: LeafletMapProps) => {
-	const { places, currentLocation, className, ...rest } = props;
+  const { data, className, ...rest } = props;
 
-	return (
-		<div className="flex flex-1">
-			<style>{`
+  return (
+    <div className="flex flex-1">
+      <style>{`
         .leaflet-container {
           font-family: var(--font-sans);
           background: #1B1B1A;
@@ -60,27 +56,25 @@ const LeafletMap = (props: LeafletMapProps) => {
         }
       `}</style>
 
-			<MapContainer
-				className={cn("flex-1", className)}
-				center={[0, 0]}
-				zoom={INITIAL_MAP_ZOOM}
-				minZoom={INITIAL_MAP_ZOOM}
-				zoomControl={false}
-				attributionControl={false}
-				scrollWheelZoom
-				worldCopyJump
-				{...rest}
-			>
-				<LeafletMapLayer />
+      <MapContainer
+        attributionControl={false}
+        center={[0, 0]}
+        className={cn("flex-1", className)}
+        minZoom={INITIAL_MAP_ZOOM}
+        scrollWheelZoom
+        worldCopyJump
+        zoom={INITIAL_MAP_ZOOM}
+        zoomControl={false}
+        {...rest}
+      >
+        <LeafletMapLayer />
 
-				{places?.map((place) => (
-					<LeafletMapMarker key={place.slug} data={place} />
-				))}
-
-				{currentLocation && <LeafletMapHomeMarker data={currentLocation} />}
-			</MapContainer>
-		</div>
-	);
+        {data?.map((place) => (
+          <LeafletMapMarker data={place} key={place.url} />
+        ))}
+      </MapContainer>
+    </div>
+  );
 };
 
 export default LeafletMap;

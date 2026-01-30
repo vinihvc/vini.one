@@ -7,10 +7,9 @@
  */
 export const formatDate = (
   date: string,
-  options: Intl.DateTimeFormatOptions,
-  locale = "en"
+  options: Intl.DateTimeFormatOptions
 ) => {
-  return new Intl.DateTimeFormat(locale, options).format(new Date(date));
+  return new Intl.DateTimeFormat("pt-BR", options).format(new Date(date));
 };
 
 /**

@@ -9,77 +9,77 @@ import { fontSans } from "@/lib/font";
 import { ogImage } from "@/utils/og-image";
 
 const BottomNavigation = React.lazy(
-	() => import("@/components/layout/bottom-navigation"),
+  () => import("@/components/layout/bottom-navigation")
 );
 
 export const viewport: Viewport = {
-	colorScheme: "dark",
-	themeColor: "#0E0F0F",
-	width: "device-width",
-	initialScale: 1,
-	viewportFit: "cover",
+  colorScheme: "dark",
+  themeColor: "#0E0F0F",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export const generateMetadata = async (): Promise<Metadata> => {
-	return {
-		metadataBase: new URL(SITE_CONFIG.url),
-		title: { default: SITE_CONFIG.name, template: `%s // ${SITE_CONFIG.name}` },
-		description: SITE_CONFIG.description,
-		applicationName: SITE_CONFIG.name,
-		keywords: SITE_CONFIG.keywords,
-		openGraph: {
-			type: "website",
-			title: SITE_CONFIG.name,
-			description: SITE_CONFIG.description,
-			siteName: SITE_CONFIG.name,
-			url: SITE_CONFIG.url,
-			images: [
-				{
-					url: ogImage(SITE_CONFIG.name),
-					width: 1200,
-					height: 630,
-					alt: SITE_CONFIG.name,
-				},
-			],
-		},
-		twitter: {
-			card: "summary_large_image",
-			title: SITE_CONFIG.name,
-			description: SITE_CONFIG.description,
-			images: [
-				{
-					url: ogImage(SITE_CONFIG.name),
-					width: 1200,
-					height: 630,
-				},
-			],
-			creator: SITE_CONFIG.twitter,
-		},
-		icons: {
-			icon: "/favicon.ico",
-			shortcut: "/favicon-16x16.png",
-			apple: "/apple-touch-icon.png",
-		},
-		manifest: `${SITE_CONFIG.url}/site.webmanifest`,
-	};
+  return {
+    metadataBase: new URL(SITE_CONFIG.url),
+    title: { default: SITE_CONFIG.name, template: `%s // ${SITE_CONFIG.name}` },
+    description: SITE_CONFIG.description,
+    applicationName: SITE_CONFIG.name,
+    keywords: SITE_CONFIG.keywords,
+    openGraph: {
+      type: "website",
+      title: SITE_CONFIG.name,
+      description: SITE_CONFIG.description,
+      siteName: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+      images: [
+        {
+          url: ogImage(SITE_CONFIG.name),
+          width: 1200,
+          height: 630,
+          alt: SITE_CONFIG.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SITE_CONFIG.name,
+      description: SITE_CONFIG.description,
+      images: [
+        {
+          url: ogImage(SITE_CONFIG.name),
+          width: 1200,
+          height: 630,
+        },
+      ],
+      creator: SITE_CONFIG.twitter,
+    },
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon-16x16.png",
+      apple: "/apple-touch-icon.png",
+    },
+    manifest: `${SITE_CONFIG.url}/site.webmanifest`,
+  };
 };
 
 const RootLayout = async ({ children }: React.PropsWithChildren) => {
-	return (
-		<html lang="en" suppressHydrationWarning>
-			<body className={fontSans.variable}>
-				<Header />
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={fontSans.variable}>
+        <Header />
 
-				{children}
+        {children}
 
-				<BottomNavigation />
+        <BottomNavigation />
 
-				<MediaQueriesIndicator />
+        <MediaQueriesIndicator />
 
-				<UmamiTracking />
-			</body>
-		</html>
-	);
+        <UmamiTracking />
+      </body>
+    </html>
+  );
 };
 
 export default RootLayout;

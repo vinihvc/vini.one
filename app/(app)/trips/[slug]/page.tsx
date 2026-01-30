@@ -1,64 +1,79 @@
 import { notFound } from "next/navigation";
 import { MDXContent } from "@/components/mdx/mdx-content";
 import { SITE_CONFIG } from "@/config/site";
-import { getAllTrips, getTrip } from "@/lib/source";
+import { tripsSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 
-interface TripsSlugPageProps {
-	params: Promise<{ slug: string }>;
-}
+export const generateStaticParams = async () => {
+  const trips = tripsSource.getPages();
 
-export async function generateStaticParams() {
-	const trips = await getAllTrips();
-	return trips.map((t) => ({ slug: t.slug }));
-}
+  const publishedTrips = trips.filter(
+    ({ data }) => data.status === "published"
+  );
 
-export async function generateMetadata(props: TripsSlugPageProps) {
-	const { slug } = await props.params;
-	const page = getTrip(slug);
-	if (!page || page.data.status !== "published") notFound();
-	const title = `${page.data.city}, ${page.data.country}`;
+  return publishedTrips.map((trip) => ({ slug: trip.slugs[0] }));
+};
 
-	return {
-		title,
-		description: page.data.description,
-		openGraph: {
-			title,
-			description: page.data.description,
-			url: `${SITE_CONFIG.url}/trips/${slug}`,
-			images: [
-				{
-					url: ogImage(title),
-					width: 1200,
-					height: 630,
-					alt: title,
-				},
-			],
-		},
-	};
-}
+export const generateMetadata = async (props: PageProps<"/trips/[slug]">) => {
+  const { slug } = await props.params;
 
-export default async function TripsSlugPage(props: TripsSlugPageProps) {
-	const { slug } = await props.params;
-	const page = getTrip(slug);
-	if (!page || page.data.status !== "published") notFound();
+  const page = tripsSource.getPage([slug]);
 
-	const rawContent =
-		typeof page.data.getText === "function"
-			? await page.data.getText("processed")
-			: undefined;
-	const title = `${page.data.city}, ${page.data.country}`;
+  const isPublished = page?.data.status === "published";
 
-	return (
-		<MDXContent
-			data={{
-				title,
-				description: page.data.description,
-				publishedAt: page.data.publishedAt,
-				thumbnail: page.data.thumbnail,
-				body: page.data.body,
-				rawContent,
-			}}
-		/>
-	);
-}
+  if (!(page && isPublished)) {
+    notFound();
+  }
+
+  const title = `${page.data.city}, ${page.data.country}`;
+
+  return {
+    title,
+    description: page.data.description,
+    openGraph: {
+      title,
+      description: page.data.description,
+      url: `${SITE_CONFIG.url}/trips/${slug}`,
+      images: [
+        {
+          url: ogImage(title),
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+  };
+};
+
+const TripsSlugPage = async (props: PageProps<"/trips/[slug]">) => {
+  const { slug } = await props.params;
+
+  const page = tripsSource.getPage([slug]);
+
+  const isPublished = page?.data.status === "published";
+
+  if (!(page && isPublished)) {
+    notFound();
+  }
+
+  const rawContent = await page.data.getText("raw");
+
+  const title = `${page.data.city}, ${page.data.country}`;
+
+  return (
+    <MDXContent
+      data={{
+        title,
+        description: page.data.description,
+        publishedAt: page.data.publishedAt,
+        thumbnail: page.data.thumbnail,
+        mdx: page.data.body,
+        raw: rawContent,
+        toc: page.data.toc,
+      }}
+    />
+  );
+};
+
+export default TripsSlugPage;

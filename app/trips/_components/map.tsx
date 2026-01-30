@@ -1,26 +1,23 @@
 "use client";
 
+import type { Page } from "fumadocs-core/source";
+import type { DocCollectionEntry } from "fumadocs-mdx/runtime/server";
 import dynamic from "next/dynamic";
-import type { TravelType } from "@/content/travel";
-import type { TripItem } from "@/types/source";
+import type { TripType } from "@/types/trips";
 
 const LeafletMap = dynamic(() => import("@/components/ui/leaflet-map"), {
-	ssr: false,
+  ssr: false,
 });
 
 interface TripMapProps {
-	/**
-	 * The places to display on the map
-	 */
-	data?: TripItem[];
-	/**
-	 * The travel to display on the map
-	 */
-	currentLocation?: TravelType;
+  /**
+   * The places to display on the map
+   */
+  data?: Page<DocCollectionEntry<"trips", TripType>>[];
 }
 
 export const TripMap = (props: TripMapProps) => {
-	const { data, currentLocation } = props;
+  const { data } = props;
 
-	return <LeafletMap places={data} currentLocation={currentLocation} />;
+  return <LeafletMap data={data} />;
 };
