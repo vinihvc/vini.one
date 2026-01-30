@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
+import { NavLink } from "@/components/ui/nav-link";
 import { SITE_CONFIG } from "@/config/site";
 import { blogSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
@@ -37,13 +37,13 @@ const BlogPage = async () => {
 
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
         {publishedPosts.map((post) => (
-          <Link
+          <NavLink
             className="rounded-md ring-rose-500"
             href={`/blog/${post.slugs[0]}`}
             key={post.data.title}
           >
             <PostCard data={post.data} />
-          </Link>
+          </NavLink>
         ))}
       </div>
     </div>

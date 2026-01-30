@@ -1,10 +1,10 @@
 "use client";
 
 import { AlignLeft, Plus } from "lucide-react";
-import Link from "next/link";
 import React from "react";
 import { BlurImage } from "@/components/ui/blur-image";
 import { Button } from "@/components/ui/button";
+import { NavLink } from "@/components/ui/nav-link";
 import {
   Sheet,
   SheetClose,
@@ -88,7 +88,7 @@ const TripSidebar = (props: TripSidebarProps) => {
               const firstPhoto = trip.photos[0];
 
               return (
-                <Link
+                <NavLink
                   className="flex w-full rounded-lg ring-blue-500"
                   href={trip.url}
                   key={trip.url}
@@ -120,7 +120,7 @@ const TripSidebar = (props: TripSidebarProps) => {
                       </time>
                     </div>
                   </article>
-                </Link>
+                </NavLink>
               );
             })}
           </div>

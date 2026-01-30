@@ -1,6 +1,6 @@
-import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { NavLink } from "@/components/ui/nav-link";
 
 const NoiseBg = React.lazy(() => import("@/components/layout/noise-bg"));
 
@@ -29,7 +29,7 @@ const NotFoundPage = () => {
           </div>
 
           <Button asChild size="lg">
-            <Link href="/">Back to Beginning</Link>
+            <NavLink href="/">Back to Beginning</NavLink>
           </Button>
         </div>
       </main>

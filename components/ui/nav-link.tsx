@@ -44,6 +44,7 @@ export const NavLink = (props: NavLinkProps) => {
         active: isCurrent,
       })}
       href={href}
+      prefetch
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       {...rest}
     />
