@@ -19,12 +19,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
   return {
     title: "Projects",
-    description: "My open-source projects and contributions.",
     openGraph: {
       title: "Projects",
-      description: "My open-source projects and contributions.",
       url: `${SITE_CONFIG.url}/projects`,
-      images: [{ url: ogImage("Projects") }],
+      images: [{ url: ogImage("Projects"), width: 1200, height: 630 }],
     },
   };
 };

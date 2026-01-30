@@ -44,7 +44,7 @@ export const GET = async (request: NextRequest) => {
             {title}
           </h2>
 
-          <p tw="text-neutral-400 text-5xl absolute bottom-0 right-0">
+          <p tw="text-neutral-400 text-5xl absolute bottom-2.5 right-0">
             {SITE_CONFIG.url.replace("https://", "")}
           </p>
         </div>

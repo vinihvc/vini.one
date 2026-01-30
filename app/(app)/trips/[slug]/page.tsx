@@ -34,14 +34,7 @@ export const generateMetadata = async (props: PageProps<"/trips/[slug]">) => {
       title,
       description: page.data.description,
       url: `${SITE_CONFIG.url}/trips/${slug}`,
-      images: [
-        {
-          url: ogImage(title),
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: [{ url: ogImage(title), width: 1200, height: 630 }],
     },
   };
 };

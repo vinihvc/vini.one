@@ -9,12 +9,10 @@ import { PostCard } from "./_components/post-card";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Blog",
   openGraph: {
     title: "Blog",
-    description: "Blog",
     url: `${SITE_CONFIG.url}/blog`,
-    images: [{ url: ogImage("Blog") }],
+    images: [{ url: ogImage("Blog"), width: 1200, height: 630 }],
   },
 };
 

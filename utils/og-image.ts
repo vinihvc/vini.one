@@ -1,6 +1,6 @@
 import { SITE_CONFIG } from "@/config/site";
 
-export const DEFAULT_FONT_SIZE = 110;
+export const DEFAULT_FONT_SIZE = 64;
 
 /**
  * Create an og:image URL with the title and font size

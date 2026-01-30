@@ -16,12 +16,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
   return {
     title: page.data.title,
-    description: page.data.description,
     openGraph: {
       title: page.data.title,
-      description: page.data.description,
       url: `${SITE_CONFIG.url}/uses`,
-      images: [{ url: ogImage(page.data.title) }],
+      images: [{ url: ogImage(page.data.title), width: 1200, height: 630 }],
     },
   };
 };
