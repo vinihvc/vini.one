@@ -1,76 +1,74 @@
-import { cn } from '@/lib/cn'
-import { formatDate, readTime } from '@/utils/formatter'
-import { Calendar, Clock } from 'lucide-react'
-import type { Locale } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
-import React from 'react'
-import { BlurImage } from '../ui/blur-image'
-import { MDXComponents } from './mdx-components'
-import { TableOfContent } from './table-of-content'
+import type { TOCItemType } from "fumadocs-core/toc";
+import { Calendar, Clock } from "lucide-react";
+import type { MDXContent as MDXContentType } from "mdx/types";
+import React from "react";
+import { cn } from "@/lib/cn";
+import { mdxComponents } from "@/mdx-components";
+import { formatDate, readTime } from "@/utils/formatter";
+import { BlurImage } from "../ui/blur-image";
+import { TableOfContent } from "./table-of-content";
 
-const MDXPhotos = React.lazy(() => import('./mdx-photos'))
+const MDXPhotos = React.lazy(() => import("./mdx-photos"));
 
-interface MDXContentProps extends React.ComponentProps<'article'> {
-  /**
-   * The locale of the content
-   */
-  locale: Locale
+interface MDXContentProps extends React.ComponentProps<"article"> {
   /**
    * The data of the content
    */
   data: {
-    title: string
-    description: string
-    publishedAt: string
+    title: string;
+    description: string;
+    publishedAt: Date | string;
     thumbnail: {
-      path: string
-      alt: string
-    }
+      path: string;
+      alt: string;
+    };
     photos?: {
-      asset_id: string
-      url: string
-      width: number
-      height: number
-    }[]
-    content: string
-  }
+      asset_id: string;
+      url: string;
+      width: number;
+      height: number;
+    }[];
+    mdx: MDXContentType;
+    raw?: string;
+    toc?: TOCItemType[];
+  };
 }
 
-export const MDXContent = async (props: MDXContentProps) => {
-  const { data, locale, ...rest } = props
+export const MDXContent = (props: MDXContentProps) => {
+  const { data, className, ...rest } = props;
 
-  const t = await getTranslations('pages.blog.section')
+  const formattedDate = formatDate(data.publishedAt, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
-  const formattedDate = formatDate(
-    data.publishedAt,
-    {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    },
-    locale,
-  )
+  const MDX = data.mdx;
+
+  const rawContent = data.raw ?? "";
+  const readTimeMinutes = rawContent ? readTime(rawContent) : 0;
 
   return (
     <article
       className={cn(
-        'prose-invert prose container prose-hr:my-4 prose-img:my-0 text-muted-foreground prose-a:no-underline selection:bg-rose-500 max-sm:prose-h1:text-2xl',
+        "container grid max-w-3xl! gap-8 selection:bg-rose-500",
+        className
       )}
       {...rest}
     >
-      <header>
-        <h1 className="mb-2">{data.title}</h1>
+      <div className="grid gap-2">
+        <div className="flex flex-col gap-2">
+          <h1 className="font-bold text-2xl md:text-3xl">{data.title}</h1>
 
-        <p className="!my-0 text-muted-foreground opacity-90 sm:text-lg">
-          {data.description}
-        </p>
+          <p className="text-lg text-muted-foreground">{data.description}</p>
+        </div>
 
-        <hr className="border-0 border-border border-t" />
+        <hr className="my-2 border-0 border-border border-t" />
 
-        <div className="flex justify-between text-sm">
+        <div className="mt-2 flex justify-between text-sm">
           <time
-            dateTime={formattedDate}
             className="flex items-center gap-2 text-muted-foreground"
+            dateTime={formattedDate}
           >
             <Calendar className="h-4 w-4" />
 
@@ -79,30 +77,31 @@ export const MDXContent = async (props: MDXContentProps) => {
 
           <time className="flex items-center gap-2 text-muted-foreground">
             <Clock className="h-4 w-4" />
-
-            {t('post.common.read-time', {
-              time: readTime(data.content),
-            })}
+            {readTimeMinutes}min read
           </time>
         </div>
-      </header>
+      </div>
 
       <figure>
         <BlurImage
-          src={data.thumbnail.path}
           alt={data.thumbnail.alt}
           className="aspect-square rounded-md"
           fill
+          src={data.thumbnail.path}
         />
 
-        <figcaption>{data.thumbnail.alt}</figcaption>
+        <figcaption className="my-2 text-muted-foreground text-sm">
+          {data.thumbnail.alt}
+        </figcaption>
       </figure>
 
-      <TableOfContent content={data.content} />
+      <div className="grid gap-2">
+        {data.toc ? <TableOfContent data={data.toc} /> : null}
 
-      <MDXComponents content={data.content} />
+        <MDX components={mdxComponents()} />
 
-      <MDXPhotos data={data.photos} />
+        {data.photos?.length ? <MDXPhotos data={data.photos} /> : null}
+      </div>
     </article>
-  )
-}
+  );
+};

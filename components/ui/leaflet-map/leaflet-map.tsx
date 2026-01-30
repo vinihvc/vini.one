@@ -1,28 +1,22 @@
-'use client'
+"use client";
 
-import type { Trip } from '@/.contentlayer/generated'
-import type { TravelType } from '@/content/travel'
-import { cn } from '@/lib/cn'
-import { MapContainer } from 'react-leaflet'
-import { LeafletMapHomeMarker } from './leaflet-map.home'
-import { LeafletMapLayer } from './leaflet-map.layer'
-import { LeafletMapMarker } from './leaflet-map.marker'
+import { MapContainer } from "react-leaflet";
+import { cn } from "@/lib/cn";
+import type { SerializableTrip } from "@/utils/serializer";
+import { LeafletMapLayer } from "./leaflet-map.layer";
+import { LeafletMapMarker } from "./leaflet-map.marker";
 
-const INITIAL_MAP_ZOOM = 3
+const INITIAL_MAP_ZOOM = 3;
 
 interface LeafletMapProps extends React.ComponentProps<typeof MapContainer> {
   /**
    * The places to display on the map
    */
-  places?: Trip[]
-  /**
-   * The current location to display on the map
-   */
-  currentLocation?: TravelType
+  data?: SerializableTrip[];
 }
 
 const LeafletMap = (props: LeafletMapProps) => {
-  const { places, currentLocation, className, ...rest } = props
+  const { data, className, ...rest } = props;
 
   return (
     <div className="flex flex-1">
@@ -61,26 +55,24 @@ const LeafletMap = (props: LeafletMapProps) => {
       `}</style>
 
       <MapContainer
-        className={cn('flex-1', className)}
-        center={[0, 0]}
-        zoom={INITIAL_MAP_ZOOM}
-        minZoom={INITIAL_MAP_ZOOM}
-        zoomControl={false}
         attributionControl={false}
+        center={[0, 0]}
+        className={cn("flex-1", className)}
+        minZoom={INITIAL_MAP_ZOOM}
         scrollWheelZoom
         worldCopyJump
+        zoom={INITIAL_MAP_ZOOM}
+        zoomControl={false}
         {...rest}
       >
         <LeafletMapLayer />
 
-        {places?.map((place) => (
-          <LeafletMapMarker key={place.slug} data={place} />
+        {data?.map((trip) => (
+          <LeafletMapMarker data={trip} key={trip.url} />
         ))}
-
-        {currentLocation && <LeafletMapHomeMarker data={currentLocation} />}
       </MapContainer>
     </div>
-  )
-}
+  );
+};
 
-export default LeafletMap
+export default LeafletMap;

@@ -1,50 +1,51 @@
-'use client'
+"use client";
 
-import { cn } from '@/lib/cn'
-import { Star } from 'lucide-react'
-import { useId } from 'react'
+import { Star } from "lucide-react";
+import { useId } from "react";
+import { cn } from "@/lib/cn";
 
-const MAX_RATING = 5
+const MAX_RATING = 5;
 
-interface RatingProps extends React.ComponentProps<'div'> {
+interface RatingProps extends React.ComponentProps<"div"> {
   /**
    * The rating value
    */
-  value: number
+  value: number;
 }
 
 export const Rating = (props: RatingProps) => {
-  const { value, className, ...rest } = props
+  const { value, className, ...rest } = props;
 
-  const reactId = useId()
+  const reactId = useId();
 
   if (value > MAX_RATING || value < 0) {
-    throw new Error('Rating must be between 0 and 5')
+    throw new Error("Rating must be between 0 and 5");
   }
 
   return (
     <div
+      aria-orientation="horizontal"
       className="flex items-center"
       role="radiogroup"
-      aria-orientation="horizontal"
       {...rest}
     >
-      {[...Array(MAX_RATING)].map((_, index) => {
-        const position = index + 1
+      {new Array(MAX_RATING).map((_, index) => {
+        const position = index + 1;
 
         return (
           <span
+            aria-checked={value > index}
+            aria-label={`${position} stars`}
+            aria-posinset={position}
+            aria-roledescription="rating"
+            aria-setsize={MAX_RATING}
+            className={cn(
+              "text-gray-200 drop-shadow aria-checked:text-yellow-500",
+              className
+            )}
             id={`rating${reactId}star:${position}`}
             key={`rating${reactId}star:${position}`}
-            className={cn(
-              'text-gray-200 drop-shadow aria-checked:text-yellow-500',
-              className,
-            )}
-            aria-roledescription="rating"
-            aria-label={`${position} stars`}
-            aria-checked={value > index}
-            aria-posinset={position}
-            aria-setsize={MAX_RATING}
+            role="radio"
             tabIndex={-1}
           >
             <Star
@@ -53,12 +54,12 @@ export const Rating = (props: RatingProps) => {
               stroke="black"
             />
           </span>
-        )
+        );
       })}
 
-      <span id={`rating${reactId}`} className="sr-only">
+      <span className="sr-only" id={`rating${reactId}`}>
         Rating: {value} out of 5 stars
       </span>
     </div>
-  )
-}
+  );
+};

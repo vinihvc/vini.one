@@ -1,15 +1,15 @@
-import { env } from '@/lib/env'
-import { TileLayer } from 'react-leaflet'
+import { TileLayer } from "react-leaflet";
+import { env } from "@/lib/env";
 
-const USER_ID = env.NEXT_PUBLIC_MAPBOX_USER_ID
-const STYLE_ID = env.NEXT_PUBLIC_MAPBOX_STYLE_ID
-const ACCESS_TOKEN = env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
+const USER_ID = env.NEXT_PUBLIC_MAPBOX_USER_ID;
+const STYLE_ID = env.NEXT_PUBLIC_MAPBOX_STYLE_ID;
+const ACCESS_TOKEN = env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 
 interface LeafletMapLayerProps
-  extends Omit<React.ComponentProps<typeof TileLayer>, 'url'> {}
+  extends Omit<React.ComponentProps<typeof TileLayer>, "url"> {}
 
 export const LeafletMapLayer = (props: LeafletMapLayerProps) => {
-  const { ...rest } = props
+  const { ...rest } = props;
 
   if (ACCESS_TOKEN) {
     return (
@@ -18,7 +18,7 @@ export const LeafletMapLayer = (props: LeafletMapLayerProps) => {
         {...rest}
         url={`https://api.mapbox.com/styles/v1/${USER_ID}/${STYLE_ID}/tiles/256/{z}/{x}/{y}@2x?access_token=${ACCESS_TOKEN}`}
       />
-    )
+    );
   }
 
   return (
@@ -27,5 +27,5 @@ export const LeafletMapLayer = (props: LeafletMapLayerProps) => {
       {...rest}
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-  )
-}
+  );
+};

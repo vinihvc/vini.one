@@ -1,18 +1,18 @@
-import type { ResponseType } from '@/types/response'
-import { headers as nextHeaders } from 'next/headers'
+import { headers as nextHeaders } from "next/headers";
+import type { ResponseType } from "@/types/response";
 
 export class HttpError extends Error {
-  status: number
+  status: number;
 
   constructor(message: string, status: number) {
-    super(message)
-    this.name = 'HttpError'
-    this.status = status
+    super(message);
+    this.name = "HttpError";
+    this.status = status;
   }
 }
 
 export interface RequestOptions extends RequestInit {
-  timeout?: number
+  timeout?: number;
 }
 
 /**
@@ -24,64 +24,64 @@ export interface RequestOptions extends RequestInit {
  */
 const fetchWithTypes = async <T>(
   url: string,
-  options: RequestOptions = {},
+  options: RequestOptions = {}
 ): Promise<ResponseType<T>> => {
-  const { timeout = 10000, ...fetchOptions } = options
+  const { timeout = 10_000, ...fetchOptions } = options;
 
   const headers = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
     ...fetchOptions.headers,
-  }
+  };
 
-  const host = (await nextHeaders()).get('host')
-  const protocol = process?.env.NODE_ENV === 'development' ? 'http' : 'https'
+  const host = (await nextHeaders()).get("host");
+  const protocol = process?.env.NODE_ENV === "development" ? "http" : "https";
 
-  const apiUrl = `${protocol}://${host}/api`
+  const apiUrl = `${protocol}://${host}/api`;
 
-  const controller = new AbortController()
-  const timeoutId = setTimeout(() => controller.abort(), timeout)
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeout);
 
   try {
     const response = await fetch(`${apiUrl}${url}`, {
       ...fetchOptions,
       headers,
       signal: controller.signal,
-    })
+    });
 
     // Clear timeout
-    clearTimeout(timeoutId)
+    clearTimeout(timeoutId);
 
     // Handle non-2xx responses
     if (!response.ok) {
-      const errorText = await response.text()
+      const errorText = await response.text();
       throw new HttpError(
         `Request failed with status ${response.status}: ${errorText}`,
-        response.status,
-      )
+        response.status
+      );
     }
 
     // Parse JSON response
-    const data = await response.json()
-    return data as ResponseType<T>
+    const data = await response.json();
+    return data as ResponseType<T>;
   } catch (error) {
     // Clear timeout
-    clearTimeout(timeoutId)
+    clearTimeout(timeoutId);
 
     // Handle different error types
     if (error instanceof HttpError) {
-      throw error
+      throw error;
     }
 
-    if (error instanceof DOMException && error.name === 'AbortError') {
-      throw new HttpError(`Request timed out after ${timeout}ms`, 408)
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new HttpError(`Request timed out after ${timeout}ms`, 408);
     }
 
     throw new HttpError(
       `Network error: ${error instanceof Error ? error.message : String(error)}`,
-      0,
-    )
+      0
+    );
   }
-}
+};
 
 /**
  * HTTP client with methods for different HTTP verbs
@@ -91,7 +91,7 @@ export const http = {
    * Make a GET request
    */
   get<T>(url: string, options?: RequestOptions): Promise<ResponseType<T>> {
-    return fetchWithTypes<T>(url, { ...options, method: 'GET' })
+    return fetchWithTypes<T>(url, { ...options, method: "GET" });
   },
 
   /**
@@ -100,13 +100,13 @@ export const http = {
   post<T>(
     url: string,
     data: unknown,
-    options?: RequestOptions,
+    options?: RequestOptions
   ): Promise<ResponseType<T>> {
     return fetchWithTypes<T>(url, {
       ...options,
-      method: 'POST',
+      method: "POST",
       body: data ? JSON.stringify(data) : undefined,
-    })
+    });
   },
 
   /**
@@ -115,13 +115,13 @@ export const http = {
   put<T>(
     url: string,
     data: unknown,
-    options?: RequestOptions,
+    options?: RequestOptions
   ): Promise<ResponseType<T>> {
     return fetchWithTypes<T>(url, {
       ...options,
-      method: 'PUT',
+      method: "PUT",
       body: data ? JSON.stringify(data) : undefined,
-    })
+    });
   },
 
   /**
@@ -130,19 +130,19 @@ export const http = {
   patch<T>(
     url: string,
     data?: unknown,
-    options?: RequestOptions,
+    options?: RequestOptions
   ): Promise<ResponseType<T>> {
     return fetchWithTypes<T>(url, {
       ...options,
-      method: 'PATCH',
+      method: "PATCH",
       body: data ? JSON.stringify(data) : undefined,
-    })
+    });
   },
 
   /**
    * Make a DELETE request
    */
   delete<T>(url: string, options?: RequestOptions): Promise<ResponseType<T>> {
-    return fetchWithTypes<T>(url, { ...options, method: 'DELETE' })
+    return fetchWithTypes<T>(url, { ...options, method: "DELETE" });
   },
-}
+};
