@@ -29,7 +29,7 @@ export const Rating = (props: RatingProps) => {
       role="radiogroup"
       {...rest}
     >
-      {[...Array(MAX_RATING)].map((_, index) => {
+      {new Array(MAX_RATING).map((_, index) => {
         const position = index + 1;
 
         return (

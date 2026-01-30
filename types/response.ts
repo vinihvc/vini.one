@@ -1,7 +1,7 @@
-export type ResponseType<T> = {
+export interface ResponseType<T> {
   data: T;
-};
+}
 
-export type ResponseErrorType = {
+export interface ResponseErrorType {
   error: string;
-};
+}

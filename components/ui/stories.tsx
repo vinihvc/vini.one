@@ -49,7 +49,9 @@ export function Stories(props: StoriesProps) {
   }, []);
 
   React.useEffect(() => {
-    if (!api) return;
+    if (!api) {
+      return;
+    }
 
     const onSelect = () => {
       const newIndex = api.selectedScrollSnap();

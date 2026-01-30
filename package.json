@@ -2,18 +2,14 @@
   "name": "vini.one",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.28.2",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint ./",
-    "lint:fix": "biome lint ./ --write",
-    "format": "biome format ./",
-    "format:fix": "biome format ./ --write",
     "postinstall": "fumadocs-mdx",
-    "check": "ultracite check",
-    "fix": "ultracite fix"
+    "lint:check": "ultracite check",
+    "lint:fix": "ultracite fix"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "^13.8.0",
@@ -26,7 +22,7 @@
     "cloudinary": "^2.9.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
-    "fumadocs-core": "^16.4.10",
+    "fumadocs-core": "^16.4.11",
     "fumadocs-mdx": "^14.2.6",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.563.0",
@@ -41,10 +37,10 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.12",
+    "@biomejs/biome": "2.3.13",
     "@types/leaflet": "^1.9.21",
     "@types/mdx": "^2.0.13",
-    "@types/node": "^22.15.3",
+    "@types/node": "^25.1.0",
     "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3",
     "lint-staged": "^16.2.7",

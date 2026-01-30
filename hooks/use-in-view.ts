@@ -9,7 +9,9 @@ export const useInView = (threshold = 0.1) => {
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry) return;
+        if (!entry) {
+          return;
+        }
 
         if (entry.isIntersecting && !hasPlayed) {
           setIsInView(true);
