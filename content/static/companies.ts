@@ -8,7 +8,7 @@ export const COMPANIES = [
     url: "https://www.syntroper.ai/",
     city: "Auckland",
     state: "North Island",
-    startDate: "2025-08-01",
+    startDate: "2025-08-02",
     endDate: undefined,
   },
   {

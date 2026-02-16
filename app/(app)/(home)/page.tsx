@@ -108,7 +108,7 @@ const HomePage = () => {
 
       <div className="mt-14">
         <div className="flex items-center justify-between">
-          <FadeSection delay={0.5}>
+          <FadeSection delay={0.4}>
             <h2 className="font-semibold text-2xl">Career</h2>
 
             <h3 className="text-muted-foreground">
@@ -118,7 +118,7 @@ const HomePage = () => {
           </FadeSection>
         </div>
 
-        <FadeSection delay={0.6}>
+        <FadeSection delay={0.4}>
           <CompaniesSection className="mt-4" data={data} />
         </FadeSection>
       </div>
