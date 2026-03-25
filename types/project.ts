@@ -6,6 +6,7 @@ export const projectsSchema = z.object({
   description: z.string(),
   url: z.string(),
   website: z.string(),
+  published: z.boolean().default(true),
 });
 
 export type ProjectType = z.infer<typeof projectsSchema>;

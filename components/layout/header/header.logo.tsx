@@ -7,17 +7,18 @@ import { Icons } from "@/lib/icons";
 interface HeaderLogoProps
   extends Omit<React.ComponentProps<typeof NavLink>, "href"> {}
 
-export const HeaderLogo = async (props: HeaderLogoProps) => {
+export const HeaderLogo = (props: HeaderLogoProps) => {
   const { className, ...rest } = props;
 
   return (
     <Button
       asChild
       className={cn(
-        "border-none text-foreground hover:bg-foreground/5 [&.active]:bg-foreground/10 [&_svg]:h-5 [&_svg]:w-5",
+        "hover:bg-foreground/5 [&.active]:bg-foreground/5",
         className
       )}
-      size="icon"
+      size="icon-xl"
+      variant="ghost"
     >
       <NavLink
         aria-label={`${SITE_CONFIG.name}, Back to homepage`}

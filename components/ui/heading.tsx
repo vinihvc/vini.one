@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { cn } from "@/lib/cn";
 
@@ -14,12 +14,11 @@ interface HeadingProps extends React.ComponentProps<"h1"> {
 export const Heading = (props: HeadingProps) => {
   const { asChild, className, ...rest } = props;
 
-  const Comp = asChild ? Slot : "h1";
-
   return (
-    <Comp
+    <ark.h1
+      asChild={asChild}
       className={cn(
-        "inline-block bg-gradient-to-r bg-clip-text font-bold text-5xl/tight text-transparent",
+        "inline-block bg-linear-to-r bg-clip-text font-bold text-4xl/tight text-transparent",
         className
       )}
       {...rest}

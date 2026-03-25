@@ -10,7 +10,8 @@ export const linkVariants = tv({
   base: [
     "group",
     "transition",
-    "outline-0 ring-offset-2 ring-offset-background focus-visible:ring-2",
+    "border border-transparent",
+    "outline-none focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
   ],
 });
 
@@ -19,14 +20,15 @@ interface NavLinkProps
     React.ComponentProps<typeof Link>,
     Omit<React.ComponentProps<"a">, "href"> {
   /**
-   *  If `true`, the link will open in new tab
-   */
-  isExternal?: boolean;
-  /**
-   * If `true`, only exact path matches will be considered active
+   * Only exact path matches will be considered active
+   *
    * @default false
    */
   exact?: boolean;
+  /**
+   *  If `true`, the link will open in new tab
+   */
+  isExternal?: boolean;
 }
 
 export const NavLink = (props: NavLinkProps) => {

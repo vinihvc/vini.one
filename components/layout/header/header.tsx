@@ -10,19 +10,17 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <header
-      className={cn(
-        "container fixed inset-x-0 top-4 z-50 selection:bg-yellow-500 max-sm:hidden"
-      )}
+      className={cn("container fixed inset-x-0 top-4 z-50 max-sm:hidden")}
       {...rest}
     >
       <div
         className={cn(
-          "h-16",
+          "py-2",
           "px-3",
           "flex items-center justify-between",
-          "bg-black/60 backdrop-blur-md",
+          "bg-black/48 backdrop-blur-md",
           "border border-foreground/5",
-          "rounded-xl",
+          "rounded-2xl",
           className
         )}
       >

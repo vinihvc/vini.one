@@ -1,9 +1,4 @@
-import {
-  Home,
-  MonitorSmartphone,
-  SquarePen,
-  SquareTerminal,
-} from "lucide-react";
+import { Home, MonitorSmartphone, SquareTerminal } from "lucide-react";
 
 export type RouteType = (typeof HEADER_ROUTES)[number];
 
@@ -27,10 +22,10 @@ export const HEADER_ROUTES = [
     label: "Uses",
     icon: MonitorSmartphone,
   },
-  {
-    href: "/blog",
-    key: "blog",
-    label: "Blog",
-    icon: SquarePen,
-  },
+  // {
+  //   href: "/blog",
+  //   key: "blog",
+  //   label: "Blog",
+  //   icon: SquarePen,
+  // },
 ];

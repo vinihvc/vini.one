@@ -3,48 +3,80 @@
 
 @custom-variant dark (&:is(.dark *));
 
-:root {
-  --background: oklch(0% 0 46);
-  --foreground: oklch(0.985 0 0);
-
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-
-  --radius: 0.625rem;
-}
-
 @theme inline {
   --font-sans: "Outfit", sans-serif;
-
   --default-font-family: var(--font-sans);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
 
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xs: calc(var(--radius) * 0.25);
+  --radius-sm: calc(var(--radius) * 0.5);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: calc(var(--radius) * 1);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 3);
+  --radius-4xl: calc(var(--radius) * 4);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning: var(--warning);
+  --color-info-foreground: var(--info-foreground);
+  --color-info: var(--info);
+  --color-success-foreground: var(--success-foreground);
+  --color-success: var(--success);
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: var(--color-mist-950);
+  --foreground: var(--color-mist-100);
+
+  --primary: var(--color-blue-600);
+  --primary-foreground: var(--color-blue-50);
+
+  --card: color-mix(in srgb, var(--background) 98%, var(--color-mist-50));
+  --card-foreground: var(--color-mist-100);
+
+  --popover: color-mix(in srgb, var(--background) 100%, var(--color-mist-50));
+  --popover-foreground: var(--color-mist-100);
+
+  --muted: color-mix(in srgb, var(--color-mist-50) 4%, var(--background));
+  --muted-foreground: color-mix(in srgb, var(--color-mist-500) 90%, var(--color-mist-50));
+
+  --accent: color-mix(in srgb, var(--color-mist-50) 4%, var(--background));
+  --accent-foreground: var(--color-mist-100);
+
+  --border: color-mix(in srgb, var(--color-mist-50) 6%, var(--background));
+  --input: color-mix(in srgb, var(--color-mist-50) 8%, var(--background));
+  --ring: var(--color-blue-900);
 }
 
 @layer base {
+  ::selection {
+    @apply bg-primary/80 text-primary-foreground;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -55,7 +87,7 @@
   }
 
   body {
-    @apply min-h-screen flex flex-col overflow-y-scroll bg-background text-foreground antialiased selection:text-black;
+    @apply min-h-svh flex flex-col overflow-y-scroll bg-background text-foreground antialiased;
   }
 
   main {
@@ -65,6 +97,6 @@
 
 @layer utilities {
   .container {
-    @apply mx-auto w-full max-w-4xl px-4;
+    @apply mx-auto w-full max-w-3xl px-3;
   }
 }

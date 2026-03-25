@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { FadeSection } from "@/components/ui/fade-section";
@@ -37,36 +37,36 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
           }
 
           return (
-            <FadeSection asChild blur delay={delay} key={company.company}>
-              <li
-                className={cn(
-                  "w-full transition hover:opacity-100! sm:group-hover:opacity-50"
-                )}
-                key={company.company}
-              >
+            <li
+              className={cn(
+                "w-full transition hover:opacity-100! sm:group-hover:opacity-50"
+              )}
+              key={company.company}
+            >
+              <FadeSection blur delay={delay}>
                 <NavLink
-                  className="block rounded-md px-2 ring-orange-500"
+                  className="block rounded-lg px-2"
                   href={company.url}
                   isExternal
-                  key={company.company}
                 >
                   <CompanyCard data={company} />
                 </NavLink>
-              </li>
-            </FadeSection>
+              </FadeSection>
+            </li>
           );
         })}
       </ul>
 
       <div className="mt-5 flex justify-end">
         <Button
-          className="group ring-orange-500"
+          className="group opacity-64 hover:opacity-100"
           data-state={showAll ? "open" : "closed"}
           onClick={() => setShowAll((prev) => !prev)}
+          variant="ghost"
         >
           {showAll ? "Show less" : "Show more"}
 
-          <ChevronDown className="size-4 transition group-data-[state=open]:rotate-180" />
+          <ChevronDownIcon className="transition group-data-[state=open]:rotate-180" />
         </Button>
       </div>
     </section>

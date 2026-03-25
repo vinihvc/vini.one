@@ -3,16 +3,16 @@ import type * as React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/cn";
 
-const selectVariants = tv({
+const nativeSelectVariants = tv({
   base: [
-    "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background",
-    "outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-    "disabled:cursor-not-allowed disabled:opacity-50",
+    "w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background",
+    "outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    "disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive",
     "appearance-none pr-10",
   ],
   variants: {
     size: {
-      xs: "h-8",
+      xs: "h-7 text-xs",
       sm: "h-9",
       md: "h-10",
       lg: "h-12",
@@ -23,41 +23,42 @@ const selectVariants = tv({
   },
 });
 
-export interface SelectProps
+export interface NativeSelectProps
   extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size">,
-    VariantProps<typeof selectVariants> {
-  /**
-   * The function to call when the value changes
-   */
-  onValueChange: (value: string) => void;
-}
+    VariantProps<typeof nativeSelectVariants> {}
 
-export const Select = (props: SelectProps) => {
-  const { size, className, onValueChange, ...rest } = props;
+export const NativeSelect = (props: NativeSelectProps) => {
+  const { size, className, ...rest } = props;
 
   return (
     <div className="relative w-full">
       <select
-        className={cn(selectVariants({ size }), className)}
-        onChange={(e) => onValueChange(e.target.value)}
+        className={cn(nativeSelectVariants({ size }), className)}
         {...rest}
       />
 
       <ChevronsUpDown
         aria-hidden
-        className="absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+        className="absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground"
       />
     </div>
   );
 };
 
-export interface SelectItemProps
+export interface NativeSelectOptionProps
   extends React.OptionHTMLAttributes<HTMLOptionElement> {}
 
-export const SelectItem = (props: SelectItemProps) => {
+export const NativeSelectOption = (props: NativeSelectOptionProps) => {
   const { className, ...rest } = props;
 
-  return (
-    <option className={cn("flex items-center gap-2", className)} {...rest} />
-  );
+  return <option className={cn(className)} {...rest} />;
+};
+
+export interface NativeSelectOptGroupProps
+  extends React.OptgroupHTMLAttributes<HTMLOptGroupElement> {}
+
+export const NativeSelectOptGroup = (props: NativeSelectOptGroupProps) => {
+  const { className, ...rest } = props;
+
+  return <optgroup className={cn(className)} {...rest} />;
 };

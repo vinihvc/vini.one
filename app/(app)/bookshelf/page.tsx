@@ -19,7 +19,7 @@ const BookshelfPage = async () => {
   const books = bookshelfSource.getPages();
 
   return (
-    <section className="container selection:bg-amber-500">
+    <section className="container">
       <FadeSection className="space-y-1">
         <Heading className="from-amber-500 to-red-500">Bookshelf</Heading>
 

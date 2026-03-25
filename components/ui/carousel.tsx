@@ -1,6 +1,6 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
+import { ark } from "@ark-ui/react/factory";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -16,8 +16,8 @@ type CarouselPlugin = UseCarouselParameters[1];
 
 interface CarouselProps {
   opts?: CarouselOptions;
-  plugins?: CarouselPlugin;
   orientation?: "horizontal" | "vertical";
+  plugins?: CarouselPlugin;
   setApi?: (api: CarouselApi) => void;
 }
 
@@ -158,22 +158,15 @@ export const CarouselContent = ({
   );
 };
 
-interface CarouselItemProps extends React.ComponentProps<"div"> {
-  /**
-   * Whether to use a custom component for the item
-   */
-  asChild?: boolean;
-}
+interface CarouselItemProps extends React.ComponentProps<typeof ark.div> {}
 
 export const CarouselItem = (props: CarouselItemProps) => {
-  const { className, asChild, ...rest } = props;
+  const { className, ...rest } = props;
 
   const { orientation } = useCarousel();
 
-  const Component = asChild ? Slot : "div";
-
   return (
-    <Component
+    <ark.div
       aria-roledescription="slide"
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
@@ -197,7 +190,7 @@ export const CarouselPrevious = (props: CarouselPreviousProps) => {
   const {
     className,
     variant = "outline",
-    size = "icon",
+    size = "icon-md",
     text,
     ...rest
   } = props;
@@ -233,7 +226,7 @@ export const CarouselNext = (props: CarouselNextProps) => {
   const {
     className,
     variant = "outline",
-    size = "icon",
+    size = "icon-md",
     text,
     ...rest
   } = props;

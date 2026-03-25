@@ -16,7 +16,7 @@ export const CompanyCard = (props: CompanyCardProps) => {
   return (
     <article
       className={cn(
-        "grid grid-cols-2 items-center rounded-lg py-3 max-sm:text-sm",
+        "grid grid-cols-2 items-center rounded-xl py-3 max-sm:text-sm",
         className
       )}
       {...rest}

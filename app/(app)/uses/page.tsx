@@ -34,7 +34,7 @@ const UsesPage = () => {
   const MDX = page.data.body;
 
   return (
-    <div className="container max-w-3xl! selection:bg-purple-500">
+    <div className="container max-w-3xl!">
       <FadeSection className="space-y-1">
         <Heading className="from-purple-500 to-blue-500">
           {page.data.title}

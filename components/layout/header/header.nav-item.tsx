@@ -15,10 +15,10 @@ export const HeaderNavItem = (props: HeaderNavItemProps) => {
   const { data, className, ...rest } = props;
 
   return (
-    <Button asChild>
+    <Button asChild variant="ghost">
       <NavLink
         className={cn(
-          "block border-none bg-transparent px-4 py-2 hover:bg-transparent hover:text-foreground [&.active]:text-foreground sm:[&.active]:bg-foreground/5",
+          "opacity-70 hover:opacity-90 [&.active]:opacity-100",
           className
         )}
         href={data.href}

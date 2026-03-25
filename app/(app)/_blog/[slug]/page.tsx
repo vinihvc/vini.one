@@ -1,23 +1,24 @@
 import { notFound } from "next/navigation";
 import { MDXContent } from "@/components/mdx/mdx-content";
 import { SITE_CONFIG } from "@/config/site";
-import { tripsSource } from "@/lib/source";
+import { blogSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 
-export const generateStaticParams = async () => {
-  const trips = tripsSource.getPages();
+export const generateStaticParams = () => {
+  const posts = blogSource.getPages();
 
-  const publishedTrips = trips.filter(
+  const publishedPosts = posts.filter(
     ({ data }) => data.status === "published"
   );
 
-  return publishedTrips.map((trip) => ({ slug: trip.slugs[0] }));
+  return publishedPosts.map((post) => ({ slug: post.slugs[0] }));
 };
 
-export const generateMetadata = async (props: PageProps<"/trips/[slug]">) => {
+export const generateMetadata = async (props: any) => {
+  // export const generateMetadata = async (props: PageProps<"/blog/[slug]">) => {
   const { slug } = await props.params;
 
-  const page = tripsSource.getPage([slug]);
+  const page = blogSource.getPage([slug]);
 
   const isPublished = page?.data.status === "published";
 
@@ -25,24 +26,23 @@ export const generateMetadata = async (props: PageProps<"/trips/[slug]">) => {
     notFound();
   }
 
-  const title = `${page.data.city}, ${page.data.country}`;
-
   return {
-    title,
+    title: page.data.title,
     description: page.data.description,
     openGraph: {
-      title,
+      title: page.data.title,
       description: page.data.description,
-      url: `${SITE_CONFIG.url}/trips/${slug}`,
-      images: [{ url: ogImage(title), width: 1200, height: 630 }],
+      url: `${SITE_CONFIG.url}/blog/${slug}`,
+      images: [{ url: ogImage(page.data.title), width: 1200, height: 630 }],
     },
   };
 };
 
-const TripsSlugPage = async (props: PageProps<"/trips/[slug]">) => {
+const BlogSlugPage = async (props: any) => {
+  // const BlogSlugPage = async (props: PageProps<"/blog/[slug]">) => {
   const { slug } = await props.params;
 
-  const page = tripsSource.getPage([slug]);
+  const page = blogSource.getPage([slug]);
 
   const isPublished = page?.data.status === "published";
 
@@ -52,21 +52,19 @@ const TripsSlugPage = async (props: PageProps<"/trips/[slug]">) => {
 
   const rawContent = await page.data.getText("raw");
 
-  const title = `${page.data.city}, ${page.data.country}`;
-
   return (
     <MDXContent
       data={{
-        title,
+        title: page.data.title,
         description: page.data.description,
         publishedAt: page.data.publishedAt,
         thumbnail: page.data.thumbnail,
-        mdx: page.data.body,
         raw: rawContent,
+        mdx: page.data.body,
         toc: page.data.toc,
       }}
     />
   );
 };
 
-export default TripsSlugPage;
+export default BlogSlugPage;

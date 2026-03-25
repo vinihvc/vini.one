@@ -8,7 +8,7 @@ interface SocialLinksProps extends React.ComponentProps<"div"> {}
 
 const SOCIAL_KEYS = ["x", "github"];
 
-export const SocialLinks = async (props: SocialLinksProps) => {
+export const SocialLinks = (props: SocialLinksProps) => {
   const { className, ...rest } = props;
 
   const filteredSocial = SOCIAL.filter((social) =>
@@ -23,9 +23,10 @@ export const SocialLinks = async (props: SocialLinksProps) => {
         return (
           <Button
             asChild
-            className="h-11 w-11 border bg-background text-foreground ring-orange-500 hover:border-orange-500 hover:bg-background/80 sm:h-9 sm:w-9 max-sm:[&_svg]:h-5 max-sm:[&_svg]:w-5"
+            className="bg-background"
             key={link.key}
-            size="icon"
+            size="icon-xl"
+            variant="ghost"
           >
             <NavLink href={link.url} isExternal>
               <Icon />

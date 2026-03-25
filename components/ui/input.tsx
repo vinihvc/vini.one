@@ -13,7 +13,7 @@ export const Input = (props: React.ComponentProps<"input">) => {
         "text-base",
         "bg-transparent",
         "placeholder:text-muted-foreground",
-        "rounded-md shadow-sm",
+        "rounded-lg shadow-sm",
         "file:border-0 file:bg-transparent file:font-medium file:text-foreground file:text-sm",
         "ring-ring focus-visible:outline-0 focus-visible:ring-1",
         "disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",

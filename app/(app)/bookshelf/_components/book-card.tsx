@@ -18,15 +18,14 @@ export const BookCard = (props: BookCardProps) => {
     <article
       aria-label={data.title}
       className={cn(
-        "group relative aspect-9/13 overflow-hidden rounded-lg",
-        "focus-visible:outline-0 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "group relative aspect-9/13 overflow-hidden rounded-xl",
         className
       )}
       {...rest}
     >
       <BlurImage
         alt={`Cover of ${data.title}`}
-        className="rounded-md"
+        className="rounded-lg"
         fill
         quality={20}
         src={`/images/books/${data.thumbnail}.jpg`}

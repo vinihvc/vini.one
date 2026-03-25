@@ -50,10 +50,7 @@ export const MDXContent = (props: MDXContentProps) => {
 
   return (
     <article
-      className={cn(
-        "container grid max-w-3xl! gap-8 selection:bg-rose-500",
-        className
-      )}
+      className={cn("container grid max-w-3xl! gap-8", className)}
       {...rest}
     >
       <div className="grid gap-2">
@@ -70,13 +67,13 @@ export const MDXContent = (props: MDXContentProps) => {
             className="flex items-center gap-2 text-muted-foreground"
             dateTime={formattedDate}
           >
-            <Calendar className="h-4 w-4" />
+            <Calendar className="size-4" />
 
             {formattedDate}
           </time>
 
           <time className="flex items-center gap-2 text-muted-foreground">
-            <Clock className="h-4 w-4" />
+            <Clock className="size-4" />
             {readTimeMinutes}min read
           </time>
         </div>
@@ -85,7 +82,7 @@ export const MDXContent = (props: MDXContentProps) => {
       <figure>
         <BlurImage
           alt={data.thumbnail.alt}
-          className="aspect-square rounded-md"
+          className="aspect-square rounded-lg"
           fill
           src={data.thumbnail.path}
         />

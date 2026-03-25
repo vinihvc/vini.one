@@ -46,10 +46,10 @@ const MDXPhotos = (props: MDXPhotosProps) => {
             <Dialog key={photo.asset_id}>
               <DialogTrigger asChild>
                 <CarouselItem className="basis-1/3 cursor-pointer pl-2">
-                  <div className="relative aspect-square rounded-md">
+                  <div className="relative aspect-square rounded-lg">
                     <BlurImage
                       alt="Photo"
-                      className="aspect-square rounded-md"
+                      className="aspect-square rounded-lg"
                       fill
                       src={photo.url}
                     />
@@ -57,7 +57,11 @@ const MDXPhotos = (props: MDXPhotosProps) => {
                 </CarouselItem>
               </DialogTrigger>
 
-              <DialogContent className="z-70 flex h-full w-full items-center justify-between bg-black/50 backdrop-blur-sm">
+              <DialogContent
+                className="z-70 flex h-full w-full items-center justify-between bg-black/50 backdrop-blur-sm"
+                showCloseButton={false}
+                size="fullscreen"
+              >
                 <DialogTitle className="sr-only">Photos</DialogTitle>
 
                 <DialogDescription className="sr-only">
@@ -72,7 +76,7 @@ const MDXPhotos = (props: MDXPhotosProps) => {
                 >
                   <Button
                     className="rounded-full max-lg:border-0 max-lg:[&_svg]:h-6 max-lg:[&_svg]:w-6"
-                    size="icon"
+                    size="icon-md"
                     variant="outline"
                   >
                     <X />

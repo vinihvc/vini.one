@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { NavLink } from "@/components/ui/nav-link";
 import {
   Sheet,
+  SheetBody,
   SheetClose,
   SheetContent,
   SheetDescription,
@@ -31,7 +32,12 @@ const TripSidebar = (props: TripSidebarProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <Sheet modal={false} onOpenChange={setIsOpen} open={isOpen}>
+    <Sheet
+      closeOnInteractOutside={false}
+      modal={false}
+      onOpenChange={(details) => setIsOpen(details.open)}
+      open={isOpen}
+    >
       <SheetTrigger
         asChild
         className={cn(
@@ -40,11 +46,7 @@ const TripSidebar = (props: TripSidebarProps) => {
           "data-[state=closed]:visible data-[state=open]:invisible"
         )}
       >
-        <Button
-          className="[&_svg]:h-5 [&_svg]:w-5"
-          size="icon"
-          variant="primary"
-        >
+        <Button className="[&_svg]:size-5" size="icon-md">
           <AlignLeft className="transition group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-45" />
 
           <span className="sr-only">Open trips list</span>
@@ -52,12 +54,13 @@ const TripSidebar = (props: TripSidebarProps) => {
       </SheetTrigger>
 
       <SheetContent
-        animation={["fade"]}
-        className="group flex flex-col rounded-lg bg-transparent p-0 backdrop-blur-none selection:bg-blue-500 sm:w-[360px]"
-        side="left"
+        className="group sm:w-[360px]"
+        placement="left"
+        showCloseButton={false}
+        variant="inset"
         {...rest}
       >
-        <div className="flex-1 rounded-lg bg-background/50 p-4 backdrop-blur-md sm:m-4">
+        <SheetBody>
           <div
             className={cn(
               "absolute bottom-20 max-sm:right-4 sm:bottom-4 sm:left-4",
@@ -65,11 +68,7 @@ const TripSidebar = (props: TripSidebarProps) => {
             )}
           >
             <SheetClose asChild>
-              <Button
-                className="[&_svg]:h-5 [&_svg]:w-5"
-                size="icon"
-                variant="primary"
-              >
+              <Button className="[&_svg]:size-5" size="icon-md">
                 <Plus className="transition group-data-[state=closed]:rotate-0 group-data-[state=open]:rotate-45" />
 
                 <span className="sr-only">Close trips list</span>
@@ -89,12 +88,12 @@ const TripSidebar = (props: TripSidebarProps) => {
 
               return (
                 <NavLink
-                  className="flex w-full rounded-lg ring-blue-500"
+                  className="flex w-full rounded-xl"
                   href={trip.url}
                   key={trip.url}
                 >
-                  <article className="flex w-full items-center gap-4 rounded-lg border p-2 transition hover:border-blue-500">
-                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md">
+                  <article className="flex w-full items-center gap-4 rounded-xl border p-2 transition hover:border-blue-500">
+                    <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg">
                       <BlurImage
                         alt={`${trip.city}, ${trip.country}`}
                         className="h-16 w-16 object-cover"
@@ -124,7 +123,7 @@ const TripSidebar = (props: TripSidebarProps) => {
               );
             })}
           </div>
-        </div>
+        </SheetBody>
       </SheetContent>
     </Sheet>
   );

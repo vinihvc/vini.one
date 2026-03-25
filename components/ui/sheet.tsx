@@ -1,106 +1,225 @@
 "use client";
 
-import * as RDialog from "@radix-ui/react-dialog";
+import { Dialog as ArkDialog, useDialogContext } from "@ark-ui/react/dialog";
+import { Portal } from "@ark-ui/react/portal";
+import { XIcon } from "lucide-react";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cn } from "@/lib/cn";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogBody,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 
-export const Sheet = RDialog.Root;
+export const useSheet = useDialogContext;
 
-export const SheetTrigger = RDialog.Trigger;
+export const Sheet = (props: React.ComponentProps<typeof Dialog>) => (
+  <Dialog data-slot="sheet" {...props} />
+);
 
-export const SheetClose = RDialog.Close;
-
-export const SheetPortal = RDialog.Portal;
-
-export const SheetTitle = RDialog.Title;
-
-export const SheetDescription = RDialog.Description;
+export const SheetTrigger = (
+  props: React.ComponentProps<typeof ArkDialog.Trigger>
+) => <ArkDialog.Trigger data-slot="sheet-trigger" {...props} />;
 
 export const SheetOverlay = (
-  props: React.ComponentPropsWithoutRef<typeof RDialog.Overlay>
+  props: React.ComponentProps<typeof DialogOverlay>
 ) => {
-  const { className, ...rest } = props;
+  return <DialogOverlay data-slot="sheet-overlay" {...props} />;
+};
+
+const sheetPositionerVariants = tv({
+  base: ["fixed inset-0 z-50 grid h-svh w-screen"],
+  variants: {
+    placement: {
+      bottom: "grid grid-rows-[1fr_auto] pt-12",
+      top: "grid grid-rows-[auto_1fr] pb-12",
+      left: "flex justify-start",
+      right: "flex justify-end",
+    },
+    variant: {
+      default: "",
+      inset: "sm:p-4",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+interface SheetPositionerProps
+  extends React.ComponentProps<typeof ArkDialog.Positioner>,
+    VariantProps<typeof sheetPositionerVariants> {}
+
+export const SheetPositioner = (props: SheetPositionerProps) => {
+  const { variant = "default", placement, className, ...rest } = props;
 
   return (
-    <RDialog.Overlay
-      className={cn(
-        "fixed inset-0 z-50 bg-background/80",
-        "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
-        "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
-        className
-      )}
+    <ArkDialog.Positioner
+      className={cn(sheetPositionerVariants({ placement, variant }), className)}
+      data-slot="sheet-positioner"
       {...rest}
     />
   );
 };
 
-SheetOverlay.displayName = RDialog.Overlay.displayName;
-
-const sheetContent = tv({
+const sheetContentVariants = tv({
   base: [
-    "fixed z-50",
-    "gap-4 p-4",
-    "bg-background/50 backdrop-blur-md",
-    "transition ease-in-out",
-    "data-[state=closed]:animate-out data-[state=open]:animate-in",
-    "data-[state=open]:fade-in data-[state=closed]:fade-out",
+    "[--space:--spacing(6)]",
+    "relative",
+    "flex flex-col",
+    "max-h-full min-h-0 w-full min-w-0",
+    "bg-popover",
+    "text-popover-foreground",
+    "shadow-lg/5",
+    "transition-[opacity,translate] duration-200 ease-in-out will-change-transform",
+    "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
+    "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
   ],
   variants: {
-    side: {
-      left: ["inset-y-0 left-0 h-full w-full sm:w-3/4 sm:max-w-sm"],
-      right: ["inset-y-0 right-0 h-full w-full sm:w-3/4 sm:max-w-sm"],
-      top: ["inset-x-0 top-0 h-1/3 w-full"],
-      bottom: ["inset-x-0 bottom-0 h-1/3 w-full"],
+    placement: {
+      bottom: [
+        "row-start-2 border-t",
+        "data-[state=closed]:slide-in-from-bottom-10 data-[state=open]:slide-in-from-bottom-10",
+      ],
+      top: [
+        "border-b",
+        "data-[state=closed]:slide-out-to-top-10 data-[state=open]:slide-in-from-top-10",
+      ],
+      left: [
+        "w-[calc(100%-(--spacing(12)))] max-w-md",
+        "col-start-2",
+        "border-e",
+        // updated
+        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        // original
+        // "data-[state=closed]:slide-out-to-start-10 data-[state=open]:slide-in-from-start-10",
+      ],
+      right: [
+        "w-[calc(100%-(--spacing(12)))] max-w-md",
+        "col-start-2",
+        "border-s",
+        "data-[state=closed]:slide-out-to-end-10 data-[state=open]:slide-in-from-end-10",
+      ],
     },
-    animation: {
-      fade: ["data-[state=open]:fade-in data-[state=closed]:fade-out"],
-      "slide-bottom": [
-        "data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom",
-      ],
-      "slide-top": [
-        "data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top",
-      ],
-      "slide-left": [
-        "data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left",
-      ],
-      "slide-right": [
-        "data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right",
+    variant: {
+      default: "",
+      inset: [
+        "sm:rounded-2xl sm:border",
+        "sm:**:data-[slot=sheet-footer]:rounded-b-[calc(var(--radius-2xl)-1px)]",
       ],
     },
   },
   defaultVariants: {
-    side: "left",
+    placement: "right",
+    variant: "default",
   },
 });
 
-type Animation = keyof typeof sheetContent.variants.animation;
-
 interface SheetContentProps
-  extends React.ComponentPropsWithoutRef<typeof RDialog.Content>,
-    Omit<VariantProps<typeof sheetContent>, "animation"> {
+  extends React.ComponentProps<typeof ArkDialog.Content>,
+    VariantProps<typeof sheetContentVariants> {
   /**
-   * Select the animation to use for the sheet
+   * Show close button at the top right corner
+   *
+   * @default true
    */
-  animation?: Animation[] | Animation;
+  showCloseButton?: boolean;
 }
 
 export const SheetContent = (props: SheetContentProps) => {
-  const { className, children, side = "left", animation, ...rest } = props;
-
-  const customAnimation = Array.isArray(animation)
-    ? animation.map((animation) => sheetContent({ animation }))
-    : sheetContent({ animation });
+  const {
+    showCloseButton = true,
+    placement = "right",
+    variant = "default",
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
-    <SheetPortal>
+    <Portal>
       <SheetOverlay />
-      <RDialog.Content
-        className={cn(sheetContent({ side }), customAnimation, className)}
-        {...rest}
-      >
-        {children}
-      </RDialog.Content>
-    </SheetPortal>
+
+      <SheetPositioner placement={placement} variant={variant}>
+        <ArkDialog.Content
+          className={cn(
+            sheetContentVariants({ placement, variant }),
+            className
+          )}
+          data-slot="sheet-content"
+          {...rest}
+        >
+          {children}
+
+          {!!showCloseButton && (
+            <SheetClose asChild>
+              <Button
+                aria-label="Close"
+                className="absolute inset-e-2 top-2 opacity-64 hover:opacity-100"
+                size="icon-sm"
+                variant="ghost"
+              >
+                <XIcon />
+              </Button>
+            </SheetClose>
+          )}
+        </ArkDialog.Content>
+      </SheetPositioner>
+    </Portal>
+  );
+};
+
+export const SheetHeader = (
+  props: React.ComponentProps<typeof DialogHeader>
+) => {
+  return <DialogHeader data-slot="sheet-header" {...props} />;
+};
+
+export const SheetTitle = (props: React.ComponentProps<typeof DialogTitle>) => {
+  return <DialogTitle data-slot="sheet-title" {...props} />;
+};
+
+export const SheetDescription = (
+  props: React.ComponentProps<typeof DialogDescription>
+) => {
+  return <DialogDescription data-slot="sheet-description" {...props} />;
+};
+
+export const SheetBody = (props: React.ComponentProps<typeof DialogBody>) => {
+  const { className, ...rest } = props;
+
+  return (
+    <DialogBody
+      className={cn(
+        "in-[[data-slot=sheet-content]:has([data-slot=sheet-header])]:pt-0",
+        className
+      )}
+      data-slot="sheet-body"
+      {...rest}
+    />
+  );
+};
+
+export const SheetClose = (
+  props: React.ComponentProps<typeof ArkDialog.CloseTrigger>
+) => <ArkDialog.CloseTrigger data-slot="sheet-close" {...props} />;
+
+export const SheetFooter = (
+  props: React.ComponentProps<typeof DialogFooter>
+) => {
+  const { className, ...rest } = props;
+
+  return (
+    <DialogFooter
+      className={cn("sm:rounded-none", className)}
+      data-slot="sheet-footer"
+      {...rest}
+    />
   );
 };

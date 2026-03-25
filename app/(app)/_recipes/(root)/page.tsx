@@ -24,7 +24,7 @@ const RecipesPage = async () => {
   );
 
   return (
-    <div className="container selection:bg-rose-500">
+    <div className="container">
       <FadeSection className="space-y-1">
         <Heading className="from-rose-500 to-fuchsia-500">Recipes</Heading>
 
@@ -35,8 +35,8 @@ const RecipesPage = async () => {
 
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
         {publishedRecipes.map((recipe, index) => (
-          <FadeSection asChild blur delay={(index + 1) * 0.05} key={recipe.url}>
-            <NavLink className="rounded-md ring-rose-500" href={recipe.url}>
+          <FadeSection blur delay={(index + 1) * 0.05} key={recipe.url}>
+            <NavLink className="block h-full rounded-lg" href={recipe.url}>
               <RecipeCard data={recipe.data} />
             </NavLink>
           </FadeSection>

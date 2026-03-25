@@ -30,12 +30,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const ProjectsPage = () => {
   const projects = projectsSource.getPages();
 
-  if (!projects.length) {
+  const publishedProjects = projects.filter(({ data }) => data.published);
+
+  if (!publishedProjects.length) {
     notFound();
   }
 
   return (
-    <div className="container selection:bg-green-500">
+    <div className="container">
       <FadeSection className="space-y-1">
         <Heading className="from-green-500 to-teal-500">Projects</Heading>
 
@@ -44,16 +46,11 @@ const ProjectsPage = () => {
         </h2>
       </FadeSection>
 
-      <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {projects.map((project, index) => (
-          <FadeSection
-            asChild
-            blur
-            delay={(index + 1) * 0.05}
-            key={project.data.key}
-          >
+      <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {publishedProjects.map((project, index) => (
+          <FadeSection blur delay={(index + 1) * 0.05} key={project.data.key}>
             <NavLink
-              className="group rounded-md ring-green-500"
+              className="group block h-full rounded-2xl"
               href={project.data.website}
               isExternal
             >
@@ -63,11 +60,14 @@ const ProjectsPage = () => {
         ))}
       </div>
 
-      <FadeSection asChild delay={(projects.length + 1) * 0.05}>
+      <FadeSection delay={(projects.length + 1) * 0.05}>
         <div className="mt-8 flex justify-end">
-          <Button asChild>
+          <Button
+            asChild
+            className="opacity-64 hover:opacity-100"
+            variant="ghost"
+          >
             <NavLink
-              className="ring-green-500"
               href={`https://github.com/${SITE_CONFIG.github}?tab=repositories`}
               isExternal
             >

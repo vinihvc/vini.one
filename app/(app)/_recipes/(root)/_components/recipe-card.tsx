@@ -27,7 +27,7 @@ export const RecipeCard = (props: RecipeCardProps) => {
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col rounded-md border bg-card p-3",
+        "relative flex h-full flex-col rounded-lg border bg-card p-3",
         className
       )}
       {...rest}
@@ -35,10 +35,9 @@ export const RecipeCard = (props: RecipeCardProps) => {
       <div className="flex flex-1 flex-col gap-4">
         <BlurImage
           alt={data.thumbnail.alt}
-          className="h-40 w-full rounded-sm object-cover"
-          height={160}
+          className="h-40 w-full rounded-md object-cover"
+          fill
           src={data.thumbnail.path}
-          width={160}
         />
 
         <div className="flex flex-1 flex-col gap-4 p-1">
@@ -53,7 +52,7 @@ export const RecipeCard = (props: RecipeCardProps) => {
           <h1 className="font-medium text-lg/tight">{data.title}</h1>
 
           <div className="flex items-center gap-1 text-muted-foreground">
-            <Calendar className="h-3 w-3" />
+            <Calendar className="size-3" />
 
             <time className="text-xs" dateTime={formattedDate}>
               {formattedDate}

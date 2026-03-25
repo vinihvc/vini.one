@@ -49,7 +49,7 @@ export const Rating = (props: RatingProps) => {
             tabIndex={-1}
           >
             <Star
-              className="h-5 w-5 sm:h-6 sm:w-6"
+              className="size-5 sm:h-6 sm:w-6"
               fill="currentColor"
               stroke="black"
             />

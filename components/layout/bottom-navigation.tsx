@@ -25,7 +25,7 @@ const BottomNavigation = async (props: BottomNavigationProps) => {
           <li className="w-full" key={route.href}>
             <Button
               asChild
-              className="w-full px-0 [&_svg]:h-5 [&_svg]:w-5"
+              className="w-full px-0 [&_svg]:size-5"
               size="lg"
               variant="ghost"
             >

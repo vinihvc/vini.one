@@ -24,7 +24,7 @@ const BlogPage = async () => {
   );
 
   return (
-    <div className="container selection:bg-rose-500">
+    <div className="container">
       <FadeSection className="space-y-1">
         <Heading className="from-rose-500 to-fuchsia-500">Blog</Heading>
 
@@ -36,7 +36,7 @@ const BlogPage = async () => {
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
         {publishedPosts.map((post) => (
           <NavLink
-            className="rounded-md ring-rose-500"
+            className="rounded-lg"
             href={`/blog/${post.slugs[0]}`}
             key={post.data.title}
           >

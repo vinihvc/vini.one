@@ -17,7 +17,7 @@ export function TableOfContent(props: TableOfContentProps) {
   }
 
   return (
-    <div className="group relative mt-8 overflow-clip rounded-lg border bg-card p-4">
+    <div className="group relative mt-8 overflow-clip rounded-xl border bg-card p-4">
       <NotebookText className="absolute top-4 right-4 stroke-1 opacity-60 transition-opacity group-hover:opacity-100 md:h-10 md:w-10" />
 
       <h4 className="mt-0 mb-3 font-medium text-lg">

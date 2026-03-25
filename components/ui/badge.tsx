@@ -1,11 +1,11 @@
-import { Slot } from "@radix-ui/react-slot";
+import { ark } from "@ark-ui/react/factory";
 import type React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cn } from "@/lib/cn";
 
 const badgeVariants = tv({
   base: [
-    "inline-flex items-center rounded-sm border",
+    "inline-flex items-center rounded-md border",
     "px-2 py-0.5",
     "font-medium text-xs transition-colors",
     "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -30,23 +30,13 @@ const badgeVariants = tv({
 });
 
 export interface BadgeProps
-  extends React.ComponentProps<"div">,
-    VariantProps<typeof badgeVariants> {
-  /**
-   * If true, the badge will be rendered as a child element
-   */
-  asChild?: boolean;
-}
+  extends React.ComponentProps<typeof ark.div>,
+    VariantProps<typeof badgeVariants> {}
 
 export const Badge = (props: BadgeProps) => {
-  const { asChild, className, variant, ...rest } = props;
-
-  const Component = asChild ? Slot : "div";
+  const { className, variant, ...rest } = props;
 
   return (
-    <Component
-      className={cn(badgeVariants({ variant }), className)}
-      {...rest}
-    />
+    <ark.div className={cn(badgeVariants({ variant }), className)} {...rest} />
   );
 };

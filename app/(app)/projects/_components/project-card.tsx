@@ -32,7 +32,13 @@ export const ProjectCard = (props: ProjectCardProps) => {
   return (
     <article
       className={cn(
-        "relative flex h-full flex-col items-center gap-2 rounded-lg border border-foreground/5 bg-card p-4 drop-shadow-lg transition hover:border-foreground/10",
+        "relative",
+        "h-full",
+        "p-4",
+        "flex flex-col items-center gap-2",
+        "bg-card",
+        "rounded-2xl border",
+        "hover:border-foreground/10",
         className
       )}
       {...rest}
@@ -40,24 +46,26 @@ export const ProjectCard = (props: ProjectCardProps) => {
       {Icon && (
         <div
           className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-md border bg-foreground/5",
+            "size-10",
+            "flex items-center justify-center",
+            "rounded-lg border border-input",
             projectClasses
           )}
         >
-          <Icon className="h-5 w-5 stroke-1" />
+          <Icon className="size-5 stroke-1" />
         </div>
       )}
 
-      <div className="text-center">
+      <div className="flex flex-col gap-1 text-center">
         <h1 className="font-medium">{data.title}</h1>
 
-        <p className="line-clamp-2 text-balance px-5 text-muted-foreground text-sm">
+        <p className="line-clamp-2 text-muted-foreground text-sm">
           {data.description}
         </p>
       </div>
 
       <div className="absolute top-3 right-3">
-        <ExternalLink className="h-3 w-3 opacity-50 transition group-hover:opacity-100 group-focus-visible:opacity-100" />
+        <ExternalLink className="size-2.5 opacity-50 transition group-hover:opacity-100 group-focus-visible:opacity-100" />
       </div>
     </article>
   );

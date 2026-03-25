@@ -14,9 +14,9 @@ import { cn } from "@/lib/cn";
 import { BlurImage } from "./blur-image";
 
 interface Story {
+  height: number;
   url: string;
   width: number;
-  height: number;
 }
 
 interface StoriesProps extends React.ComponentProps<"div"> {
@@ -153,7 +153,7 @@ export function Stories(props: StoriesProps) {
               <div className="relative">
                 <BlurImage
                   alt="Story"
-                  className="w-full object-contain lg:rounded-lg"
+                  className="w-full object-contain lg:rounded-xl"
                   height={story.height}
                   src={story.url}
                   width={story.width}
@@ -164,12 +164,12 @@ export function Stories(props: StoriesProps) {
         </CarouselContent>
 
         <CarouselPrevious
-          className="absolute top-1/2 -left-4 z-10 h-10 w-10 -translate-y-1/2 max-sm:hidden"
+          className="absolute top-1/2 -left-4 z-10 size-10 -translate-y-1/2 max-sm:hidden"
           text="Previous slide"
         />
 
         <CarouselNext
-          className="absolute top-1/2 -right-4 z-10 h-10 w-10 -translate-y-1/2 max-sm:hidden"
+          className="absolute top-1/2 -right-4 z-10 size-10 -translate-y-1/2 max-sm:hidden"
           text="Next slide"
         />
 

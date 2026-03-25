@@ -47,7 +47,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
       position={[data.location.latitude, data.location.longitude]}
     >
       <Popup closeOnEscapeKey minWidth={300}>
-        <article className="flex h-auto flex-col gap-4 px-4 py-2 selection:bg-blue-500">
+        <article className="flex h-auto flex-col gap-4 px-4 py-2">
           <div>
             <h1 className="font-medium text-base">
               {data.city}, {data.country}
@@ -65,7 +65,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
             {firstTwoPhotos.map((photo: string) => (
               <BlurImage
                 alt={`${data.city}, ${data.country}`}
-                className="aspect-square rounded-md object-cover"
+                className="aspect-square rounded-lg object-cover"
                 fill
                 key={photo}
                 src={photo}
@@ -73,7 +73,7 @@ export const LeafletMapMarker = (props: LeafletMapMarkerProps) => {
             ))}
           </div>
 
-          <Button asChild size="sm" variant="primary">
+          <Button asChild size="sm">
             <NavLink href={data.url}>See all details of this trip</NavLink>
           </Button>
         </article>

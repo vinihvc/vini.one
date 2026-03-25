@@ -10,7 +10,7 @@ export const hashtagClasses =
   "absolute -right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 text-muted-foreground transition-opacity";
 
 export const linkClasses =
-  "outline-0 focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md";
+  "outline-0 focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg";
 
 export const mdxComponents: MDXComponentsType = {
   BlurImage,
@@ -27,7 +27,7 @@ export const mdxComponents: MDXComponentsType = {
         {children}
 
         <span className={hashtagClasses}>
-          <Hash className="h-4 w-4" />
+          <Hash className="size-4" />
         </span>
       </a>
     </h2>
@@ -45,7 +45,7 @@ export const mdxComponents: MDXComponentsType = {
         {children}
 
         <span className={hashtagClasses}>
-          <Hash className="h-4 w-4" />
+          <Hash className="size-4" />
         </span>
       </a>
     </h3>
@@ -63,7 +63,7 @@ export const mdxComponents: MDXComponentsType = {
         {children}
 
         <span className={hashtagClasses}>
-          <Hash className="h-4 w-4" />
+          <Hash className="size-4" />
         </span>
       </a>
     </h4>

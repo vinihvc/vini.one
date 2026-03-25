@@ -9,7 +9,7 @@ const NotFoundPage = () => {
     <>
       <NoiseBg />
 
-      <main className="container items-center justify-center selection:bg-pink-500">
+      <main className="container items-center justify-center">
         <div
           className="fixed top-1/2 left-1/2 h-px w-px animate-zoom rounded-full bg-foreground shadow-2xl"
           style={{
@@ -28,7 +28,7 @@ const NotFoundPage = () => {
             </div>
           </div>
 
-          <Button asChild size="lg">
+          <Button asChild size="lg" variant="ghost">
             <NavLink href="/">Back to Beginning</NavLink>
           </Button>
         </div>

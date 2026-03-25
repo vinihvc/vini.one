@@ -1,35 +1,12 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
+import { ark } from "@ark-ui/react/factory";
+import React from "react";
 import { useInView } from "@/hooks/use-in-view";
-import { useMergeRefs } from "@/hooks/use-merge-ref";
+import { assignRef } from "@/hooks/use-merge-ref";
 import { cn } from "@/lib/cn";
 
-interface FadeUpProps extends React.ComponentProps<"div"> {
-  /**
-   * The side of the component to fade up from.
-   *
-   * @default 'top'
-   */
-  side?: "top" | "bottom" | "left" | "right";
-  /**
-   * The delay in seconds before the animation starts.
-   *
-   * @default 0
-   */
-  delay?: number;
-  /**
-   * The threshold of the component.
-   *
-   * @default 0.1
-   */
-  threshold?: number;
-  /**
-   * The duration of the animation.
-   *
-   * @default 0.4
-   */
-  duration?: number;
+interface FadeUpProps extends React.ComponentProps<typeof ark.div> {
   /**
    * If true, the component will blur the children.
    *
@@ -37,11 +14,29 @@ interface FadeUpProps extends React.ComponentProps<"div"> {
    */
   blur?: boolean;
   /**
-   * If true, the component will render the children as a React node.
+   * The delay in seconds before the animation starts.
    *
-   * @default false
+   * @default 0
    */
-  asChild?: boolean;
+  delay?: number;
+  /**
+   * The duration of the animation.
+   *
+   * @default 0.4
+   */
+  duration?: number;
+  /**
+   * The side of the component to fade up from.
+   *
+   * @default 'top'
+   */
+  side?: "top" | "bottom" | "left" | "right";
+  /**
+   * The threshold of the component.
+   *
+   * @default 0.1
+   */
+  threshold?: number;
 }
 
 export const FadeSection = (props: FadeUpProps) => {
@@ -53,13 +48,19 @@ export const FadeSection = (props: FadeUpProps) => {
     blur = false,
     ref,
     className,
-    asChild,
+    style,
     ...rest
   } = props;
 
-  const { ref: $ref, isInView } = useInView(threshold);
+  const { ref: inViewRef, isInView } = useInView(threshold);
 
-  const Component = asChild ? Slot : "div";
+  const mergedRef = React.useCallback(
+    (node: HTMLDivElement | null) => {
+      assignRef(ref, node);
+      assignRef(inViewRef, node);
+    },
+    [ref, inViewRef]
+  );
 
   const transform = {
     top: {
@@ -81,14 +82,15 @@ export const FadeSection = (props: FadeUpProps) => {
   };
 
   return (
-    <Component
+    <ark.div
       className={cn("opacity-0", { "opacity-100": isInView }, className)}
-      ref={useMergeRefs(ref, $ref)}
+      ref={mergedRef}
       style={{
         transform: transform[side].initial,
         filter: blur ? "blur(2px)" : "none",
         transition: `all ${duration}s ease-out`,
         transitionDelay: `${delay}s`,
+        ...style,
         ...(isInView && {
           transform: transform[side].inView,
           filter: blur ? "blur(0px)" : "none",
