@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { MDXContent } from "@/components/mdx/mdx-content";
-import { SITE_CONFIG } from "@/config/site";
 import { tripsSource } from "@/lib/source";
+import { absoluteUrl } from "@/lib/url";
 import { ogImage } from "@/utils/og-image";
 
 export const generateStaticParams = async () => {
@@ -14,7 +14,9 @@ export const generateStaticParams = async () => {
   return publishedTrips.map((trip) => ({ slug: trip.slugs[0] }));
 };
 
-export const generateMetadata = async (props: any) => {
+export const generateMetadata = async (
+  props: { params: Promise<{ slug: string }> },
+) => {
   // export const generateMetadata = async (props: PageProps<"/trips/[slug]">) => {
   const { slug } = await props.params;
 
@@ -34,13 +36,15 @@ export const generateMetadata = async (props: any) => {
     openGraph: {
       title,
       description: page.data.description,
-      url: `${SITE_CONFIG.url}/trips/${slug}`,
+      url: absoluteUrl(`/trips/${slug}`),
       images: [{ url: ogImage(title), width: 1200, height: 630 }],
     },
   };
 };
 
-const TripsSlugPage = async (props: any) => {
+const TripsSlugPage = async (props: {
+  params: Promise<{ slug: string }>;
+}) => {
   // const TripsSlugPage = async (props: PageProps<"/trips/[slug]">) => {
   const { slug } = await props.params;
 

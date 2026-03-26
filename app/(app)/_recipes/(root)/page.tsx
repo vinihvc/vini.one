@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
 import { NavLink } from "@/components/ui/nav-link";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { recipesSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 import { RecipeCard } from "./_components/recipe-card";
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Recipes",
   openGraph: {
     title: "Recipes",
-    url: `${SITE_CONFIG.url}/recipes`,
+    url: absoluteUrl("/recipes"),
     images: [{ url: ogImage("Recipes"), width: 1200, height: 630 }],
   },
 };

@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 
 export const DEFAULT_FONT_SIZE = 64;
 
@@ -10,5 +10,5 @@ export const DEFAULT_FONT_SIZE = 64;
  * ```
  */
 export const ogImage = (title: string, fontSize = DEFAULT_FONT_SIZE) => {
-  return `${SITE_CONFIG.url}/api/og?title=${title}&fontSize=${fontSize}`;
+  return absoluteUrl(`/api/og?title=${title}&fontSize=${fontSize}`);
 };

@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --font-sans: "Outfit", sans-serif;
   --default-font-family: var(--font-sans);

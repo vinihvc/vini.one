@@ -45,7 +45,7 @@ export const CompaniesSection = (props: CompaniesSectionProps) => {
             >
               <FadeSection blur delay={delay}>
                 <NavLink
-                  className="block rounded-lg px-2"
+                  className="block rounded-xl px-2"
                   href={company.url}
                   isExternal
                 >

@@ -1,8 +1,9 @@
 import { createMDX } from "fumadocs-mdx/next";
-import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactCompiler: true,
+  serverExternalPackages: ["@takumi-rs/image-response"],
   images: {
     qualities: [20, 70],
     remotePatterns: [

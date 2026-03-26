@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
-import { SITE_CONFIG } from "@/config/site";
 import { tripsSource } from "@/lib/source";
+import { absoluteUrl } from "@/lib/url";
 import { ogImage } from "@/utils/og-image";
 import { serializeTrip } from "@/utils/serializer";
 import { TripMap } from "./_components/map";
@@ -12,7 +12,7 @@ export const generateMetadata = async () => {
     title: "Trips",
     openGraph: {
       title: "Trips",
-      url: `${SITE_CONFIG.url}/trips`,
+      url: absoluteUrl("/trips"),
       images: [{ url: ogImage("Trips"), width: 1200, height: 630 }],
     },
   };

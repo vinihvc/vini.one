@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
 import { NavLink } from "@/components/ui/nav-link";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { blogSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 import { PostCard } from "./_components/post-card";
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Blog",
   openGraph: {
     title: "Blog",
-    url: `${SITE_CONFIG.url}/blog`,
+    url: absoluteUrl("/blog"),
     images: [{ url: ogImage("Blog"), width: 1200, height: 630 }],
   },
 };

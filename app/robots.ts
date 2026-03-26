@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 
 const robots = (): MetadataRoute.Robots => {
   return {
@@ -7,7 +7,7 @@ const robots = (): MetadataRoute.Robots => {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
+    sitemap: absoluteUrl("/sitemap.xml"),
   };
 };
 

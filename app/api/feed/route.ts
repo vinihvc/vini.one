@@ -1,5 +1,6 @@
 import { SITE_CONFIG } from "@/config/site";
 import { blogSource, tripsSource } from "@/lib/source";
+import { absoluteUrl } from "@/lib/url";
 
 export const dynamic = "force-static";
 
@@ -18,13 +19,13 @@ export const GET = () => {
   const items = [
     ...publishedPosts.map((post) => ({
       title: post.data.title,
-      link: `${SITE_CONFIG.url}/blog/${post.slugs[0]}`,
+      link: absoluteUrl(`/blog/${post.slugs[0]}`),
       description: post.data.description,
       date: post.data.publishedAt,
     })),
     ...publishedTrips.map((trip) => ({
       title: `${trip.data.city}, ${trip.data.country}`,
-      link: `${SITE_CONFIG.url}/trips/${trip.slugs[0]}`,
+      link: absoluteUrl(`/trips/${trip.slugs[0]}`),
       description: trip.data.description,
       date: trip.data.publishedAt,
     })),
@@ -39,7 +40,7 @@ export const GET = () => {
 <rss version="2.0">
 <channel>
   <title>${SITE_CONFIG.name}</title>
-  <link>${SITE_CONFIG.url}</link>
+  <link>${absoluteUrl("/")}</link>
   <description>${SITE_CONFIG.description}</description>
   ${orderedItems
     .map(

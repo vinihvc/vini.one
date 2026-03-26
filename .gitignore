@@ -12,6 +12,7 @@ coverage
 .next/
 out/
 build
+.output
 
 # misc
 .DS_Store
@@ -36,3 +37,4 @@ yarn-error.log*
 
 # fumadocs-mdx
 .source
+/dist/

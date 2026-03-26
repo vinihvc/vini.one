@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { MDXContent } from "@/components/mdx/mdx-content";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { blogSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 
@@ -14,7 +14,9 @@ export const generateStaticParams = () => {
   return publishedPosts.map((post) => ({ slug: post.slugs[0] }));
 };
 
-export const generateMetadata = async (props: any) => {
+export const generateMetadata = async (
+  props: { params: Promise<{ slug: string }> },
+) => {
   // export const generateMetadata = async (props: PageProps<"/blog/[slug]">) => {
   const { slug } = await props.params;
 
@@ -32,13 +34,13 @@ export const generateMetadata = async (props: any) => {
     openGraph: {
       title: page.data.title,
       description: page.data.description,
-      url: `${SITE_CONFIG.url}/blog/${slug}`,
+      url: absoluteUrl(`/blog/${slug}`),
       images: [{ url: ogImage(page.data.title), width: 1200, height: 630 }],
     },
   };
 };
 
-const BlogSlugPage = async (props: any) => {
+const BlogSlugPage = async (props: { params: Promise<{ slug: string }> }) => {
   // const BlogSlugPage = async (props: PageProps<"/blog/[slug]">) => {
   const { slug } = await props.params;
 

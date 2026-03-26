@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { usesSource } from "@/lib/source";
 import { mdxComponents } from "@/mdx-components";
 import { ogImage } from "@/utils/og-image";
@@ -18,7 +18,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title: page.data.title,
     openGraph: {
       title: page.data.title,
-      url: `${SITE_CONFIG.url}/uses`,
+      url: absoluteUrl("/uses"),
       images: [{ url: ogImage(page.data.title), width: 1200, height: 630 }],
     },
   };

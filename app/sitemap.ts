@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { blogSource, tripsSource } from "@/lib/source";
 
 const sitemap = (): Promise<MetadataRoute.Sitemap> => {
@@ -17,18 +17,18 @@ const sitemap = (): Promise<MetadataRoute.Sitemap> => {
   );
 
   const posts = publishedPosts.map((post) => ({
-    url: `${SITE_CONFIG.url}/blog/${post.slugs[0]}`,
+    url: absoluteUrl(`/blog/${post.slugs[0]}`),
     lastModified: new Date(post.data.publishedAt).toISOString(),
   }));
 
   const trips = publishedTrips.map((trip) => ({
-    url: `${SITE_CONFIG.url}/trips/${trip.slugs[0]}`,
+    url: absoluteUrl(`/trips/${trip.slugs[0]}`),
     lastModified: new Date(trip.data.publishedAt).toISOString(),
   }));
 
   return Promise.resolve([
     ...pages.map((page) => ({
-      url: `${SITE_CONFIG.url}${page}`,
+      url: absoluteUrl(page ? page : "/"),
       lastModified: new Date().toISOString(),
     })),
     ...trips,

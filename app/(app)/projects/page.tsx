@@ -6,6 +6,7 @@ import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
 import { NavLink } from "@/components/ui/nav-link";
 import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { projectsSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 import { ProjectCard } from "./_components/project-card";
@@ -21,7 +22,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
     title: "Projects",
     openGraph: {
       title: "Projects",
-      url: `${SITE_CONFIG.url}/projects`,
+      url: absoluteUrl("/projects"),
       images: [{ url: ogImage("Projects"), width: 1200, height: 630 }],
     },
   };

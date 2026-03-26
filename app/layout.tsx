@@ -5,6 +5,7 @@ import { MediaQueriesIndicator } from "@/components/debug/media-queries";
 import { Header } from "@/components/layout/header";
 import { UmamiTracking } from "@/components/tracking/umami";
 import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { fontSans } from "@/lib/font";
 import { ogImage } from "@/utils/og-image";
 
@@ -22,7 +23,7 @@ export const viewport: Viewport = {
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    metadataBase: new URL(SITE_CONFIG.url),
+    metadataBase: new URL(absoluteUrl("/")),
     title: { default: SITE_CONFIG.name, template: `%s // ${SITE_CONFIG.name}` },
     description: SITE_CONFIG.description,
     applicationName: SITE_CONFIG.name,
@@ -32,7 +33,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: SITE_CONFIG.name,
       description: SITE_CONFIG.description,
       siteName: SITE_CONFIG.name,
-      url: SITE_CONFIG.url,
+      url: absoluteUrl("/"),
       images: [
         {
           url: ogImage(SITE_CONFIG.name),
@@ -60,7 +61,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       shortcut: "/favicon-16x16.png",
       apple: "/apple-touch-icon.png",
     },
-    manifest: `${SITE_CONFIG.url}/site.webmanifest`,
+    manifest: absoluteUrl("/site.webmanifest"),
   };
 };
 

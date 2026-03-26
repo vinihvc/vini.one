@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { FadeSection } from "@/components/ui/fade-section";
 import { Heading } from "@/components/ui/heading";
-import { SITE_CONFIG } from "@/config/site";
+import { absoluteUrl } from "@/lib/url";
 import { bookshelfSource } from "@/lib/source";
 import { ogImage } from "@/utils/og-image";
 import { BookCard } from "./_components/book-card";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Bookshelf",
   openGraph: {
     title: "Bookshelf",
-    url: `${SITE_CONFIG.url}/bookshelf`,
+    url: absoluteUrl("/bookshelf"),
     images: [{ url: ogImage("Bookshelf"), width: 1200, height: 630 }],
   },
 };

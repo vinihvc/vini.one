@@ -51,4 +51,8 @@ export const recipes = defineDocs({
   },
 });
 
-export default defineConfig();
+export default defineConfig({
+  mdxOptions: {
+    // MDX options
+  },
+});

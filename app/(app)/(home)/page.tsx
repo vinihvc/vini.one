@@ -31,7 +31,7 @@ const HomePage = () => {
         <FadeSection className="relative" delay={0.1}>
           <BlurImage
             alt="Photo of Vinicius Vicentini, looking up and behind him is the Rijksmuseum, in Amsterdam"
-            className="w-full shrink-0 rounded-lg sm:h-80 sm:w-80"
+            className="w-full shrink-0 rounded-xl sm:h-80 sm:w-80"
             height={320}
             src="/images/me.webp"
             width={320}
