@@ -5,9 +5,9 @@
   "private": true,
   "packageManager": "pnpm@10.33.0",
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build",
-    "start": "vinext start",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "postinstall": "fumadocs-mdx",
     "lint:check": "ultracite check",
     "lint:fix": "ultracite fix"
