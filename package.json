@@ -60,5 +60,8 @@
       "pnpm dlx ultracite fix"
     ]
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  }
 }
