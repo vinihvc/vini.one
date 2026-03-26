@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import type { Font } from "@takumi-rs/core";
 import { ImageResponse } from "@takumi-rs/image-response";
 import type { NextRequest } from "next/server";
@@ -6,38 +8,30 @@ import { DEFAULT_FONT_SIZE } from "@/utils/og-image";
 
 export const revalidate = false;
 
-async function loadAssets(): Promise<
-  { name: string; data: ArrayBuffer; weight: number; style: "normal" }[]
-> {
-  const [semibold] = await Promise.all([
-    import("./Outfit-SemiBold.ttf").then((mod) => mod.default ?? mod),
-  ]);
-
-  const toArrayBuffer = (base64: string) => {
-    const buffer = Buffer.from(base64, "base64");
-    return buffer.buffer.slice(
-      buffer.byteOffset,
-      buffer.byteOffset + buffer.byteLength
-    );
-  };
-
-  return [
-    {
-      name: "Outfit",
-      data: toArrayBuffer(semibold),
-      weight: 600,
-      style: "normal",
-    },
-  ];
-}
-
 export const GET = async (request: NextRequest) => {
   const { searchParams } = request.nextUrl;
 
   const title = searchParams.get("title");
   const fontSize = Number(searchParams.get("fontSize")) || DEFAULT_FONT_SIZE;
 
-  const fonts: Font[] = await loadAssets();
+  const fontBytes = await readFile(
+    // `import.meta.url` points inside `dist/server` at runtime, so we resolve
+    // back to the source asset location under `app/api/og/`.
+    fileURLToPath(new URL("./Outfit-SemiBold.ttf", import.meta.url))
+  );
+  const fontData = fontBytes.buffer.slice(
+    fontBytes.byteOffset,
+    fontBytes.byteOffset + fontBytes.byteLength
+  );
+
+  const fonts: Font[] = [
+    {
+      name: "Outfit",
+      data: fontData,
+      weight: 600,
+      style: "normal",
+    },
+  ];
 
   return new ImageResponse(
     <div
