@@ -5,8 +5,8 @@ import { MediaQueriesIndicator } from "@/components/debug/media-queries";
 import { Header } from "@/components/layout/header";
 import { UmamiTracking } from "@/components/tracking/umami";
 import { SITE_CONFIG } from "@/config/site";
-import { absoluteUrl } from "@/lib/url";
 import { fontSans } from "@/lib/font";
+import { absoluteUrl } from "@/lib/url";
 import { ogImage } from "@/utils/og-image";
 
 const BottomNavigation = React.lazy(
@@ -67,7 +67,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const RootLayout = async ({ children }: React.PropsWithChildren) => {
   return (
-    <html data-scroll-behavior="smooth" lang="en" suppressHydrationWarning>
+    <html
+      className="scheme-only-dark"
+      data-scroll-behavior="smooth"
+      lang="en"
+      suppressHydrationWarning
+    >
       <body className={fontSans.variable}>
         <Header />
 
